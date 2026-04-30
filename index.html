@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinesinTandem™ | The Alignment Audit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #560000;
+    --burgundy-deep: #3a0000;
+    --olive: #768064;
+    --olive-light: #9aa08a;
+    --olive-dark: #4a5240;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d8;
+    --warm-white: #faf8f5;
+    --charcoal: #2a2a2a;
+    --mid-gray: #666;
+    --light-gray: #e8e4de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Lato", sans-serif; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(58,0,0,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(118,128,100,0.2);
+  }
+  .nav-logo {
+    font-family: "Playfair Display", serif;
+    font-size: 20px; font-weight: 700; color: var(--cream);
+    letter-spacing: 0.02em;
+  }
+  .nav-logo sup { font-size: 11px; color: var(--olive-light); vertical-align: super; }
+  .nav-tagline { font-size: 11px; font-weight: 300; color: rgba(245,240,232,0.4); letter-spacing: 0.16em; text-transform: uppercase; }
+
+  /* HERO */
+  .hero {
+    background: var(--burgundy-deep);
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 130px 40px 88px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(118,128,100,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(86,0,0,0.4) 0%, transparent 50%);
+  }
+  .hero::after {
+    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--olive), transparent);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+  .brand-eyebrow {
+    font-size: 11px; font-weight: 300; color: rgba(245,240,232,0.4);
+    letter-spacing: 0.26em; text-transform: uppercase; margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.05s forwards;
+  }
+  .hero-headline {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(52px, 7.5vw, 92px); font-weight: 700;
+    color: var(--cream); line-height: 1.04; margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .hero-headline em { font-style: italic; color: var(--olive-light); display: block; }
+  .hero-subhead {
+    font-size: clamp(15px, 2.2vw, 20px); font-weight: 300;
+    color: rgba(245,240,232,0.62); line-height: 1.65;
+    margin-bottom: 60px; max-width: 580px; margin-left: auto; margin-right: auto;
+    opacity: 0; animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+  .hero-stat-row {
+    display: flex; justify-content: center; gap: 52px;
+    margin-bottom: 16px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-number {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(30px, 4.5vw, 48px); font-weight: 600;
+    color: var(--cream); display: block; line-height: 1; margin-bottom: 8px;
+  }
+  .hero-stat-label { font-size: 10px; font-weight: 400; color: var(--olive-light); letter-spacing: 0.18em; text-transform: uppercase; }
+  .hero-stat-sub { font-size: 11px; font-weight: 300; color: rgba(245,240,232,0.32); margin-top: 5px; }
+  .stat-divider { width: 1px; background: rgba(118,128,100,0.3); align-self: stretch; }
+  .hero-source-note {
+    font-size: 11px; font-weight: 300; color: rgba(245,240,232,0.28);
+    letter-spacing: 0.08em; margin-bottom: 60px; font-style: italic;
+    opacity: 0; animation: fadeUp 0.8s ease 0.62s forwards;
+  }
+  .hero-cta-group {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.75s forwards;
+  }
+  .btn-primary {
+    display: inline-block; background: var(--olive); color: var(--cream);
+    font-family: "Lato", sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 20px 56px; text-decoration: none;
+    transition: all 0.3s ease; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--olive-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-block; background: transparent; color: rgba(245,240,232,0.45);
+    font-family: "Lato", sans-serif; font-size: 11px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 13px 32px; text-decoration: none;
+    border: 1px solid rgba(245,240,232,0.13);
+    transition: all 0.3s ease; cursor: pointer;
+  }
+  .btn-ghost:hover { border-color: var(--olive-light); color: var(--olive-light); }
+
+  /* PROOF STRIP */
+  .proof-strip { background: var(--olive); padding: 28px 40px; text-align: center; }
+  .proof-strip p {
+    font-family: "Playfair Display", serif; font-style: italic;
+    font-size: clamp(15px, 2.2vw, 20px); color: var(--cream); letter-spacing: 0.02em;
+  }
+
+  /* ORIGIN */
+  .origin { background: var(--cream); padding: 104px 40px; }
+  .origin-inner {
+    max-width: 860px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 72px; align-items: start;
+  }
+  .origin-left { position: sticky; top: 100px; }
+  .origin-accent { width: 3px; height: 72px; background: var(--burgundy); margin-bottom: 28px; }
+  .origin-name { font-family: "Playfair Display", serif; font-size: 24px; font-weight: 700; color: var(--burgundy); margin-bottom: 10px; }
+  .origin-title { font-size: 11px; font-weight: 400; color: var(--olive); letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.8; }
+  .origin-right p { font-size: clamp(15px, 2vw, 17px); font-weight: 300; color: var(--mid-gray); line-height: 1.9; margin-bottom: 22px; }
+  .origin-right p strong { color: var(--charcoal); font-weight: 700; }
+  .origin-pullquote {
+    font-family: "Playfair Display", serif; font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic; color: var(--burgundy);
+    border-left: 3px solid var(--olive); padding-left: 28px;
+    margin: 36px 0; line-height: 1.55;
+  }
+
+  /* SELF AUDIT */
+  .self-audit { background: var(--warm-white); padding: 104px 40px; border-top: 1px solid var(--light-gray); border-bottom: 1px solid var(--light-gray); }
+  .self-audit-inner { max-width: 860px; margin: 0 auto; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--olive); margin-bottom: 16px; }
+  .section-headline { font-family: "Playfair Display", serif; font-size: clamp(28px, 4vw, 46px); font-weight: 700; color: var(--burgundy); line-height: 1.15; margin-bottom: 20px; }
+  .section-headline em { font-style: italic; color: var(--olive-dark); }
+  .olive-rule { width: 48px; height: 2px; background: var(--olive); margin: 20px 0 28px; }
+  .section-body { font-size: clamp(15px, 2vw, 17px); font-weight: 300; color: var(--mid-gray); line-height: 1.85; margin-bottom: 24px; }
+  .section-body strong { color: var(--charcoal); font-weight: 700; }
+  .checklist { list-style: none; margin: 32px 0; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--light-gray);
+    font-size: 15px; font-weight: 300; color: var(--mid-gray); line-height: 1.65;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box { width: 17px; height: 17px; min-width: 17px; border: 1.5px solid var(--olive); margin-top: 3px; }
+  .audit-cta-box { background: var(--cream); border: 1px solid var(--light-gray); padding: 48px 56px; text-align: center; margin-top: 48px; }
+  .audit-cta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--olive); margin-bottom: 14px; }
+  .audit-cta-headline { font-family: "Playfair Display", serif; font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: var(--burgundy); margin-bottom: 16px; line-height: 1.25; }
+  .audit-cta-body { font-size: 15px; font-weight: 300; color: var(--mid-gray); line-height: 1.85; max-width: 500px; margin: 0 auto 36px; }
+
+  /* PAID AUDIT */
+  .paid-audit { background: var(--burgundy-deep); padding: 104px 40px; position: relative; overflow: hidden; }
+  .paid-audit::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(118,128,100,0.1) 0%, transparent 55%);
+  }
+  .paid-audit-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+  .paid-audit .section-label { color: var(--olive-light); }
+  .paid-audit .section-headline { color: var(--cream); }
+  .paid-audit .section-headline em { color: var(--olive-light); }
+  .paid-audit .olive-rule { background: var(--olive-light); opacity: 0.5; }
+  .paid-audit .section-body { color: rgba(245,240,232,0.65); max-width: 600px; }
+  .price-display { margin: 44px 0; display: flex; align-items: baseline; gap: 16px; }
+  .price-amount { font-family: "Oswald", sans-serif; font-size: clamp(52px, 8vw, 88px); font-weight: 600; color: var(--cream); line-height: 1; }
+  .price-context { font-size: 13px; font-weight: 300; color: rgba(245,240,232,0.5); line-height: 1.65; max-width: 180px; font-style: italic; }
+  .deliverables { list-style: none; margin: 36px 0 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .deliverable-item {
+    display: flex; align-items: flex-start; gap: 16px; padding: 24px 28px;
+    background: rgba(245,240,232,0.04); border: 1px solid rgba(245,240,232,0.08);
+    transition: background 0.2s ease;
+  }
+  .deliverable-item:hover { background: rgba(245,240,232,0.07); }
+  .deliverable-icon { width: 5px; height: 5px; min-width: 5px; background: var(--olive-light); border-radius: 50%; margin-top: 8px; }
+  .deliverable-text { font-size: 14px; font-weight: 300; color: rgba(245,240,232,0.7); line-height: 1.65; }
+  .deliverable-text strong { display: block; font-weight: 700; color: var(--cream); margin-bottom: 6px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .credit-note {
+    background: rgba(118,128,100,0.12); border: 1px solid rgba(118,128,100,0.25);
+    padding: 24px 32px; margin-bottom: 44px;
+    display: flex; align-items: flex-start; gap: 18px;
+  }
+  .credit-note-icon { font-family: "Playfair Display", serif; font-style: italic; font-size: 28px; color: var(--olive-light); line-height: 1; margin-top: -4px; opacity: 0.7; }
+  .credit-note-text { font-size: 14px; font-weight: 300; color: rgba(245,240,232,0.7); line-height: 1.75; }
+  .credit-note-text strong { color: var(--cream); font-weight: 700; }
+  .not-for { margin-top: 52px; padding-top: 44px; border-top: 1px solid rgba(245,240,232,0.08); }
+  .not-for-label { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(245,240,232,0.3); margin-bottom: 14px; }
+  .not-for p { font-size: 15px; font-weight: 300; color: rgba(245,240,232,0.5); line-height: 1.85; font-style: italic; max-width: 580px; }
+
+  /* SPRINT TEASER */
+  .sprint-teaser { background: var(--cream-dark); padding: 88px 40px; }
+  .sprint-teaser-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 72px; align-items: center; }
+  .sprint-teaser h3 { font-family: "Playfair Display", serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: var(--burgundy); line-height: 1.25; margin-bottom: 20px; }
+  .sprint-teaser p { font-size: 15px; font-weight: 300; color: var(--mid-gray); line-height: 1.85; }
+  .sprint-badge { background: var(--burgundy); padding: 36px 28px; text-align: center; }
+  .sprint-badge-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--olive-light); margin-bottom: 14px; }
+  .sprint-badge-name { font-family: "Playfair Display", serif; font-size: 22px; font-weight: 700; color: var(--cream); margin-bottom: 10px; line-height: 1.2; }
+  .sprint-badge-desc { font-size: 12px; font-weight: 300; color: rgba(245,240,232,0.55); line-height: 1.7; }
+
+  /* FOOTER */
+  .footer { background: var(--charcoal); padding: 52px 40px; text-align: center; }
+  .footer-brand { font-family: "Playfair Display", serif; font-size: 20px; font-weight: 700; color: var(--cream); margin-bottom: 10px; }
+  .footer-brand sup { font-size: 11px; color: var(--olive-light); vertical-align: super; }
+  .footer-tagline { font-size: 11px; font-weight: 300; color: rgba(245,240,232,0.3); letter-spacing: 0.18em; text-transform: uppercase; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 680px) {
+    .nav { padding: 16px 24px; }
+    .nav-tagline { display: none; }
+    .origin-inner { grid-template-columns: 1fr; gap: 40px; }
+    .origin-left { position: static; }
+    .deliverables { grid-template-columns: 1fr; }
+    .sprint-teaser-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-stat-row { gap: 28px; }
+    .stat-divider { display: none; }
+    .hero { padding: 100px 24px 64px; }
+    .origin, .self-audit, .paid-audit, .sprint-teaser { padding: 72px 24px; }
+    .audit-cta-box { padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">LinesinTandem<sup>™</sup></div>
+  <div class="nav-tagline">Where Client Experience Becomes Revenue Strategy</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="brand-eyebrow">Client Experience Firm for High-Touch Service Businesses</div>
+
+    <h1 class="hero-headline">
+      Stop building.<br><em>Start returning.</em>
+    </h1>
+
+    <p class="hero-subhead">
+      The revenue your business needs is not in a new offer. It is already in your existing relationships — waiting to be activated, the right way.
+    </p>
+
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <span class="hero-stat-number">60%</span>
+        <span class="hero-stat-label">Retained Clients</span>
+        <div class="hero-stat-sub">zero re-acquisition cost</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">30%</span>
+        <span class="hero-stat-label">Referral Work</span>
+        <div class="hero-stat-sub">earned, not chased</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">10%</span>
+        <span class="hero-stat-label">New Clients</span>
+        <div class="hero-stat-sub">by design, not necessity</div>
+      </div>
+    </div>
+
+    <p class="hero-source-note">From a six-figure service business built on 30–40 clients a year.</p>
+
+    <div class="hero-cta-group">
+      <a href="#paid-audit" class="btn-primary">Get the Alignment Audit™ — $497</a>
+      <a href="#self-audit" class="btn-ghost">Begin with the free Disconnect Audit™</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <p>"The way you make people feel is your strategy."</p>
+</div>
+
+<!-- ORIGIN -->
+<section class="origin">
+  <div class="origin-inner">
+    <div class="origin-left">
+      <div class="origin-accent"></div>
+      <div class="origin-name">Que Athena</div>
+      <div class="origin-title">Founder, LinesinTandem™<br>Client Experience Strategist<br>15 Years in Premium Service</div>
+    </div>
+    <div class="origin-right">
+      <p>For over 15 years, I ran a six-figure bridal beauty business on a roster of just <strong>30 to 40 clients a year.</strong></p>
+      <p>Not through aggressive marketing. Not through volume. Through a client experience so deliberately designed that retention was the natural result — and referrals were the only pipeline I needed.</p>
+      <div class="origin-pullquote">
+        "Emotional connection wasn't just good energy. It was the actual conversion mechanism."
+      </div>
+      <p>The way I showed up in every consultation — the questions I asked, the attention I held, the experience I created at every touchpoint — that was the strategy. Most of my clients never considered going elsewhere. That is not loyalty by accident. That is <strong>loyalty by connection.</strong></p>
+      <p>That is the methodology behind LinesinTandem™. And it is what I now help high-touch service business owners apply to their own client relationships — to activate the revenue that is already waiting inside what they have built.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SELF AUDIT -->
+<section class="self-audit" id="self-audit">
+  <div class="self-audit-inner">
+    <div class="section-label">Step One — Complimentary</div>
+    <h2 class="section-headline">The Disconnect<br><em>Audit™</em></h2>
+    <div class="olive-rule"></div>
+    <p class="section-body" style="max-width: 620px;">A 10-minute self-assessment that surfaces where revenue already exists inside your business — and where disconnection is costing you. Not a mindset exercise. A precise diagnostic for leaders who are ready to see clearly.</p>
+
+    <ul class="checklist">
+      <li><span class="check-box"></span>You have sent proposals in the last 12 months that stalled due to timing, not fit</li>
+      <li><span class="check-box"></span>You have warm conversations that ended with "let's revisit" — and never did</li>
+      <li><span class="check-box"></span>You have past clients with strong outcomes who have not been re-engaged</li>
+      <li><span class="check-box"></span>You default to building something new rather than returning to what already has momentum</li>
+      <li><span class="check-box"></span>You do not have a defined process for what happens after a client engagement closes</li>
+    </ul>
+
+    <div class="audit-cta-box">
+      <div class="audit-cta-label">Complimentary Resource</div>
+      <h3 class="audit-cta-headline">Download the Full Disconnect Audit™</h3>
+      <p class="audit-cta-body">The complete audit covers revenue gaps, warm pipeline, existing relationships, offer momentum, decision patterns, and client experience. Ten minutes. Designed to show you exactly where to look — and what to prioritize first.</p>
+      <a href="https://audit.linesintandem.com" class="btn-primary" style="background: var(--burgundy);">Download the Disconnect Audit™</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAID AUDIT -->
+<section class="paid-audit" id="paid-audit">
+  <div class="paid-audit-inner">
+    <div class="section-label">Step Two</div>
+    <h2 class="section-headline">The Alignment<br><em>Audit™</em></h2>
+    <div class="olive-rule"></div>
+
+    <p class="section-body">
+      The self-audit shows you where the gaps are. The Alignment Audit™ tells you what they mean — and exactly what to activate first. This is a private, asynchronous engagement. No discovery calls. No group containers. One business. One strategist. Complete clarity.
+    </p>
+
+    <div class="price-display">
+      <span class="price-amount">$497</span>
+      <span class="price-context">Fully credited toward Revenue in Tandem™ upon enrollment.</span>
+    </div>
+
+    <ul class="deliverables">
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text">
+          <strong>Written Strategy Brief</strong>
+          A detailed interpretation of your audit — your specific revenue gaps, their root causes, and a sequenced priority plan. Yours to keep and act on.
+        </span>
+      </li>
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text">
+          <strong>Personal Loom Walkthrough</strong>
+          A 5–10 minute video review of your brief — Que's voice, your business, her precise read on what the numbers and patterns are revealing.
+        </span>
+      </li>
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text">
+          <strong>Activation Roadmap</strong>
+          A clear, sequenced next-step plan. What to move on first. What to set aside. What will generate results without requiring you to build anything new.
+        </span>
+      </li>
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text">
+          <strong>Fully Asynchronous</strong>
+          Designed for leaders who protect their time. You submit. We review. You receive a complete strategic picture — on your schedule.
+        </span>
+      </li>
+    </ul>
+
+    <div class="credit-note">
+      <span class="credit-note-icon">"</span>
+      <p class="credit-note-text">
+        <strong>Your $497 investment is fully credited toward Revenue in Tandem™</strong> when you enroll within 30 days of receiving your audit. You are not paying twice. You are paying in installments toward a deeper result.
+      </p>
+    </div>
+
+    <a href="https://buy.stripe.com/4gM9AU7UAfTL3vucESeME07" class="btn-primary">Request the Alignment Audit™ — $497</a>
+
+    <div class="not-for">
+      <div class="not-for-label">A note on fit</div>
+      <p>This engagement is designed for established service business owners and organizational leaders with a proven track record and existing client relationships. If you are still building your foundation, this is not your current next step — and we would rather tell you that now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPRINT TEASER -->
+<section class="sprint-teaser">
+  <div class="sprint-teaser-inner">
+    <div>
+      <div class="section-label">Step Three</div>
+      <h3>For those ready to move from insight to full activation.</h3>
+      <div class="olive-rule"></div>
+      <p>Revenue in Tandem™ is a 60–90 day engagement for turning existing relationships, past clients, and warm pipelines into active, high-ticket revenue. No new offers. No ad spend. No content treadmill. Your $497 audit investment is fully credited toward enrollment.</p>
+    </div>
+    <div class="sprint-badge">
+      <div class="sprint-badge-label">Next Step</div>
+      <div class="sprint-badge-name">Revenue in Tandem™</div>
+      <div class="sprint-badge-desc">A 60–90 day revenue activation engagement for high-touch service businesses ready to return to what they have already built.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">LinesinTandem<sup>™</sup></div>
+  <div class="footer-tagline">Where Client Experience Becomes Revenue Strategy</div>
+</footer>
+
+</body>
+</html>
