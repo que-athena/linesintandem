@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Disconnect Audit™ | LinesinTandem™</title>
+<title>LinesinTandem™ | The Alignment Audit</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -13,586 +14,425 @@
     --charcoal: #2b2b2b;
     --gold: #ab6c1e;
     --gold-dark: #8a5618;
-    --mid: #6b6b68;
+    --mid: #5a5a57;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+- { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'HK Grotesk', 'Inter', sans-serif; background: var(--warm-white); color: var(--charcoal); }
+  body {
+  font-family: ‘HK Grotesk’, ‘Inter’, sans-serif;
+  background: var(–warm-white);
+  color: var(–charcoal);
+  overflow-x: hidden;
+  }
 
-  /* PROGRESS BAR */
-  .progress-bar-wrap {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    height: 3px; background: rgba(167,166,148,0.2);
-  }
-  .progress-bar-fill { height: 100%; width: 0%; background: var(--gold); transition: width 0.4s ease; }
-  .progress-label {
-    position: fixed; bottom: 24px; right: 24px; z-index: 200;
-    background: rgba(43,43,43,0.15); border: 1px solid rgba(242,241,238,0.2);
-    padding: 10px 18px; font-size: 11px; color: rgba(242,241,238,0.5);
-    letter-spacing: 0.1em; text-transform: uppercase;
-    opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
-  }
-  .progress-label.visible { opacity: 1; }
+/* NAV */
+.nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+padding: 20px 52px;
+display: flex; justify-content: space-between; align-items: center;
+background: rgba(167,166,148,0.98);
+backdrop-filter: blur(8px);
+border-bottom: 1px solid rgba(43,43,43,0.1);
+}
+.nav-logo {
+font-family: ‘Noto Serif Display’, serif;
+font-size: 18px; font-weight: 600;
+color: var(–warm-white); letter-spacing: 0.01em;
+}
+.nav-logo sup { font-size: 10px; color: var(–linen); vertical-align: super; }
+.nav-tagline {
+font-size: 11px; font-weight: 400;
+color: rgba(242,241,238,0.6);
+letter-spacing: 0.16em; text-transform: uppercase;
+}
 
-  /* NAV */
-  .nav {
-    background: rgba(167,166,148,0.98); padding: 20px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid rgba(167,166,148,0.15);
-  }
-  .nav-logo { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 600; color: var(--warm-white); }
-  .nav-logo sup { font-size: 10px; color: var(--taupe); vertical-align: super; }
-  .nav-back {
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: rgba(242,241,238,0.4); text-decoration: none;
-    border: 1px solid rgba(242,241,238,0.12); padding: 10px 24px;
-    transition: all 0.3s ease;
-  }
-  .nav-back:hover { color: var(--taupe); border-color: var(--taupe); }
+/* HERO */
+.hero {
+background: var(–taupe);
+min-height: 100vh;
+display: flex; flex-direction: column;
+justify-content: center; align-items: center;
+text-align: center; padding: 140px 40px 100px;
+position: relative; overflow: hidden;
+}
+.hero::before {
+content: ‘’; position: absolute; inset: 0;
+background:
+radial-gradient(ellipse at 15% 60%, rgba(171,108,30,0.15) 0%, transparent 55%),
+radial-gradient(ellipse at 85% 20%, rgba(242,241,238,0.06) 0%, transparent 50%);
+}
+.hero::after {
+content: ‘’; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 820px; }
 
-  /* HERO */
-  .hero {
-    background: var(--taupe); padding: 80px 40px 88px;
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(171,108,30,0.1) 0%, transparent 60%);
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-  .hero-label { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(242,241,238,0.6); margin-bottom: 24px; }
+.hero-eyebrow {
+font-size: 11px; font-weight: 400; letter-spacing: 0.26em; text-transform: uppercase;
+color: rgba(242,241,238,0.45); margin-bottom: 52px;
+opacity: 0; animation: fadeUp 0.8s ease 0.05s forwards;
+}
 
-  .hero-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(40px, 7vw, 72px); font-weight: 800;
-    color: var(--warm-white); line-height: 1.05; margin-bottom: 20px;
-    letter-spacing: -0.01em;
-  }
-  .hero-title em { font-style: italic; font-weight: 600; color: var(--gold); }
+.hero-headline {
+font-family: ‘Noto Serif Display’, serif;
+font-size: clamp(36px, 5.6vw, 73px);
+font-weight: 800; line-height: 1.0;
+color: var(–warm-white); margin-bottom: 24px;
+opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+letter-spacing: -0.01em;
+}
+.hero-headline em {
+font-style: italic; font-weight: 600; color: var(–gold);
+}
 
-  .hero-hook {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(16px, 2.5vw, 22px); font-style: italic;
-    color: rgba(242,241,238,0.55); line-height: 1.6; margin-bottom: 32px;
-    max-width: 560px; margin-left: auto; margin-right: auto;
-  }
-  .hero-hook strong { color: rgba(242,241,238,0.85); font-style: normal; font-weight: 700; }
+.hero-subhead {
+font-family: ‘Noto Serif Display’, serif;
+font-size: clamp(20px, 3vw, 28px);
+font-weight: 400; line-height: 1.3;
+color: rgba(242,241,238,0.7);
+margin-bottom: 72px;
+opacity: 0; animation: fadeUp 0.8s ease 0.35s forwards;
+}
+.hero-subhead strong {
+font-weight: 800; color: var(–warm-white);
+}
 
-  .hero-instruction {
-    display: inline-block;
-    background: rgba(242,241,238,0.05); border: 1px solid rgba(167,166,148,0.25);
-    padding: 20px 32px; margin-top: 8px; max-width: 580px;
-  }
-  .hero-instruction p { font-size: 13px; color: rgba(242,241,238,0.45); line-height: 1.75; }
-  .hero-instruction p strong { color: rgba(242,241,238,0.8); font-weight: 700; }
+.hero-stat-row {
+display: flex; justify-content: center; gap: 56px;
+margin-bottom: 16px; flex-wrap: wrap;
+opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
+}
+.hero-stat { text-align: center; }
+.hero-stat-number {
+font-family: ‘Noto Serif Display’, serif;
+font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+color: var(–warm-white); display: block;
+line-height: 1; margin-bottom: 8px; font-style: italic;
+}
+.hero-stat-label {
+font-size: 10px; font-weight: 400;
+color: rgba(242,241,238,0.55); letter-spacing: 0.2em; text-transform: uppercase;
+}
+.hero-stat-sub {
+font-size: 11px; color: rgba(242,241,238,0.3); margin-top: 5px;
+}
+.stat-divider { width: 1px; background: rgba(242,241,238,0.15); align-self: stretch; }
 
-  /* CONTENT */
-  .content { max-width: 780px; margin: 0 auto; padding: 80px 40px 0; }
+.hero-source-note {
+font-size: 12px; color: rgba(242,241,238,0.28);
+font-style: italic; margin-bottom: 64px; letter-spacing: 0.04em;
+opacity: 0; animation: fadeUp 0.8s ease 0.62s forwards;
+}
 
-  /* AUDIT SECTION */
-  .audit-section { margin-bottom: 64px; }
-  .section-header { margin-bottom: 28px; }
-  .section-number {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
-    text-transform: uppercase; color: var(--taupe); margin-bottom: 10px;
-  }
-  .section-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(22px, 3vw, 32px); font-weight: 800;
-    color: var(--charcoal); line-height: 1.15; margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-  .section-title em { font-style: italic; font-weight: 600; }
-  .section-context { font-size: 13px; color: var(--mid); line-height: 1.75; font-style: italic; margin-bottom: 20px; }
-  .gold-rule { width: 40px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+.hero-cta-group {
+display: flex; flex-direction: column; align-items: center; gap: 16px;
+opacity: 0; animation: fadeUp 0.8s ease 0.75s forwards;
+}
 
-  /* CHECKLIST */
-  .checklist { list-style: none; border-top: 1px solid var(--linen); }
-  .checklist li {
-    display: flex; align-items: flex-start; gap: 16px;
-    padding: 16px 8px; border-bottom: 1px solid var(--linen);
-    cursor: pointer; transition: all 0.15s ease;
-  }
-  .checklist li:last-child { border-bottom: none; }
-  .checklist li:hover { background: rgba(171,108,30,0.03); }
-  .checklist li.checked .check-box { background: var(--gold); border-color: var(--gold); }
-  .checklist li.checked .check-box::after {
-    content: ''; display: block; width: 5px; height: 9px;
-    border: 2px solid var(--warm-white); border-top: none; border-left: none;
-    transform: rotate(45deg) translate(1px, -1px); margin: 2px auto 0;
-  }
-  .checklist li.checked .check-text { color: var(--charcoal); }
-  .check-box {
-    width: 18px; height: 18px; min-width: 18px;
-    border: 1.5px solid var(--taupe); margin-top: 2px;
-    transition: all 0.2s ease; flex-shrink: 0;
-  }
-  .check-text { font-size: 15px; color: var(--mid); line-height: 1.65; user-select: none; }
+.btn-primary {
+display: inline-block; background: var(–gold); color: var(–warm-white);
+font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+padding: 20px 56px; text-decoration: none;
+transition: all 0.3s ease; border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(–gold-dark); transform: translateY(-2px); }
 
-  /* SECTION RESULT */
-  .section-result {
-    margin-top: 20px; padding: 18px 24px;
-    background: var(--linen); border-left: 3px solid var(--taupe);
-    display: flex; align-items: flex-start; gap: 16px;
-    transition: all 0.3s ease;
-  }
-  .result-count {
-    font-family: 'Noto Serif Display', serif;
-    font-size: 32px; font-weight: 800; font-style: italic;
-    color: var(--charcoal); line-height: 1; min-width: 36px;
-  }
-  .result-text { font-size: 13px; color: var(--mid); line-height: 1.65; padding-top: 4px; }
-  .result-text strong { color: var(--charcoal); font-weight: 700; }
+.btn-ghost {
+display: inline-block; background: transparent;
+color: rgba(242,241,238,0.5);
+font-size: 11px; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase;
+padding: 13px 32px; text-decoration: none;
+border: 1px solid rgba(242,241,238,0.15);
+transition: all 0.3s ease; cursor: pointer;
+}
+.btn-ghost:hover { border-color: var(–linen); color: var(–linen); }
 
-  .section-divider { height: 1px; background: var(--linen); margin: 8px 0 64px; }
+/* PROOF STRIP */
+.proof-strip { background: var(–gold); padding: 28px 40px; text-align: center; }
+.proof-strip p {
+font-family: ‘Noto Serif Display’, serif;
+font-style: italic; font-size: clamp(15px, 2.2vw, 20px);
+color: var(–warm-white); letter-spacing: 0.02em;
+}
 
-  /* INTERPRETATION */
-  .interpretation {
-    background: var(--taupe); padding: 72px 40px; margin: 0 -40px;
-    position: relative; overflow: hidden;
-  }
-  .interpretation::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(171,108,30,0.08) 0%, transparent 55%);
-  }
-  .interpretation-inner { position: relative; z-index: 1; }
+/* ORIGIN */
+.origin { background: var(–linen); padding: 108px 40px; }
+.origin-inner {
+max-width: 880px; margin: 0 auto;
+display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;
+}
+.origin-left { position: sticky; top: 100px; }
+.origin-accent { width: 3px; height: 72px; background: var(–gold); margin-bottom: 28px; }
+.origin-name {
+font-family: ‘Noto Serif Display’, serif;
+font-size: 26px; font-weight: 700; color: var(–charcoal); margin-bottom: 10px;
+}
+.origin-title { font-size: 11px; color: var(–taupe); letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.9; }
+.origin-right p { font-size: clamp(15px, 2vw, 17px); color: var(–mid); line-height: 1.9; margin-bottom: 22px; }
+.origin-right p strong { color: var(–charcoal); font-weight: 700; }
+.origin-pullquote {
+font-family: ‘Noto Serif Display’, serif;
+font-size: clamp(18px, 2.5vw, 24px); font-style: italic;
+color: var(–charcoal); border-left: 3px solid var(–gold);
+padding-left: 28px; margin: 36px 0; line-height: 1.55;
+}
 
-  .interp-label { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--taupe); margin-bottom: 16px; }
-  .interp-headline {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(26px, 4vw, 40px); font-weight: 800;
-    color: var(--warm-white); line-height: 1.15; margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-  .interp-headline em { font-style: italic; font-weight: 600; color: var(--gold); }
-  .interp-sub { font-size: 15px; color: rgba(242,241,238,0.45); line-height: 1.8; margin-bottom: 44px; max-width: 540px; }
+/* SELF AUDIT */
+.self-audit { background: var(–warm-white); padding: 108px 40px; border-top: 1px solid var(–linen); border-bottom: 1px solid var(–linen); }
+.self-audit-inner { max-width: 880px; margin: 0 auto; }
 
-  .interp-states { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 40px; }
-  .interp-state { padding: 28px 24px; background: rgba(43,43,43,0.06); border: 1px solid rgba(43,43,43,0.08); }
-  .interp-state-name {
-    font-family: 'Noto Serif Display', serif; font-size: 16px;
-    font-weight: 800; font-style: italic; color: var(--gold); margin-bottom: 12px;
-  }
-  .interp-state-desc { font-size: 13px; color: rgba(242,241,238,0.55); line-height: 1.75; }
+.section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(–taupe); margin-bottom: 16px; }
+.section-headline {
+font-family: ‘Noto Serif Display’, serif;
+font-size: clamp(30px, 4.5vw, 52px); font-weight: 800;
+color: var(–charcoal); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em;
+}
+.section-headline em { font-style: italic; font-weight: 600; color: var(–gold); }
+.gold-rule { width: 48px; height: 2px; background: var(–gold); margin: 20px 0 28px; }
+.section-body { font-size: clamp(15px, 2vw, 17px); color: var(–mid); line-height: 1.85; margin-bottom: 24px; }
+.section-body strong { color: var(–charcoal); font-weight: 700; }
 
-  .interp-note {
-    font-size: 14px; color: rgba(242,241,238,0.38); font-style: italic;
-    line-height: 1.75; border-top: 1px solid rgba(43,43,43,0.1); padding-top: 28px;
-    margin-bottom: 0;
-  }
-  .interp-note strong { color: rgba(242,241,238,0.65); font-weight: 700; }
+.checklist { list-style: none; border-top: 1px solid var(–linen); margin: 32px 0; }
+.checklist li {
+display: flex; align-items: flex-start; gap: 16px;
+padding: 16px 0; border-bottom: 1px solid var(–linen);
+font-size: 15px; color: var(–mid); line-height: 1.65;
+}
+.checklist li:last-child { border-bottom: none; }
+.check-box { width: 18px; height: 18px; min-width: 18px; border: 1.5px solid var(–taupe); margin-top: 2px; }
 
-  /* SUBMIT */
-  .submit-section { background: var(--linen); padding: 72px 40px; margin: 0 -40px; }
-  .submit-inner { max-width: 580px; }
-  .submit-label { font-size: 10px; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; color: var(--taupe); margin-bottom: 14px; }
-  .submit-headline {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(24px, 3.5vw, 36px); font-weight: 800;
-    color: var(--charcoal); line-height: 1.15; margin-bottom: 12px;
-    letter-spacing: -0.01em;
-  }
-  .submit-headline em { font-style: italic; font-weight: 600; }
-  .submit-sub { font-size: 15px; color: var(--mid); line-height: 1.85; margin-bottom: 36px; }
+.audit-cta-box { background: var(–linen); border: 1px solid rgba(167,166,148,0.4); padding: 52px 60px; text-align: center; margin-top: 52px; }
+.audit-cta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(–taupe); margin-bottom: 14px; }
+.audit-cta-headline { font-family: ‘Noto Serif Display’, serif; font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: var(–charcoal); margin-bottom: 16px; line-height: 1.2; }
+.audit-cta-headline em { font-style: italic; font-weight: 600; }
+.audit-cta-body { font-size: 15px; color: var(–mid); line-height: 1.85; max-width: 500px; margin: 0 auto 36px; }
 
-  .form-field { margin-bottom: 20px; }
-  .form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 8px; }
-  .form-input, .form-textarea {
-    width: 100%; padding: 14px 16px;
-    border: 1.5px solid var(--taupe); background: var(--warm-white);
-    font-family: 'HK Grotesk', 'Inter', sans-serif;
-    font-size: 14px; color: var(--charcoal); line-height: 1.5;
-    transition: border-color 0.2s ease; outline: none; border-radius: 0;
-  }
-  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
-  .form-textarea { resize: vertical; min-height: 100px; }
-  .form-input::placeholder, .form-textarea::placeholder { color: rgba(107,107,104,0.5); }
-  .submit-note { font-size: 12px; color: rgba(43,43,43,0.35); font-style: italic; margin-top: 14px; line-height: 1.6; }
+/* PAID AUDIT */
+.paid-audit { background: var(–taupe); padding: 108px 40px; position: relative; overflow: hidden; }
+.paid-audit::before {
+content: ‘’; position: absolute; inset: 0;
+background: radial-gradient(ellipse at 75% 25%, rgba(171,108,30,0.12) 0%, transparent 55%);
+}
+.paid-audit-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 1; }
+.paid-audit .section-label { color: rgba(242,241,238,0.55); }
+.paid-audit .section-headline { color: var(–warm-white); }
+.paid-audit .section-headline em { color: var(–gold); }
+.paid-audit .gold-rule { opacity: 0.5; }
+.paid-audit .section-body { color: rgba(242,241,238,0.65); max-width: 600px; }
 
-  .submit-success { display: none; padding: 36px; background: var(--warm-white); border: 1px solid var(--taupe); }
-  .submit-success.visible { display: block; }
-  .submit-success h3 { font-family: 'Noto Serif Display', serif; font-size: 24px; font-weight: 800; color: var(--charcoal); margin-bottom: 10px; font-style: italic; }
-  .submit-success p { font-size: 14px; color: var(--mid); line-height: 1.85; }
+.price-display { margin: 48px 0; display: flex; align-items: baseline; gap: 16px; }
+.price-amount {
+font-family: ‘Noto Serif Display’, serif;
+font-size: clamp(56px, 8vw, 96px); font-weight: 800;
+color: var(–warm-white); line-height: 1; font-style: italic;
+}
+.price-context { font-size: 13px; color: rgba(242,241,238,0.45); line-height: 1.65; max-width: 180px; font-style: italic; }
 
-  .audit-offer {
-    margin-top: 36px; padding-top: 32px;
-    border-top: 1px solid var(--taupe);
-  }
-  .audit-offer-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); margin-bottom: 12px; }
-  .audit-offer-name { font-family: 'Noto Serif Display', serif; font-size: 20px; font-weight: 800; font-style: italic; color: var(--charcoal); margin-bottom: 10px; }
-  .audit-offer-desc { font-size: 14px; color: var(--mid); line-height: 1.8; margin-bottom: 24px; }
-  .audit-offer-credit { font-size: 12px; color: rgba(43,43,43,0.4); font-style: italic; margin-top: 14px; line-height: 1.6; }
+.deliverables { list-style: none; margin: 36px 0 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.deliverable-item {
+display: flex; align-items: flex-start; gap: 16px; padding: 24px 28px;
+background: rgba(242,241,238,0.06); border: 1px solid rgba(242,241,238,0.1);
+transition: background 0.2s ease;
+}
+.deliverable-item:hover { background: rgba(242,241,238,0.1); }
+.deliverable-icon { width: 5px; height: 5px; min-width: 5px; background: var(–gold); border-radius: 50%; margin-top: 8px; }
+.deliverable-text { font-size: 14px; color: rgba(242,241,238,0.7); line-height: 1.65; }
+.deliverable-text strong { display: block; font-weight: 700; color: var(–warm-white); margin-bottom: 6px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
 
-  .btn-primary {
-    display: inline-block; background: var(--gold); color: var(--warm-white);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 18px 48px; text-decoration: none;
-    transition: all 0.3s ease; border: none; cursor: pointer;
-  }
-  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+.credit-note {
+background: rgba(171,108,30,0.12); border: 1px solid rgba(171,108,30,0.3);
+padding: 24px 32px; margin-bottom: 44px;
+display: flex; align-items: flex-start; gap: 18px;
+}
+.credit-note-icon { font-family: ‘Noto Serif Display’, serif; font-style: italic; font-size: 32px; color: var(–gold); line-height: 1; margin-top: -4px; opacity: 0.8; }
+.credit-note-text { font-size: 14px; color: rgba(242,241,238,0.7); line-height: 1.75; }
+.credit-note-text strong { color: var(–warm-white); font-weight: 700; }
 
-  /* FOOTER */
-  .footer { background: var(--taupe); padding: 44px 40px; text-align: center; border-top: 1px solid rgba(242,241,238,0.15); }
-  .footer-brand { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 700; color: var(--warm-white); margin-bottom: 8px; }
-  .footer-brand sup { font-size: 10px; color: var(--taupe); vertical-align: super; }
-  .footer-tagline { font-size: 11px; color: rgba(242,241,238,0.25); letter-spacing: 0.16em; text-transform: uppercase; }
+.not-for { margin-top: 52px; padding-top: 44px; border-top: 1px solid rgba(242,241,238,0.12); }
+.not-for-label { font-size: 10px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(242,241,238,0.3); margin-bottom: 14px; }
+.not-for p { font-size: 15px; color: rgba(242,241,238,0.45); line-height: 1.85; font-style: italic; max-width: 580px; }
 
-  @media (max-width: 680px) {
-    .nav { padding: 16px 24px; }
-    .content { padding: 56px 24px 0; }
-    .interpretation, .submit-section { margin: 0 -24px; padding: 56px 24px; }
-    .interp-states { grid-template-columns: 1fr; }
-    .hero { padding: 56px 24px 72px; }
-  }
+/* SPRINT TEASER */
+.sprint-teaser { background: var(–linen); padding: 88px 40px; }
+.sprint-teaser-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 72px; align-items: center; }
+.sprint-teaser .section-label { color: var(–taupe); }
+.sprint-teaser h3 { font-family: ‘Noto Serif Display’, serif; font-size: clamp(24px, 3.5vw, 38px); font-weight: 800; color: var(–charcoal); line-height: 1.2; margin-bottom: 20px; }
+.sprint-teaser h3 em { font-style: italic; font-weight: 600; color: var(–gold); }
+.sprint-teaser p { font-size: 15px; color: var(–mid); line-height: 1.85; }
+.sprint-badge { background: var(–taupe); padding: 36px 28px; text-align: center; }
+.sprint-badge-label { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(242,241,238,0.6); margin-bottom: 14px; }
+.sprint-badge-name { font-family: ‘Noto Serif Display’, serif; font-size: 22px; font-weight: 800; color: var(–warm-white); margin-bottom: 10px; line-height: 1.2; font-style: italic; }
+.sprint-badge-desc { font-size: 12px; color: rgba(242,241,238,0.5); line-height: 1.7; }
+
+/* FOOTER */
+.footer { background: var(–taupe); padding: 52px 40px; text-align: center; border-top: 1px solid rgba(242,241,238,0.15); }
+.footer-brand { font-family: ‘Noto Serif Display’, serif; font-size: 20px; font-weight: 700; color: var(–warm-white); margin-bottom: 10px; }
+.footer-brand sup { font-size: 10px; color: var(–linen); vertical-align: super; }
+.footer-tagline { font-size: 11px; color: rgba(242,241,238,0.35); letter-spacing: 0.18em; text-transform: uppercase; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 680px) {
+.nav { padding: 16px 24px; }
+.nav-tagline { display: none; }
+.origin-inner { grid-template-columns: 1fr; gap: 40px; }
+.origin-left { position: static; }
+.deliverables { grid-template-columns: 1fr; }
+.sprint-teaser-inner { grid-template-columns: 1fr; gap: 40px; }
+.hero-stat-row { gap: 28px; }
+.stat-divider { display: none; }
+.hero { padding: 110px 24px 72px; }
+.origin, .self-audit, .paid-audit, .sprint-teaser { padding: 72px 24px; }
+.audit-cta-box { padding: 36px 28px; }
+}
 </style>
+
 </head>
 <body>
 
-<div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
-<div class="progress-label" id="progressLabel">0 of 30 reviewed</div>
-
 <nav class="nav">
   <div class="nav-logo">LinesinTandem<sup>™</sup></div>
-  <a href="https://linesintandem.com" class="nav-back">← Back to Alignment Audit</a>
+  <div class="nav-tagline">Where Client Experience Becomes Revenue Strategy</div>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-label">Complimentary Resource</div>
-    <h1 class="hero-title">The Disconnect<br><em>Audit™</em></h1>
-    <p class="hero-hook">
-      <strong>You are spending money acquiring new guests</strong> while past guests who already love what you do sit untouched. This audit shows you exactly where your revenue is waiting.
-    </p>
-    <div class="hero-instruction">
-      <p><strong>How to use this audit:</strong> This is not a mindset exercise. It is not a planning document. It is designed to help you see clearly — where guest revenue already exists, what has momentum but no follow-through, and what can be reactivated without creating anything new. Be honest. Do not optimize your answers.</p>
+    <div class="hero-eyebrow">Client Experience Firm for Premium Experiential Service Businesses</div>
+    <h1 class="hero-headline">
+      Your next guest<br><em>already came in.</em><br>You just haven't<br>brought them back.
+    </h1>
+    <p class="hero-subhead"><strong>New clients cost more.</strong> Yours are already paid for.</p>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <span class="hero-stat-number">60%</span>
+        <span class="hero-stat-label">Retained Clients</span>
+        <div class="hero-stat-sub">zero re-acquisition cost</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">30%</span>
+        <span class="hero-stat-label">Referral Business</span>
+        <div class="hero-stat-sub">earned, not chased</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">10%</span>
+        <span class="hero-stat-label">New Clients</span>
+        <div class="hero-stat-sub">by design, not desperation</div>
+      </div>
+    </div>
+    <p class="hero-source-note">From a six-figure premium service business built on 30–40 clients a year.</p>
+    <div class="hero-cta-group">
+      <a href="https://buy.stripe.com/4gM9AU7UAfTL3vucESeME07" class="btn-primary">Get the Alignment Audit™ — $497</a>
+      <a href="https://que-athena.github.io/linesintandem/audit.html" class="btn-ghost">Begin with the free Disconnect Audit™</a>
     </div>
   </div>
 </section>
 
-<div class="content">
-
-  <!-- SECTION 1 -->
-  <div class="audit-section">
-    <div class="section-header">
-      <div class="section-number">Section 01</div>
-      <h2 class="section-title">Lapsed Guests and <em>Past Clients</em></h2>
-      <p class="section-context">Review your guest history from the last 6–12 months. Check every statement that is true for you.</p>
-      <div class="gold-rule"></div>
-    </div>
-    <ul class="checklist" id="section1">
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I have past guests or clients who had a strong experience and have never been re-engaged</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I can identify at least 5 guests who visited once and never returned — without knowing why</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I have never sent a deliberate re-engagement campaign to past guests</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I assumed a lapsed guest was gone without attempting to bring them back</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I focused on filling new bookings rather than reactivating guests who already know and trust my business</span></li>
-    </ul>
-    <div class="section-result" id="result1">
-      <span class="result-count" id="count1">0</span>
-      <div class="result-text" id="text1">Check the statements that are true for you above.</div>
-    </div>
-  </div>
-  <div class="section-divider"></div>
-
-  <!-- SECTION 2 -->
-  <div class="audit-section">
-    <div class="section-header">
-      <div class="section-number">Section 02</div>
-      <h2 class="section-title">Warm Inquiries That <em>Went Quiet</em></h2>
-      <p class="section-context">Think about inquiries, consultations, or conversations that expressed interest but never converted into a booking.</p>
-      <div class="gold-rule"></div>
-    </div>
-    <ul class="checklist" id="section2">
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I can name at least 5 people who inquired, toured, or consulted but never booked</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I never followed up after their initial inquiry went quiet</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">Re-engaging someone who didn't book felt uncomfortable or presumptuous</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I waited for them to reach back out rather than returning to the conversation myself</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I marked the inquiry as lost without a final re-engagement attempt</span></li>
-    </ul>
-    <div class="section-result" id="result2">
-      <span class="result-count" id="count2">0</span>
-      <div class="result-text" id="text2">Check the statements that are true for you above.</div>
-    </div>
-  </div>
-  <div class="section-divider"></div>
-
-  <!-- SECTION 3 -->
-  <div class="audit-section">
-    <div class="section-header">
-      <div class="section-number">Section 03</div>
-      <h2 class="section-title">Existing Relationships and <em>Referral Networks</em></h2>
-      <p class="section-context">This includes past guests, local partners, complementary businesses, and referral sources who have gone quiet.</p>
-      <div class="gold-rule"></div>
-    </div>
-    <ul class="checklist" id="section3">
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">Past guests had exceptional experiences but I have no system to stay in touch with them</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I rely on new visibility and marketing rather than activating existing guest relationships</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I have referral partners or complementary businesses whose relationship has gone dormant</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I underestimate the goodwill and loyalty that already exists among past guests</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I rarely reach out to past guests unless I have a promotion to announce</span></li>
-    </ul>
-    <div class="section-result" id="result3">
-      <span class="result-count" id="count3">0</span>
-      <div class="result-text" id="text3">Check the statements that are true for you above.</div>
-    </div>
-  </div>
-  <div class="section-divider"></div>
-
-  <!-- SECTION 4 -->
-  <div class="audit-section">
-    <div class="section-header">
-      <div class="section-number">Section 04</div>
-      <h2 class="section-title">Services and Packages With <em>Proven Demand</em></h2>
-      <p class="section-context">Look at what has already performed. Be honest about what you stopped promoting — and why.</p>
-      <div class="gold-rule"></div>
-    </div>
-    <ul class="checklist" id="section4">
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I have a signature service or package that performed well and is no longer being actively promoted</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I stopped offering it after a slow period rather than examining the follow-through</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I changed the packaging or pricing instead of improving the re-engagement strategy</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I assume guest tastes have changed without evidence to support that</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I am more comfortable launching something new than returning to what already has traction</span></li>
-    </ul>
-    <div class="section-result" id="result4">
-      <span class="result-count" id="count4">0</span>
-      <div class="result-text" id="text4">Check the statements that are true for you above.</div>
-    </div>
-  </div>
-  <div class="section-divider"></div>
-
-  <!-- SECTION 5 -->
-  <div class="audit-section">
-    <div class="section-header">
-      <div class="section-number">Section 05</div>
-      <h2 class="section-title">Your Guest Experience <em>Gaps</em></h2>
-      <p class="section-context">This section is about what happens inside your guest relationships — not just how you acquire them.</p>
-      <div class="gold-rule"></div>
-    </div>
-    <ul class="checklist" id="section5">
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I do not have a defined process that creates a consistent first impression for every new guest</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">My guest touchpoints are transactional — they happen at booking or checkout, not in between</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I do not have a deliberate process for what happens after a guest's visit closes</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I cannot clearly articulate what makes a guest return, refer, or become a loyal regular</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">The guest experience I deliver has never been intentionally designed — it evolved by default</span></li>
-    </ul>
-    <div class="section-result" id="result5">
-      <span class="result-count" id="count5">0</span>
-      <div class="result-text" id="text5">Check the statements that are true for you above.</div>
-    </div>
-  </div>
-  <div class="section-divider"></div>
-
-  <!-- SECTION 6 -->
-  <div class="audit-section">
-    <div class="section-header">
-      <div class="section-number">Section 06</div>
-      <h2 class="section-title">Your Decision <em>Pattern</em></h2>
-      <p class="section-context">Be honest. This section is not about what you intend — it is about what you actually do.</p>
-      <div class="gold-rule"></div>
-    </div>
-    <ul class="checklist" id="section6">
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">Launching a new promotion feels lighter than returning to a past guest campaign</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I associate re-engagement with pressure or the risk of coming across as desperate</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I delay guest follow-up because I tell myself I am being respectful of their time</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I equate a guest's silence with disinterest — and rarely test that assumption</span></li>
-      <li onclick="toggle(this)"><span class="check-box"></span><span class="check-text">I would rather redesign an offer than re-engage the guests who already responded to it</span></li>
-    </ul>
-    <div class="section-result" id="result6">
-      <span class="result-count" id="count6">0</span>
-      <div class="result-text" id="text6">Check the statements that are true for you above.</div>
-    </div>
-  </div>
-
-  <!-- INTERPRETATION -->
-  <div class="interpretation">
-    <div class="interpretation-inner">
-      <div class="interp-label">Your Revenue Reality</div>
-      <h2 class="interp-headline">Notice what created the most<br><em>recognition — or resistance.</em></h2>
-      <p class="interp-sub">You do not need to calculate a score. Use the descriptions below to orient yourself to where your guest revenue is actually sitting.</p>
-
-      <div class="interp-states">
-        <div class="interp-state">
-          <div class="interp-state-name">Unfinished, Still Alive</div>
-          <div class="interp-state-desc">Several sections surfaced guest relationships that came close. Visits made. Interest expressed. Momentum that existed. The quiet that followed was never a closed door — it was an open one that no one walked back through. That changes now.</div>
-        </div>
-        <div class="interp-state">
-          <div class="interp-state-name">Warm but Untouched</div>
-          <div class="interp-state-desc">The sections about lapsed guests and follow-up avoidance carried the most weight. The interest was real on both sides. Re-engagement felt uncomfortable. Silence filled the space — and over time, silence started to feel like an answer. It is not. These guests are still reachable.</div>
-        </div>
-        <div class="interp-state">
-          <div class="interp-state-name">Avoiding Return</div>
-          <div class="interp-state-desc">The pattern showed up clearly: the pull toward something new is consistently stronger than the return to something already in motion. There is no shortage of opportunity here. There is a habit of moving away from it — toward the familiar relief of starting fresh. Recognizing the habit is the beginning of changing it.</div>
-        </div>
-      </div>
-
-      <div class="interp-note">
-        <strong>All three Revenue Realities share the same truth:</strong> the revenue is not blocked. It is waiting. Seeing the pattern clearly is the first step. Knowing how to move through it — with precision, not pressure — is the second.
-      </div>
-    </div>
-  </div>
-
-  <!-- SUBMIT -->
-  <div class="submit-section" id="submitSection">
-    <div class="submit-inner">
-      <div class="submit-label">You have completed the audit</div>
-      <h2 class="submit-headline">Receive your personalized<br><em>Revenue Reality</em> summary.</h2>
-      <p class="submit-sub">Submit your results and receive a personal email identifying your Revenue Reality — your primary guest revenue gap, what is driving it, and one specific action to take this week. Complimentary. No commitment required.</p>
-
-      <div id="submitForm">
-        <div class="form-field">
-          <label class="form-label" for="fname">Full Name</label>
-          <input class="form-input" type="text" id="fname" placeholder="Your full name" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="femail">Email Address</label>
-          <input class="form-input" type="email" id="femail" placeholder="your@email.com" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="findustry">Business Type</label>
-          <input class="form-input" type="text" id="findustry" placeholder="e.g. MedSpa, Boutique Hotel, Luxury Spa" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="flinkedin">LinkedIn URL</label>
-          <input class="form-input" type="text" id="flinkedin" placeholder="linkedin.com/in/yourprofile" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="fwhy">What made you complete this audit today?</label>
-          <textarea class="form-textarea" id="fwhy" placeholder="Be as specific as you like." required></textarea>
-        </div>
-        <button class="btn-primary" onclick="submitAudit()" style="margin-top: 8px;">Send My Results</button>
-        <p class="submit-note">By submitting you agree to be contacted at the email address provided. Your results are reviewed privately and never shared.</p>
-      </div>
-
-      <div class="submit-success" id="submitSuccess">
-        <h3>Your results have been received.</h3>
-        <p>Que will review them personally and send your Revenue Reality summary to the email address you provided within 24 hours.</p>
-        <div class="audit-offer">
-          <div class="audit-offer-label">Ready to act on what this audit revealed?</div>
-          <div class="audit-offer-name">The Alignment Audit™ is available now.</div>
-          <div class="audit-offer-desc">Your submitted results will be reviewed before your session so every minute is focused on your specific business — not spent getting you up to speed.</div>
-          <a href="https://buy.stripe.com/4gM9AU7UAfTL3vucESeME07" class="btn-primary">Request the Alignment Audit™ — $497</a>
-          <p class="audit-offer-credit">Your $497 investment is fully credited toward Revenue in Tandem™ upon enrollment.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<div class="proof-strip">
+  <p>"The way you make people feel is your strategy."</p>
 </div>
+
+<section class="origin">
+  <div class="origin-inner">
+    <div class="origin-left">
+      <div class="origin-accent"></div>
+      <div class="origin-name">Que Athena</div>
+      <div class="origin-title">Founder, LinesinTandem™<br>Client Experience Strategist<br>15 Years in Premium Service</div>
+    </div>
+    <div class="origin-right">
+      <p>For over 15 years, I ran a six-figure premium service business on a roster of just <strong>30 to 40 clients a year.</strong></p>
+      <p>Not through aggressive marketing. Not through volume. Through a client experience so deliberately designed that guests never wanted to leave — and referrals were the only pipeline I needed.</p>
+      <div class="origin-pullquote">"Emotional connection wasn't just good energy. It was the actual conversion mechanism."</div>
+      <p>The way I showed up in every consultation — the questions I asked, the attention I held, the experience I created at every touchpoint — that was the strategy. That is not loyalty by accident. That is <strong>loyalty by connection.</strong></p>
+      <p>That is the methodology behind LinesinTandem™. And it is what I now help premium experiential service businesses apply to their own guest relationships — to recover the revenue that is already waiting inside what they have built.</p>
+    </div>
+  </div>
+</section>
+
+<section class="self-audit" id="self-audit">
+  <div class="self-audit-inner">
+    <div class="section-label">Step One — Complimentary</div>
+    <h2 class="section-headline">The Disconnect<br><em>Audit™</em></h2>
+    <div class="gold-rule"></div>
+    <p class="section-body" style="max-width: 640px;">You are spending money bringing new guests through the door — while past guests who already love what you do sit untouched. A 10-minute self-assessment that shows exactly where your guest revenue is waiting and what is quietly costing you.</p>
+    <ul class="checklist">
+      <li><span class="check-box"></span>You have past guests or clients who had a strong experience and have never been re-engaged</li>
+      <li><span class="check-box"></span>You rely on new bookings to replace revenue instead of activating the guests you already have</li>
+      <li><span class="check-box"></span>You have a signature service or package that performed well and is no longer being actively promoted</li>
+      <li><span class="check-box"></span>There is no deliberate process for what happens after a guest's visit closes</li>
+      <li><span class="check-box"></span>You cannot clearly identify what makes a guest return, refer, or become a loyal regular</li>
+    </ul>
+    <div class="audit-cta-box">
+      <div class="audit-cta-label">Complimentary Resource</div>
+      <h3 class="audit-cta-headline">Download the Full<br><em>Disconnect Audit™</em></h3>
+      <p class="audit-cta-body">The complete audit covers guest reactivation gaps, lapsed relationship patterns, experience design, booking momentum, and decision patterns. Ten minutes. Designed to show you exactly where your revenue is already waiting.</p>
+      <a href="https://que-athena.github.io/linesintandem/audit.html" class="btn-primary" style="background: var(--charcoal);">Download the Disconnect Audit™</a>
+    </div>
+  </div>
+</section>
+
+<section class="paid-audit" id="paid-audit">
+  <div class="paid-audit-inner">
+    <div class="section-label">Step Two</div>
+    <h2 class="section-headline">The Alignment<br><em>Audit™</em></h2>
+    <div class="gold-rule"></div>
+    <p class="section-body">The self-audit shows you where the gaps are. The Alignment Audit™ tells you what they mean — and exactly what to activate first. This is a private, asynchronous engagement. No discovery calls. No group containers. One business. One strategist. Complete clarity.</p>
+    <div class="price-display">
+      <span class="price-amount">$497</span>
+      <span class="price-context">Fully credited toward Revenue in Tandem™ upon enrollment.</span>
+    </div>
+    <ul class="deliverables">
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text"><strong>Written Strategy Brief</strong>A detailed interpretation of your audit — your specific guest revenue gaps, their root causes, and a sequenced priority plan. Yours to keep and act on.</span>
+      </li>
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text"><strong>Personal Loom Walkthrough</strong>A 5–10 minute video review of your brief — Que's voice, your business, her precise read on what the numbers and patterns are revealing.</span>
+      </li>
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text"><strong>Activation Roadmap</strong>A clear, sequenced next-step plan. Which guest segments to move on first. What to set aside. What will generate results without requiring you to build anything new.</span>
+      </li>
+      <li class="deliverable-item">
+        <span class="deliverable-icon"></span>
+        <span class="deliverable-text"><strong>Fully Asynchronous</strong>Designed for leaders who protect their time. You submit. We review. You receive a complete strategic picture — on your schedule.</span>
+      </li>
+    </ul>
+    <div class="credit-note">
+      <span class="credit-note-icon">"</span>
+      <p class="credit-note-text"><strong>Your $497 investment is fully credited toward Revenue in Tandem™</strong> when you enroll within 30 days of receiving your audit. You are not paying twice. You are paying in installments toward a deeper result.</p>
+    </div>
+    <a href="https://buy.stripe.com/4gM9AU7UAfTL3vucESeME07" class="btn-primary">Request the Alignment Audit™ — $497</a>
+    <div class="not-for">
+      <div class="not-for-label">A note on fit</div>
+      <p>This engagement is designed for established premium service businesses with an existing guest history and client relationships. If you are still building your foundation, this is not your current next step — and we would rather tell you that now.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sprint-teaser">
+  <div class="sprint-teaser-inner">
+    <div>
+      <div class="section-label">Step Three</div>
+      <h3>For those ready to move from insight to <em>full activation.</em></h3>
+      <div class="gold-rule"></div>
+      <p>Revenue in Tandem™ is a 60–90 day engagement for turning lapsed guests, past clients, and dormant relationships into active, recurring revenue. No new offers. No ad spend. No content treadmill. Your $497 audit investment is fully credited toward enrollment.</p>
+    </div>
+    <div class="sprint-badge">
+      <div class="sprint-badge-label">Next Step</div>
+      <div class="sprint-badge-name">Revenue in Tandem™</div>
+      <div class="sprint-badge-desc">A 60–90 day guest reactivation engagement for premium service businesses ready to recover what they have already earned.</div>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="footer-brand">LinesinTandem<sup>™</sup></div>
   <div class="footer-tagline">Where Client Experience Becomes Revenue Strategy</div>
 </footer>
 
-<script>
-  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSfgFA0NQ8X54XxBgm6T29A1H9ZyMa_JTEMiR-KCuLPEI0YWqw/formResponse';
-  const ENTRY = {
-    name: 'entry.562518767', email: 'entry.1497128571',
-    industry: 'entry.1767087720', linkedin: 'entry.104838080',
-    why: 'entry.916448074', s1: 'entry.2136158659',
-    s2: 'entry.2029927281', s3: 'entry.2042261932',
-    s4: 'entry.15721543', s5: 'entry.1493590554', s6: 'entry.1294560357'
-  };
-
-  const TOTAL_ITEMS = 30;
-  let totalChecked = 0;
-
-  function toggle(el) {
-    const wasChecked = el.classList.contains('checked');
-    el.classList.toggle('checked');
-    totalChecked += wasChecked ? -1 : 1;
-    updateSection(el.closest('ul'));
-    updateProgress();
-  }
-
-  function updateProgress() {
-    const pct = Math.round((totalChecked / TOTAL_ITEMS) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    const label = document.getElementById('progressLabel');
-    label.textContent = totalChecked + ' of ' + TOTAL_ITEMS + ' reviewed';
-    label.classList.toggle('visible', totalChecked > 0);
-  }
-
-  function getSectionResults(sectionId) {
-    const ul = document.getElementById(sectionId);
-    const results = [];
-    ul.querySelectorAll('li').forEach(li => {
-      const text = li.querySelector('.check-text').textContent;
-      const checked = li.classList.contains('checked');
-      results.push((checked ? '[CHECKED] ' : '[  ] ') + text);
-    });
-    return results.join('\n');
-  }
-
-  function submitAudit() {
-    const name = document.getElementById('fname').value.trim();
-    const email = document.getElementById('femail').value.trim();
-    const industry = document.getElementById('findustry').value.trim();
-    const linkedin = document.getElementById('flinkedin').value.trim();
-    const why = document.getElementById('fwhy').value.trim();
-    if (!name || !email || !industry || !linkedin || !why) {
-      alert('Please complete all fields before submitting.');
-      return;
-    }
-    const params = new URLSearchParams();
-    params.append(ENTRY.name, name); params.append(ENTRY.email, email);
-    params.append(ENTRY.industry, industry); params.append(ENTRY.linkedin, linkedin);
-    params.append(ENTRY.why, why);
-    params.append(ENTRY.s1, getSectionResults('section1'));
-    params.append(ENTRY.s2, getSectionResults('section2'));
-    params.append(ENTRY.s3, getSectionResults('section3'));
-    params.append(ENTRY.s4, getSectionResults('section4'));
-    params.append(ENTRY.s5, getSectionResults('section5'));
-    params.append(ENTRY.s6, getSectionResults('section6'));
-
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe'; iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    const form = document.createElement('form');
-    form.method = 'POST'; form.action = FORM_ACTION;
-    form.target = 'hidden_iframe'; form.style.display = 'none';
-    params.forEach((val, key) => {
-      const input = document.createElement('input');
-      input.type = 'hidden'; input.name = key; input.value = val;
-      form.appendChild(input);
-    });
-    document.body.appendChild(form);
-    form.submit();
-    setTimeout(() => {
-      document.getElementById('submitForm').style.display = 'none';
-      document.getElementById('submitSuccess').classList.add('visible');
-      document.body.removeChild(form);
-    }, 800);
-  }
-
-  function updateSection(ul) {
-    const num = ul.id.replace('section', '');
-    const checked = ul.querySelectorAll('li.checked').length;
-    document.getElementById('count' + num).textContent = checked;
-    const textEl = document.getElementById('text' + num);
-    const resultEl = document.getElementById('result' + num);
-    const messages = {
-      1: { 0: 'Check the statements that are true for you above.', 1: 'One statement checked.', 2: 'Two statements checked. Keep going.', 3: '<strong>Three or more checked.</strong> There is likely recoverable guest revenue here. Lapsed guests who already trust your business are your fastest path back to revenue.', 4: '<strong>Four checked.</strong> A significant number of past guests have not been given a reason to return. That is a campaign waiting to happen.', 5: '<strong>All five checked.</strong> Your most valuable revenue source is sitting in your existing guest history. None of this requires a new offer to activate.' },
-      2: { 0: 'Check the statements that are true for you above.', 1: 'One statement checked.', 2: 'Two statements checked. Keep going.', 3: '<strong>Three or more checked.</strong> These inquiries are warm, not cold. The interest was there — the follow-through was not.', 4: '<strong>Four checked.</strong> There are potential guests in your pipeline who are still reachable and likely still interested.', 5: '<strong>All five checked.</strong> Revenue is not absent from your inquiry pipeline. It is paused. The next move is yours.' },
-      3: { 0: 'Check the statements that are true for you above.', 1: 'One statement checked.', 2: 'Two statements checked. Keep going.', 3: '<strong>Three or more checked.</strong> Relationship-based revenue is underutilized. Your existing guest network holds more than you are drawing from it.', 4: '<strong>Four checked.</strong> The goodwill is already there. What is missing is a deliberate reason and method to re-enter.', 5: '<strong>All five checked.</strong> Your strongest growth lever is not new guest acquisition. It is guest reconnection.' },
-      4: { 0: 'Check the statements that are true for you above.', 1: 'One statement checked.', 2: 'Two statements checked. Keep going.', 3: '<strong>Three or more checked.</strong> This is a follow-through issue, not a service issue. Your guests have not rejected it — you have stepped away from it.', 4: '<strong>Four checked.</strong> You have a proven service sitting dormant. It does not need to be rebuilt. It needs to be returned to.', 5: '<strong>All five checked.</strong> Stop launching. Start returning. The service that already worked is still the right move.' },
-      5: { 0: 'Check the statements that are true for you above.', 1: 'One statement checked.', 2: 'Two statements checked. Keep going.', 3: '<strong>Three or more checked.</strong> Your guest experience has gaps that are costing you return visits and referrals — even when the service itself is exceptional.', 4: '<strong>Four checked.</strong> The way you are showing up between visits is leaving revenue on the table. Connection by design changes this.', 5: '<strong>All five checked.</strong> Your guest experience is not yet a strategy. When it is, return visits and referrals become inevitable rather than accidental.' },
-      6: { 0: 'Check the statements that are true for you above.', 1: 'One statement checked.', 2: 'Two statements checked. Keep going.', 3: '<strong>Three or more checked.</strong> Revenue is being avoided, not blocked. The hesitation is the pattern — and it is solvable.', 4: '<strong>Four checked.</strong> The discomfort of re-engagement is driving your decisions more than the data. That is worth examining.', 5: '<strong>All five checked.</strong> You are not missing opportunity. You are moving away from it. Recognizing the pattern is the first step toward changing it.' }
-    };
-    const key = Math.min(checked, 5);
-    textEl.innerHTML = messages[num][key];
-    if (checked >= 3) {
-      resultEl.style.borderLeftColor = 'var(--gold)';
-      resultEl.style.background = 'rgba(171,108,30,0.06)';
-    } else {
-      resultEl.style.borderLeftColor = 'var(--taupe)';
-      resultEl.style.background = 'var(--linen)';
-    }
-  }
-</script>
 </body>
 </html>
