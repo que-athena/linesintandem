@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit Confirmed — LinesinTandem™</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --deep: #1A1814;
+    --gold: #B89A6A;
+    --gold-light: #D4B896;
+    --muted: #7A7168;
+    --rule: rgba(184, 154, 106, 0.3);
+    --cta-bg: rgba(184, 154, 106, 0.08);
+    --cta-border: rgba(184, 154, 106, 0.4);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--deep);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow-x: hidden; position: relative;
+  }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
+
+  body::after {
+    content: ''; position: fixed; top: -20%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(184, 154, 106, 0.07) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 680px; padding: 80px 48px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    opacity: 0; animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes expandRule {
+    from { opacity: 0; width: 0; }
+    to { opacity: 1; width: 40px; }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Wordmark — Noto Serif Display, branded */
+  .wordmark {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 600; font-size: 1rem;
+    letter-spacing: 0.06em; color: var(--gold);
+    margin-bottom: 64px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  }
+  .wordmark sup { font-size: 0.55rem; vertical-align: super; }
+
+  .rule-top {
+    width: 40px; height: 1px; background: var(--gold); margin-bottom: 40px;
+    opacity: 0; animation: expandRule 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  }
+
+  /* Header — Noto Serif Display */
+  .header {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.1; color: var(--cream); margin-bottom: 24px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+  }
+
+  /* Subhead — Noto Serif Display italic */
+  .subhead {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic; font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--gold-light); line-height: 1.55; margin-bottom: 56px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+  }
+
+  .rule-mid {
+    width: 100%; height: 1px; background: var(--rule); margin-bottom: 48px;
+    opacity: 0; animation: fadeIn 1s ease 1s forwards;
+  }
+
+  .body-text {
+    display: flex; flex-direction: column; gap: 28px; margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+  }
+
+  .body-text p {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 1rem; line-height: 1.85;
+    color: rgba(245, 240, 232, 0.82); letter-spacing: 0.01em;
+  }
+  .body-text p strong { font-weight: 400; color: var(--cream); }
+
+  .detail-block { border-left: 1px solid var(--gold); padding-left: 24px; margin: 8px 0; }
+  .detail-block p { font-size: 0.9rem; color: rgba(245, 240, 232, 0.6); line-height: 1.7; }
+
+  /* Assessment CTA block */
+  .assessment-block {
+    width: 100%; border: 1px solid var(--cta-border);
+    background: var(--cta-bg); padding: 36px 32px; margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.25s forwards;
+    position: relative; overflow: hidden;
+  }
+  .assessment-block::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; height: 100%;
+    background: var(--gold);
+  }
+
+  .assessment-label {
+    font-family: 'Jost', sans-serif; font-weight: 500;
+    font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+
+  .assessment-block p {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 0.95rem; line-height: 1.8;
+    color: rgba(245, 240, 232, 0.78); margin-bottom: 28px;
+  }
+
+  .assessment-link {
+    display: inline-block;
+    font-family: 'Jost', sans-serif; font-weight: 400;
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--deep); background: var(--gold);
+    padding: 14px 28px; text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .assessment-link:hover { background: var(--gold-light); }
+  .assessment-link:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  .closing {
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards; margin-top: 8px;
+  }
+  .closing p {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .closing .firm { color: var(--gold); font-weight: 400; }
+
+  .bottom-rule {
+    width: 100%; height: 1px; background: var(--rule); margin-top: 64px;
+    opacity: 0; animation: fadeIn 1s ease 1.6s forwards;
+  }
+
+  /* Footer — portal link */
+  .footer-note {
+    margin-top: 24px;
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted);
+    opacity: 0; animation: fadeIn 1s ease 1.7s forwards;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .footer-note a {
+    color: var(--gold); text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-note a:hover { color: var(--gold-light); }
+
+  @media (max-width: 600px) {
+    .page { padding: 60px 28px; }
+    .assessment-block { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+<main class="page" role="main">
+
+  <div class="wordmark">LinesinTandem<sup>™</sup></div>
+
+  <div class="rule-top" aria-hidden="true"></div>
+
+  <h1 class="header">Your private Audit<br>is confirmed.</h1>
+
+  <p class="subhead">Your next client is already in your network.<br>We are about to find them.</p>
+
+  <div class="rule-mid" aria-hidden="true"></div>
+
+  <div class="body-text">
+    <p>Within <strong>48 to 72 hours</strong>, you will receive two things: a written strategy brief and a personal Loom walkthrough recorded specifically for your business.</p>
+
+    <div class="detail-block">
+      <p>Not a template. Not a general overview. A direct read of where your revenue relationships stand and exactly where the highest-value opportunities are sitting untouched.</p>
+    </div>
+
+    <p>To ensure your brief is built on the full picture, please complete your private assessment before we begin. It takes 10 to 15 minutes and goes directly to our team.</p>
+  </div>
+
+  <div class="assessment-block" role="complementary" aria-label="Assessment action required">
+    <p class="assessment-label">One step before we begin</p>
+    <p>Complete your private assessment so we can build your brief around your specific revenue relationships, guest history, and highest-value opportunities.</p>
+    <a href="https://private.linesintandem.com" class="assessment-link" target="_blank" rel="noopener noreferrer">Complete your assessment</a>
+  </div>
+
+  <div class="body-text" style="margin-bottom: 0;">
+    <p>We will be in touch once we have reviewed your responses.</p>
+  </div>
+
+  <div class="closing" style="margin-top: 36px;">
+    <p>— <span class="firm">LinesinTandem™</span></p>
+  </div>
+
+  <div class="bottom-rule" aria-hidden="true"></div>
+
+  <p class="footer-note">
+    Revenue in Tandem™ &nbsp;|&nbsp; <a href="https://client.linesintandem.com" target="_blank" rel="noopener noreferrer">Private Client Portal</a>
+  </p>
+
+</main>
+</body>
+</html>
