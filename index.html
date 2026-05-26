@@ -71,28 +71,20 @@
   /* ═══════════════════════════════════════
      SECTION 1 — HERO
   ═══════════════════════════════════════ */
-  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 140px 80px 100px; position: relative; overflow: hidden; isolation: isolate; }
+  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 80px 100px; position: relative; overflow: hidden; isolation: isolate; }
   .hero-image { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1800&q=80&fit=crop') center/cover no-repeat; opacity: 0.12; }
   .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(167,166,148,0.88) 45%, rgba(167,166,148,0.55) 100%); }
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-  .hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .hero-inner { position: relative; z-index: 1; width: 100%; max-width: 700px; margin: 0 auto; text-align: center; }
   .hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(43,43,43,0.52); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
-  .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.6rem, 5.5vw, 5rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards; }
+  .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.04; letter-spacing: -0.02em; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards; }
   .hero-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
-  .hero-subhead { font-family: 'Noto Serif Display', serif; font-size: clamp(1.05rem, 1.8vw, 1.25rem); font-style: italic; font-weight: 300; color: rgba(43,43,43,0.72); line-height: 1.65; margin-bottom: 14px; opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards; }
+  .hero-subhead { font-family: 'Noto Serif Display', serif; font-size: clamp(1.05rem, 1.8vw, 1.3rem); font-style: italic; font-weight: 300; color: rgba(43,43,43,0.72); line-height: 1.65; margin-bottom: 14px; opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards; }
   .hero-body { font-size: clamp(13px, 1.4vw, 15px); font-weight: 300; color: rgba(43,43,43,0.55); line-height: 1.9; margin-bottom: 40px; opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
-
-  .hero-cta-group { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards; }
-  .btn-subtext-hero { font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.48); font-style: italic; margin-top: 8px; line-height: 1.65; }
+  .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 16px; opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards; }
+  .btn-subtext-hero { font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.48); font-style: italic; margin-top: 8px; line-height: 1.65; text-align: center; }
   .text-link-hero { font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.58); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; border-bottom: 1px solid rgba(43,43,43,0.22); padding-bottom: 1px; }
   .text-link-hero:hover { color: var(--charcoal); border-color: rgba(43,43,43,0.5); }
-  .hero-right { display: flex; flex-direction: column; gap: 2px; opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; }
-  .hero-stat { padding: 28px 32px; background: rgba(43,43,43,0.07); border: 1px solid rgba(43,43,43,0.1); transition: background 0.3s, border-color 0.3s; }
-  .hero-stat:hover { background: rgba(184,154,106,0.1); border-color: rgba(184,154,106,0.3); }
-  .hero-stat-label { font-size: 9px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 8px; }
-  .hero-stat-value { font-family: 'Noto Serif Display', serif; font-size: clamp(1rem, 1.6vw, 1.2rem); font-weight: 700; font-style: italic; color: var(--charcoal-deep); line-height: 1.2; }
-  .hero-stat-value.gold { color: var(--gold-dark); }
-  .hero-stat-desc { font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.52); line-height: 1.65; margin-top: 6px; }
 
   /* ═══════════════════════════════════════
      PROOF STRIP
@@ -314,8 +306,6 @@
     .nav-right { display: none; }
     .nav-hamburger { display: flex; }
     .hero { padding: 110px 28px 80px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-right { display: none; }
     .recognition-inner, .guide-inner, .taster-inner, .icp-inner { grid-template-columns: 1fr; gap: 48px; }
     .offer-card-body { padding: 36px 28px; }
     .recognition, .guide, .offers, .taster, .icp, .final-cta { padding: 72px 28px; }
@@ -362,37 +352,18 @@
 <section class="hero" id="top">
   <div class="hero-image"></div>
   <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-eyebrow">LinesinTandem™ — Client Experience Firm</div>
-      <h1 class="hero-headline">
-        They called it<br>a great month.<br><em>Your calendar<br>said otherwise.</em>
-      </h1>
-      <p class="hero-subhead">Your best client relationships went quiet. That is the only thing wrong with them.</p>
-      <p class="hero-body">Not gone. Not lost. Quiet. And quiet is recoverable.</p>
-      <div class="hero-cta-group">
-        <div>
-          <a href="https://que-athena.github.io/linesintandem/audit.html" class="btn-primary bright">Begin The Relationship Audit™ — $1,500 →</a>
-          <p class="btn-subtext-hero">Credited in full toward Revenue in Tandem™. No sprint commitment until you receive your proposal.</p>
-        </div>
-        <a href="https://que-athena.github.io/linesintandem/assessment.html" class="text-link-hero">Not ready? Start with The Relationship Reveal™ — Complimentary →</a>
+    <div class="hero-eyebrow">LinesinTandem™ — Client Experience Firm</div>
+    <h1 class="hero-headline">
+      They called it<br>a great month.<br><em>Your calendar<br>said otherwise.</em>
+    </h1>
+    <p class="hero-subhead">Your best client relationships went quiet. That is the only thing wrong with them.</p>
+    <p class="hero-body">Not gone. Not lost. Quiet. And quiet is recoverable.</p>
+    <div class="hero-cta-group">
+      <div>
+        <a href="https://que-athena.github.io/linesintandem/audit.html" class="btn-primary bright">Begin The Relationship Audit™ — $1,500 →</a>
+        <p class="btn-subtext-hero">Credited in full toward Revenue in Tandem™. No sprint commitment until you receive your proposal.</p>
       </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-stat">
-        <div class="hero-stat-label">Where it begins</div>
-        <div class="hero-stat-value">The Relationship Reveal™</div>
-        <div class="hero-stat-desc">Complimentary. A personal review of your client relationships returned within 24 hours.</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-label">The diagnostic</div>
-        <div class="hero-stat-value">The Relationship Audit™</div>
-        <div class="hero-stat-desc">$1,500 — credited in full toward the sprint. No sprint commitment until you receive your proposal.</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-label">The activation</div>
-        <div class="hero-stat-value gold">Revenue in Tandem™</div>
-        <div class="hero-stat-desc">From $18,500 — 90 days. Four clients at a time. A commitment to results.</div>
-      </div>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="text-link-hero">Not ready? Start with The Relationship Reveal™ — Complimentary →</a>
     </div>
   </div>
 </section>
