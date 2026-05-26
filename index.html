@@ -71,11 +71,11 @@
   /* ═══════════════════════════════════════
      SECTION 1 — HERO
   ═══════════════════════════════════════ */
-  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 80px 100px; position: relative; overflow: hidden; isolation: isolate; }
+  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 140px 80px 100px; position: relative; overflow: hidden; isolation: isolate; }
   .hero-image { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1800&q=80&fit=crop') center/cover no-repeat; opacity: 0.12; }
   .hero-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(167,166,148,0.88) 45%, rgba(167,166,148,0.55) 100%); }
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-  .hero-inner { position: relative; z-index: 1; max-width: 1000px; width: 100%; }
+  .hero-inner { position: relative; z-index: 1; max-width: 1000px; width: 100%; margin: 0 auto; }
   .hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(43,43,43,0.52); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
   .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.04; letter-spacing: -0.02em; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards; }
   .hero-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
