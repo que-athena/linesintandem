@@ -85,7 +85,7 @@
 
   /* ─── RESULT BOX ─── */
   .section-result { margin-top: 20px; padding: 20px 24px; background: var(--linen); border-left: 3px solid var(--taupe); display: flex; align-items: flex-start; gap: 16px; transition: all 0.35s ease; }
-  .result-count { font-family: 'Noto Serif Display', serif; font-size: 2.2rem; font-weight: 800; font-style: italic; color: var(--charcoal); line-height: 1; min-width: 32px; flex-shrink: 0; transition: color 0.3s; }
+  .result-count { font-family: 'Noto Serif Display', serif; font-size: 2.2rem; font-weight: 800; font-style: italic; color: var(--gold-dark); line-height: 1; min-width: 32px; flex-shrink: 0; transition: color 0.3s; }
   .result-text { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.72; padding-top: 6px; }
   .result-text strong { color: var(--charcoal); font-weight: 500; }
   .section-divider { height: 1px; background: var(--linen); margin: 8px 0 64px; }
@@ -100,11 +100,14 @@
   .pattern-sub { font-size: 14px; font-weight: 300; color: rgba(43,43,43,0.55); line-height: 1.85; margin-bottom: 48px; max-width: 560px; }
   .pattern-states { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 40px; }
   .pattern-state { padding: 32px 28px; background: rgba(43,43,43,0.06); border: 1px solid rgba(184,154,106,0.2); transition: background 0.3s, border-color 0.3s; cursor: default; }
-  .pattern-state:hover { background: rgba(184,154,106,0.09); border-color: rgba(184,154,106,0.42); }
+  .pattern-state:hover { background: rgba(242,241,238,0.65); border-color: rgba(184,154,106,0.45); }
   .pattern-state-num { font-family: 'Noto Serif Display', serif; font-size: 2.8rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.2); line-height: 1; margin-bottom: 12px; display: block; }
-  .pattern-state-name { font-family: 'Noto Serif Display', serif; font-size: 1rem; font-weight: 800; color: var(--charcoal); margin-bottom: 12px; line-height: 1.2; }
-  .pattern-state-name em { font-style: italic; font-weight: 600; }
+  .pattern-state:hover .pattern-state-num { color: rgba(184,154,106,0.35); }
+  .pattern-state-name { font-family: 'Noto Serif Display', serif; font-size: 1rem; font-weight: 800; color: var(--gold-dark); margin-bottom: 12px; line-height: 1.2; }
+  .pattern-state-name em { font-style: italic; font-weight: 600; color: var(--gold-dark); }
+  .pattern-state:hover .pattern-state-name { color: var(--gold-dark); }
   .pattern-state-desc { font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.6); line-height: 1.78; }
+  .pattern-state:hover .pattern-state-desc { color: var(--charcoal); }
   .pattern-note { font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.5); font-style: italic; line-height: 1.8; border-top: 1px solid rgba(43,43,43,0.1); padding-top: 28px; }
   .pattern-note strong { color: rgba(43,43,43,0.72); font-weight: 500; font-style: normal; }
 
@@ -149,6 +152,7 @@
   .footer-brand { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 700; color: var(--warm-white); margin-bottom: 8px; }
   .footer-brand sup { font-size: 9px; vertical-align: super; }
   .footer-tagline { font-size: 11px; font-weight: 300; color: var(--eyebrow-on-taupe); letter-spacing: 0.16em; text-transform: uppercase; }
+  .footer-copyright { font-size: 10px; font-weight: 300; color: rgba(43,43,43,0.35); letter-spacing: 0.08em; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(43,43,43,0.1); }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 680px) {
@@ -404,6 +408,7 @@
 <footer class="footer">
   <div class="footer-brand">LinesinTandem<sup>™</sup></div>
   <div class="footer-tagline">Bring them back. Keep them close.</div>
+  <p class="footer-copyright">© 2023–2026 LinesinTandem™. All rights reserved.</p>
 </footer>
 
 <script>
@@ -509,7 +514,7 @@
     } else {
       resultEl.style.borderLeftColor = 'var(--taupe)';
       resultEl.style.background = 'var(--linen)';
-      countEl.style.color = 'var(--charcoal)';
+      countEl.style.color = 'var(--gold-dark)';
     }
   }
 
