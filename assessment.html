@@ -426,7 +426,7 @@
   let totalChecked = 0;
 
   const MESSAGES = {
-    1: {
+    '1': {
       0: 'Check the statements that are true for your business above.',
       1: 'One statement checked. Keep going.',
       2: 'Two statements checked. Keep going.',
@@ -434,7 +434,7 @@
       4: '<strong>Four checked.</strong> A significant portion of your highest-value clients have not been given a deliberate reason to return. That is recoverable revenue sitting in your existing list.',
       5: '<strong>All five checked.</strong> Your most immediate revenue opportunity is not new clients. It is the ones who already came in, already trusted you, and have not heard from you since.'
     },
-    2: {
+    '2': {
       0: 'Check the statements that are true for your business above.',
       1: 'One statement checked. Keep going.',
       2: 'Two statements checked. Keep going.',
@@ -442,7 +442,7 @@
       4: '<strong>Four checked.</strong> Your client relationships are ending where they should be beginning. The visit closes and nothing deliberate follows. That is where revenue quietly disappears.',
       5: '<strong>All five checked.</strong> You have a follow-through problem, not a client problem. The clients are there. The system to keep them is not — yet.'
     },
-    3: {
+    '3': {
       0: 'Check the statements that are true for your business above.',
       1: 'One statement checked. Keep going.',
       2: 'Two statements checked. Keep going.',
@@ -450,7 +450,7 @@
       4: '<strong>Four checked.</strong> Your highest-value relationships are going unmanaged. Not because you do not care about them — because no system exists to manage them deliberately.',
       5: '<strong>All five checked.</strong> You are running your business without knowing what your best client relationships are actually worth. That number changes how you operate once you see it.'
     },
-    4: {
+    '4': {
       0: 'Check the statements that are true for your business above.',
       1: 'One statement checked. Keep going.',
       2: 'Two statements checked. Keep going.',
@@ -458,7 +458,7 @@
       4: '<strong>Four checked.</strong> Revenue is not being blocked by your clients. It is being avoided by the discomfort of re-engagement. That is a solvable problem — but only once it is named.',
       5: '<strong>All five checked.</strong> The quiet in your client list is not coming from them. It is coming from you. That is the most recoverable revenue gap there is — because the fix does not require anything new. It requires a system and the willingness to use it.'
     },
-    5: {
+    '5': {
       0: 'Check the statements that are true for your business above.',
       1: 'One statement checked. Keep going.',
       2: 'Two statements checked. Keep going.',
@@ -466,7 +466,7 @@
       4: '<strong>Four checked.</strong> The quality of your service is not in question. The quality of what surrounds it is. That is where relationships go quiet.',
       5: '<strong>All five checked.</strong> Your client experience has not been designed — it evolved. When it is deliberately designed, return visits and referrals stop being accidents and start being inevitable.'
     },
-    6: {
+    '6': {
       0: 'Check the statements that are true for your business above.',
       1: 'One statement checked. Keep going.',
       2: 'Two statements checked. Keep going.',
@@ -493,7 +493,7 @@
   }
 
   function updateSection(ul) {
-    const num = parseInt(ul.id.replace('section', ''));
+    const num = ul.id.replace('section', '');
     const checked = ul.querySelectorAll('li.checked').length;
     const countEl = document.getElementById('count' + num);
     const textEl = document.getElementById('text' + num);
@@ -567,10 +567,11 @@
     setTimeout(() => {
       document.getElementById('submitForm').style.display = 'none';
       document.getElementById('submitSuccess').classList.add('visible');
-      document.body.removeChild(form);
+      try { document.body.removeChild(form); } catch(e) {}
+      try { document.body.removeChild(iframe); } catch(e) {}
     }, 800);
   }
 </script>
 
 </body>
-</html>  
+</html>
