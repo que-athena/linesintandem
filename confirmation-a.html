@@ -67,16 +67,12 @@
     to { opacity: 1; }
   }
 
-  /* Wordmark — Noto Serif Display, branded */
   .wordmark {
     font-family: 'Noto Serif Display', serif;
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.06em;
-    color: var(--gold);
+    font-weight: 600; font-size: 1rem;
+    letter-spacing: 0.06em; color: var(--gold);
     margin-bottom: 64px;
-    opacity: 0;
-    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
   .wordmark sup { font-size: 0.55rem; vertical-align: super; }
 
@@ -85,16 +81,13 @@
     opacity: 0; animation: expandRule 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
   }
 
-  /* Header — Noto Serif Display */
   .header {
     font-family: 'Noto Serif Display', serif;
-    font-weight: 300;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 300; font-size: clamp(2.2rem, 5vw, 3.4rem);
     line-height: 1.1; color: var(--cream); margin-bottom: 24px;
     opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
   }
 
-  /* Subhead — Noto Serif Display italic */
   .subhead {
     font-family: 'Noto Serif Display', serif;
     font-style: italic; font-weight: 300;
@@ -120,39 +113,113 @@
   }
   .body-text p strong { font-weight: 400; color: var(--cream); }
 
-  .detail-block { border-left: 1px solid var(--gold); padding-left: 24px; margin: 8px 0; }
-  .detail-block p { font-size: 0.9rem; color: rgba(245, 240, 232, 0.6); line-height: 1.7; }
+  .detail-block {
+    border-left: 1px solid var(--gold); padding-left: 24px; margin: 8px 0;
+    transition: background 0.3s, border-color 0.3s; padding: 16px 24px;
+    border: 1px solid rgba(184,154,106,0.18); border-left: 2px solid var(--gold);
+  }
+  .detail-block:hover {
+    background: rgba(184,154,106,0.07);
+    border-color: rgba(184,154,106,0.38);
+    border-left-color: var(--gold-light);
+  }
+  .detail-block p {
+    font-size: 0.9rem; color: rgba(245, 240, 232, 0.6); line-height: 1.7;
+  }
+  .inline-link {
+    color: var(--gold); text-decoration: none;
+    border-bottom: 1px solid rgba(184,154,106,0.35); padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s; font-weight: 400;
+  }
+  .inline-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+  /* Action links block */
+  .action-block {
+    width: 100%; display: flex; flex-direction: column; gap: 2px;
+    margin-bottom: 48px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.25s forwards;
+  }
+  .action-block-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  .action-item {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; padding: 20px 24px;
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(184,154,106,0.18);
+    transition: background 0.3s, border-color 0.3s;
+    text-decoration: none;
+  }
+  .action-item:hover {
+    background: rgba(184,154,106,0.08);
+    border-color: rgba(184,154,106,0.38);
+  }
+  .action-item-left {}
+  .action-item-eyebrow {
+    font-size: 9px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+  }
+  .action-item-name {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 1rem; font-weight: 600; font-style: italic;
+    color: var(--cream); line-height: 1.2;
+  }
+  .action-item-desc {
+    font-size: 12px; font-weight: 300;
+    color: rgba(245,240,232,0.45); margin-top: 5px; line-height: 1.55;
+  }
+  .action-item-arrow {
+    font-size: 18px; color: var(--gold); flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .action-item:hover .action-item-arrow { transform: translateX(4px); }
+
+  /* Step indicator for intake */
+  .action-item.primary { border-color: rgba(184,154,106,0.35); background: rgba(184,154,106,0.06); }
+  .action-item.primary .action-item-eyebrow { color: var(--gold-light); }
+  .action-item.primary:hover { background: rgba(184,154,106,0.12); border-color: rgba(184,154,106,0.55); }
+
+  /* Already completed note */
+  .already-note {
+    font-size: 12px; font-weight: 300; font-style: italic;
+    color: rgba(245,240,232,0.35); line-height: 1.65;
+    padding: 14px 18px;
+    border: 1px solid rgba(245,240,232,0.07);
+    margin-top: 2px;
+  }
 
   .closing {
-    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards; margin-top: 8px;
+    opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.45s forwards;
+    margin-top: 8px;
   }
   .closing p {
     font-family: 'Jost', sans-serif; font-weight: 300;
-    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    font-size: 0.85rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
   }
   .closing .firm { color: var(--gold); font-weight: 400; }
 
   .bottom-rule {
     width: 100%; height: 1px; background: var(--rule); margin-top: 64px;
-    opacity: 0; animation: fadeIn 1s ease 1.5s forwards;
+    opacity: 0; animation: fadeIn 1s ease 1.6s forwards;
   }
 
-  /* Footer — portal link */
   .footer-note {
     margin-top: 24px;
     font-family: 'Jost', sans-serif; font-weight: 300;
     font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted);
-    opacity: 0; animation: fadeIn 1s ease 1.6s forwards;
+    opacity: 0; animation: fadeIn 1s ease 1.7s forwards;
     display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
   .footer-note a {
-    color: var(--gold); text-decoration: none;
-    transition: color 0.2s ease;
+    color: var(--gold); text-decoration: none; transition: color 0.2s;
   }
   .footer-note a:hover { color: var(--gold-light); }
 
   @media (max-width: 600px) {
     .page { padding: 60px 28px; }
+    .action-item { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>
 </head>
@@ -160,25 +227,50 @@
 <main class="page" role="main">
 
   <div class="wordmark">LinesinTandem<sup>™</sup></div>
-
   <div class="rule-top" aria-hidden="true"></div>
 
-  <h1 class="header">Your private Audit<br>is confirmed.</h1>
+  <h1 class="header">Your Relationship Audit™<br>is confirmed.</h1>
 
   <p class="subhead">Your next client is already in your network.<br>We are about to find them.</p>
 
   <div class="rule-mid" aria-hidden="true"></div>
 
   <div class="body-text">
-    <p>Within <strong>48 to 72 hours</strong>, you will receive two things: a written strategy brief and a personal Loom walkthrough recorded specifically for your business.</p>
+    <p>Two things are waiting for you below. Complete both before we begin — your <a href="https://que-athena.github.io/linesintandem/private-assessment.html" class="inline-link" target="_blank" rel="noopener noreferrer">private assessment</a> and your <a href="https://que-athena.github.io/linesintandem/intake.html" class="inline-link" target="_blank" rel="noopener noreferrer">intake form</a>. They are how we build your Quiet Map™.</p>
 
     <div class="detail-block">
-      <p>Not a template. Not a general overview. A direct read of where your revenue relationships stand and exactly where the highest-value opportunities are sitting untouched.</p>
+      <p>Your five-business-day delivery window starts the moment your completed intake form is submitted — not from today's payment. Take the time you need. The more specific your responses, the more precise your audit will be.</p>
     </div>
 
-    <p>We already have your assessment responses. That is where we begin.</p>
+    <p>Once your intake is received, the lead strategist will review your responses, conduct The Outside View™ of your business, construct your visual revenue projection, write your strategy brief, record your personal Loom walkthrough, and build your sprint proposal.</p>
 
-    <p>No action needed from you today. We will be in touch.</p>
+    <p>No calls. No scheduling. <strong>Everything arrives in your inbox.</strong></p>
+  </div>
+
+  <!-- ACTION LINKS -->
+  <div class="action-block">
+    <div class="action-block-label">Complete both to begin</div>
+
+    <a href="https://que-athena.github.io/linesintandem/private-assessment.html" class="action-item primary" target="_blank" rel="noopener noreferrer">
+      <div class="action-item-left">
+        <div class="action-item-eyebrow">Step 01 — Start here</div>
+        <div class="action-item-name">The Private Assessment</div>
+        <div class="action-item-desc">Six sections. Takes 10–15 minutes. Gives us the full picture of your client relationships before we build your Quiet Map™.</div>
+      </div>
+      <div class="action-item-arrow">→</div>
+    </a>
+
+    <div class="already-note">Already completed The Relationship Reveal™ publicly? Your private assessment covers additional ground the public version does not — please complete it regardless.</div>
+
+    <a href="https://que-athena.github.io/linesintandem/intake.html" class="action-item" target="_blank" rel="noopener noreferrer">
+      <div class="action-item-left">
+        <div class="action-item-eyebrow">Step 02 — Complete after the assessment</div>
+        <div class="action-item-name">The Intake Form</div>
+        <div class="action-item-desc">Your business profile, revenue data, contact list details, platform access, brand voice, and what you want the audit to address. Saves automatically as you go.</div>
+      </div>
+      <div class="action-item-arrow">→</div>
+    </a>
+
   </div>
 
   <div class="closing">
@@ -188,7 +280,10 @@
   <div class="bottom-rule" aria-hidden="true"></div>
 
   <p class="footer-note">
-    Revenue in Tandem™ &nbsp;|&nbsp; <a href="https://client.linesintandem.com" target="_blank" rel="noopener noreferrer">Private Client Portal</a>
+    © 2023–2026 LinesinTandem™ &nbsp;|&nbsp;
+    <a href="https://billing.stripe.com/p/login/14k3dJ6NV55j8sEcMM" target="_blank" rel="noopener noreferrer">Client Portal</a>
+    &nbsp;|&nbsp;
+    <a href="mailto:hello@linesintandem.com">hello@linesintandem.com</a>
   </p>
 
 </main>
