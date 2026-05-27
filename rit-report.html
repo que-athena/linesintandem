@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Client Name] — Sprint Dashboard | LinesinTandem™</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Jost:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #2b2b2b;
+    --charcoal-deep: #1e1c19;
+    --charcoal-mid: #242018;
+    --linen: #e4e2dd;
+    --warm-white: #f2f1ee;
+    --text-body: #4a4a47;
+    --text-secondary: #7a7870;
+    --gold: #b89a6a;
+    --gold-dark: #8a6a48;
+    --gold-bright: #c9a96e;
+    --gold-rule: rgba(184,154,106,0.25);
+    --cream: #f2f1ee;
+    --cream-body: rgba(242,241,238,0.82);
+    --cream-muted: rgba(242,241,238,0.45);
+    --border-dark: rgba(242,241,238,0.08);
+    --border-dark-mid: rgba(242,241,238,0.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    background: var(--charcoal-deep); color: var(--cream);
+    overflow-x: hidden; min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: rgba(26,24,20,0.97);
+    padding: 18px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border-dark);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-left { display: flex; align-items: center; gap: 32px; }
+  .nav-logo {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 17px; font-weight: 600; color: var(--cream);
+  }
+  .nav-logo sup { font-size: 9px; color: var(--gold); vertical-align: super; }
+  .nav-divider { width: 1px; height: 20px; background: var(--border-dark-mid); }
+  .nav-client {
+    font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300;
+    color: var(--cream-muted); letter-spacing: 0.06em;
+  }
+  /* Replace [CLIENT NAME] with actual client name */
+  .nav-client span { color: var(--cream); font-weight: 400; }
+  .nav-badge {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--gold-rule); padding: 7px 16px;
+  }
+
+  /* ── HERO STRIP ── */
+  .hero-strip {
+    background: var(--charcoal-mid); padding: 48px 48px 40px;
+    border-bottom: 1px solid var(--border-dark);
+    position: relative; overflow: hidden;
+  }
+  .hero-strip::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .hero-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
+  .hero-label {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: rgba(43,43,43,0.5); /* eyebrow-on-dark style */
+    color: var(--cream-muted);
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-family: 'Noto Serif Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 300;
+    color: var(--cream); line-height: 1.15;
+  }
+  .hero-title em { font-style: italic; }
+  .sprint-meta { text-align: right; }
+  .sprint-meta-label {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--cream-muted); margin-bottom: 8px;
+  }
+  .sprint-days {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 2.4rem; font-weight: 800; font-style: italic;
+    color: var(--gold-bright); line-height: 1;
+  }
+  .sprint-days-label {
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: var(--cream-muted); margin-top: 4px; letter-spacing: 0.06em;
+  }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    background: var(--charcoal); padding: 0 48px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .status-bar-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: stretch; gap: 0;
+  }
+  .status-item {
+    padding: 20px 32px 20px 0; margin-right: 32px;
+    border-right: 1px solid var(--border-dark);
+    display: flex; flex-direction: column; gap: 6px;
+    white-space: nowrap;
+  }
+  .status-item:last-child { border-right: none; margin-right: 0; }
+  .status-label {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-muted);
+  }
+  .status-value {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 1.3rem; font-weight: 700; font-style: italic; color: var(--cream);
+  }
+  .status-value.gold { color: var(--gold-bright); }
+
+  /* ── MAIN LAYOUT ── */
+  .dashboard {
+    max-width: 1100px; margin: 0 auto;
+    padding: 48px 48px 96px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* ── PANEL BASE ── */
+  .panel {
+    background: rgba(242,241,238,0.03);
+    border: 1px solid var(--border-dark);
+    margin-bottom: 24px;
+  }
+  .panel-header {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border-dark);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .panel-title {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+  }
+  .panel-meta {
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: var(--cream-muted); font-style: italic;
+  }
+  .panel-body { padding: 28px; }
+
+  /* ── GOOGLE DOC EMBED ── */
+  .doc-embed-wrap {
+    width: 100%; background: var(--warm-white);
+    border: none; min-height: 520px; display: block;
+  }
+  /* Replace src with published Google Doc URL */
+  /* Format: https://docs.google.com/document/d/YOUR_DOC_ID/pub?embedded=true */
+
+  /* Placeholder state when no doc linked yet */
+  .embed-placeholder {
+    width: 100%; min-height: 400px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: rgba(242,241,238,0.02);
+    border: 1px dashed var(--border-dark-mid);
+    gap: 12px;
+  }
+  .embed-placeholder-icon {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 2rem; font-style: italic; color: var(--gold-rule);
+  }
+  .embed-placeholder-text {
+    font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300;
+    color: var(--cream-muted); text-align: center; line-height: 1.7;
+  }
+  .embed-placeholder-text a {
+    color: var(--gold); text-decoration: none;
+  }
+
+  /* ── REPORT ENTRIES ── */
+  .report-list { display: flex; flex-direction: column; gap: 2px; }
+  .report-entry {
+    display: flex; align-items: center; gap: 20px;
+    padding: 16px 20px;
+    background: rgba(242,241,238,0.03);
+    border: 1px solid var(--border-dark);
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+  }
+  .report-entry:hover {
+    background: rgba(184,154,106,0.06);
+    border-color: var(--gold-rule);
+  }
+  .report-week {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 1.4rem; font-weight: 800; font-style: italic;
+    color: rgba(184,154,106,0.25); min-width: 32px; line-height: 1;
+  }
+  .report-info { flex: 1; }
+  .report-title {
+    font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 400;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .report-date {
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: var(--cream-muted);
+  }
+  .report-arrow {
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: var(--gold); opacity: 0; transition: opacity 0.2s ease;
+  }
+  .report-entry:hover .report-arrow { opacity: 1; }
+  .report-pending {
+    opacity: 0.35; cursor: default;
+  }
+  .report-pending:hover {
+    background: rgba(242,241,238,0.03);
+    border-color: var(--border-dark);
+  }
+
+  /* ── SIDEBAR PANELS ── */
+  .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+  .info-list { display: flex; flex-direction: column; gap: 0; }
+  .info-item {
+    padding: 14px 0; border-bottom: 1px solid var(--border-dark);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .info-item:last-child { border-bottom: none; }
+  .info-label {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-muted);
+  }
+  .info-value {
+    font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--cream);
+  }
+  .info-value.highlight { color: var(--gold-bright); font-weight: 400; }
+
+  /* Guarantee box */
+  .guarantee-panel {
+    background: rgba(184,154,106,0.06);
+    border: 1px solid var(--gold-rule);
+    border-left: 3px solid var(--gold-bright);
+    padding: 24px;
+  }
+  .guarantee-label {
+    font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-bright);
+    margin-bottom: 12px;
+  }
+  .guarantee-text {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 1rem; font-style: italic; font-weight: 300;
+    color: var(--cream-body); line-height: 1.65;
+  }
+
+  /* Contact */
+  .contact-panel { padding: 24px; }
+  .contact-name {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--cream); margin-bottom: 4px;
+  }
+  .contact-title {
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: var(--cream-muted); letter-spacing: 0.08em; margin-bottom: 16px;
+  }
+  .contact-method {
+    font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300;
+    color: var(--cream-body); line-height: 1.7; margin-bottom: 8px;
+  }
+  .contact-method a { color: var(--gold); text-decoration: none; }
+  .contact-note {
+    font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300;
+    color: var(--cream-muted); font-style: italic; line-height: 1.65;
+    margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-dark);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: rgba(26,24,20,0.98); padding: 32px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    border-top: 1px solid var(--border-dark);
+  }
+  .footer-brand {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 16px; font-weight: 600; color: var(--cream);
+  }
+  .footer-brand sup { font-size: 9px; color: var(--gold); vertical-align: super; }
+  .footer-note {
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: var(--cream-muted); letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 900px) {
+    .dashboard { grid-template-columns: 1fr; padding: 32px 24px 72px; }
+    .nav { padding: 16px 24px; }
+    .hero-strip { padding: 40px 24px 32px; }
+    .status-bar { padding: 0 24px; }
+    .status-item { padding: 16px 20px 16px 0; margin-right: 20px; }
+    .footer { padding: 28px 24px; }
+  }
+  @media (max-width: 560px) {
+    .status-bar-inner { flex-wrap: wrap; }
+    .status-item { border-right: none; border-bottom: 1px solid var(--border-dark); width: 50%; }
+    .nav-client { display: none; }
+    .nav-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <div class="nav-logo">LinesinTandem<sup>™</sup></div>
+    <div class="nav-divider"></div>
+    <!-- Replace [CLIENT NAME] with actual client name -->
+    <div class="nav-client">Sprint Dashboard &nbsp;·&nbsp; <span>[Client Name]</span></div>
+  </div>
+  <div class="nav-badge">Revenue in Tandem™</div>
+</nav>
+
+<!-- HERO STRIP -->
+<div class="hero-strip">
+  <div class="hero-strip-inner">
+    <div>
+      <div class="hero-label">90-Day Sprint — Active</div>
+      <!-- Replace [CLIENT NAME] with actual client name -->
+      <h1 class="hero-title">[Client Name]<br><em>Sprint Dashboard</em></h1>
+    </div>
+    <div class="sprint-meta">
+      <div class="sprint-meta-label">Days Remaining</div>
+      <!-- Update this number weekly -->
+      <div class="sprint-days">74</div>
+      <div class="sprint-days-label">of 90 days</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="status-bar-inner">
+    <!-- Update these values weekly -->
+    <div class="status-item">
+      <div class="status-label">Sprint Start</div>
+      <!-- Replace with actual date -->
+      <div class="status-value">[Start Date]</div>
+    </div>
+    <div class="status-item">
+      <div class="status-label">Emails Sent</div>
+      <div class="status-value gold">—</div>
+    </div>
+    <div class="status-item">
+      <div class="status-label">Reactivations</div>
+      <div class="status-value gold">—</div>
+    </div>
+    <div class="status-item">
+      <div class="status-label">Recovered Revenue</div>
+      <div class="status-value gold">—</div>
+    </div>
+    <div class="status-item">
+      <div class="status-label">Current Week</div>
+      <div class="status-value">Week 1</div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <!-- SPRINT OVERVIEW -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Sprint Overview</div>
+        <div class="panel-meta">Updated at sprint launch</div>
+      </div>
+      <div class="panel-body" style="padding: 0;">
+        <!--
+          SPRINT OVERVIEW DOC EMBED
+          Replace the src with your published Google Doc URL:
+          1. Open the Google Doc
+          2. File → Share → Publish to web
+          3. Select "Embed" tab, copy the URL from the iframe src
+          4. Paste below as the iframe src
+        -->
+        <iframe
+          class="doc-embed-wrap"
+          src="about:blank"
+          data-src="https://docs.google.com/document/d/YOUR_SPRINT_OVERVIEW_DOC_ID/pub?embedded=true"
+          frameborder="0"
+          title="Sprint Overview Document"
+          style="display:none;"
+        ></iframe>
+        <div class="embed-placeholder" id="overviewPlaceholder">
+          <div class="embed-placeholder-icon">"</div>
+          <div class="embed-placeholder-text">
+            Your sprint overview document will appear here once your sprint launches.<br>
+            <a href="https://client.linesintandem.com" target="_blank">Questions? Reply to your intake confirmation.</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEKLY REPORTS -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Weekly Reports</div>
+        <div class="panel-meta">Delivered every Monday</div>
+      </div>
+      <div class="panel-body" style="padding: 0;">
+        <div class="report-list">
+
+          <!--
+            WEEKLY REPORT ENTRIES
+            For each week:
+            - Change report-pending to report-entry once report is live
+            - Replace href="#" with published Google Doc URL
+            - Update the week number and date
+            Add new entries at the top as sprint progresses.
+          -->
+
+          <!-- WEEK 1 — active once report is delivered -->
+          <a class="report-entry report-pending" href="#" aria-disabled="true">
+            <div class="report-week">01</div>
+            <div class="report-info">
+              <div class="report-title">Week 1 Report — Campaign Launch</div>
+              <div class="report-date">Delivered Monday, [Date] &nbsp;·&nbsp; Pending</div>
+            </div>
+            <div class="report-arrow">Open →</div>
+          </a>
+
+          <!-- WEEKS 2–13 — pre-populated, pending -->
+          <div class="report-entry report-pending">
+            <div class="report-week">02</div>
+            <div class="report-info">
+              <div class="report-title">Week 2 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">03</div>
+            <div class="report-info">
+              <div class="report-title">Week 3 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">04</div>
+            <div class="report-info">
+              <div class="report-title">Week 4 Report — 30-Day Review</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">05</div>
+            <div class="report-info">
+              <div class="report-title">Week 5 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">06</div>
+            <div class="report-info">
+              <div class="report-title">Week 6 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">07</div>
+            <div class="report-info">
+              <div class="report-title">Week 7 Report — 60-Day Review</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">08</div>
+            <div class="report-info">
+              <div class="report-title">Week 8 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">09</div>
+            <div class="report-info">
+              <div class="report-title">Week 9 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">10</div>
+            <div class="report-info">
+              <div class="report-title">Week 10 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">11</div>
+            <div class="report-info">
+              <div class="report-title">Week 11 Report</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+          <div class="report-entry report-pending">
+            <div class="report-week">12</div>
+            <div class="report-info">
+              <div class="report-title">Week 12 Report — Sprint Wrap</div>
+              <div class="report-date">Pending</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main col -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- SPRINT DETAILS -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Sprint Details</div>
+      </div>
+      <div class="panel-body">
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-label">Business</div>
+            <!-- Replace with client business name -->
+            <div class="info-value">[Business Name]</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Sprint Price</div>
+            <!-- Replace with actual price -->
+            <div class="info-value highlight">[$ Amount]</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Sprint Start</div>
+            <div class="info-value">[Start Date]</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Sprint End</div>
+            <div class="info-value">[End Date]</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Reactivation Goal</div>
+            <div class="info-value highlight">20+ guests / 2x ROI</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Payment</div>
+            <!-- Replace with payment status -->
+            <div class="info-value">[Payment Status]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee-panel">
+      <div class="guarantee-label">Your Guarantee</div>
+      <p class="guarantee-text">"If we do not recover at least 2x your investment in reactivated guest revenue within 90 days, we continue working with you at no additional cost until we do."</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title">Your Strategist</div>
+      </div>
+      <div class="contact-panel">
+        <div class="contact-name">Que Athena</div>
+        <div class="contact-title">Founder, LinesinTandem™</div>
+        <div class="contact-method">
+          Email: <a href="mailto:que@linesintandem.com">que@linesintandem.com</a>
+        </div>
+        <div class="contact-method">
+          All sprint questions, replies, and updates go directly here.
+        </div>
+        <p class="contact-note">We operate async-first. Reply to any report or update email and Que will respond within one business day.</p>
+      </div>
+    </div>
+
+  </div><!-- end sidebar -->
+
+</div><!-- end dashboard -->
+
+<footer class="footer">
+  <div class="footer-brand">LinesinTandem<sup>™</sup></div>
+  <div class="footer-note">Private client dashboard &nbsp;·&nbsp; Revenue in Tandem™</div>
+</footer>
+
+<script>
+  // Load Google Doc embed if src is set
+  document.addEventListener('DOMContentLoaded', function() {
+    const iframe = document.querySelector('iframe.doc-embed-wrap');
+    const placeholder = document.getElementById('overviewPlaceholder');
+    if (iframe && iframe.dataset.src && !iframe.dataset.src.includes('YOUR_SPRINT_OVERVIEW')) {
+      iframe.src = iframe.dataset.src;
+      iframe.style.display = 'block';
+      if (placeholder) placeholder.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
