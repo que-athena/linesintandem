@@ -1,1 +1,816 @@
-https://que-athena.github.io/linesintandem/assessment.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue in Tandem™ | LinesinTandem™</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Jost:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --taupe: #a7a694;
+    --linen: #e4e2dd;
+    --warm-white: #f2f1ee;
+    --charcoal: #2b2b2b;
+    --charcoal-deep: #1e1c19;
+    --charcoal-mid: #222220;
+    --text-body: #4a4a47;
+    --text-secondary: #7a7870;
+    --gold: #b89a6a;
+    --gold-dark: #8a6a48;
+    --gold-bright: #c9a96e;
+    --eyebrow-on-taupe: rgba(43,43,43,0.5);
+    --gold-rule: rgba(184,154,106,0.3);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
+
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 52px; display: flex; justify-content: space-between; align-items: center; background: rgba(167,166,148,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(43,43,43,0.1); }
+  .nav-logo { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 600; color: var(--warm-white); letter-spacing: 0.02em; text-decoration: none; }
+  .nav-logo sup { font-size: 9px; vertical-align: super; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-link { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.55); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s ease; }
+  .nav-link:hover { color: var(--linen); }
+  .nav-cta { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); background: var(--gold); padding: 10px 24px; text-decoration: none; transition: background 0.3s ease; }
+  .nav-cta:hover { background: var(--gold-dark); color: var(--warm-white); }
+
+  /* HERO */
+  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 140px 80px 100px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(242,241,238,0.06) 0%, transparent 50%), radial-gradient(ellipse at 10% 80%, rgba(184,154,106,0.12) 0%, transparent 55%); }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+  .hero-eyebrow { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
+  .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.8rem, 6vw, 5.2rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.02; margin-bottom: 28px; letter-spacing: -0.02em; opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards; }
+  .hero-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
+  .hero-subhead { font-family: 'Noto Serif Display', serif; font-size: clamp(1.1rem, 2.2vw, 1.45rem); font-style: italic; font-weight: 300; color: rgba(43,43,43,0.68); line-height: 1.6; margin-bottom: 20px; max-width: 600px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-subhead-2 { font-family: 'Jost', sans-serif; font-size: clamp(13px, 1.5vw, 15px); font-weight: 300; color: rgba(43,43,43,0.52); line-height: 1.8; margin-bottom: 52px; max-width: 560px; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+  .hero-specs { display: flex; gap: 0; margin-bottom: 52px; opacity: 0; animation: fadeUp 0.8s ease 0.55s forwards; flex-wrap: wrap; }
+  .hero-spec { padding: 18px 32px; border: 1px solid rgba(43,43,43,0.12); border-right: none; background: rgba(43,43,43,0.07); }
+  .hero-spec:last-child { border-right: 1px solid rgba(43,43,43,0.12); }
+  .hero-spec:last-child { cursor: default; transition: background 0.3s ease, border-color 0.3s ease; }
+  .hero-spec:last-child:hover { background: rgba(201,169,110,0.22); border-color: rgba(201,169,110,0.45); }
+  .hero-spec:last-child:hover .hero-spec-label { color: rgba(242,241,238,0.65); }
+  .hero-spec:last-child:hover .hero-spec-value { color: var(--warm-white); }
+  .hero-spec-label { font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(43,43,43,0.4); margin-bottom: 6px; }
+  .hero-spec-value { font-family: 'Noto Serif Display', serif; font-size: 1.05rem; font-weight: 700; font-style: italic; color: var(--warm-white); }
+  .hero-spec-value.gold { color: var(--gold-bright); }
+  .hero-cta-group { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; opacity: 0; animation: fadeUp 0.8s ease 0.7s forwards; }
+  .hero-cta-dual { display: flex; flex-direction: column; gap: 8px; }
+
+  /* BUTTONS */
+  .btn-primary { display: inline-block; background: var(--gold); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 48px; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
+  .btn-primary.bright { background: var(--gold-bright); color: var(--charcoal-deep); }
+  .btn-primary.bright:hover { background: var(--gold-dark); color: var(--warm-white); transform: translateY(-2px); }
+  .btn-secondary { display: inline-block; background: transparent; color: rgba(242,241,238,0.7); font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; padding: 18px 48px; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(242,241,238,0.2); cursor: pointer; }
+  .btn-secondary:hover { border-color: rgba(242,241,238,0.5); color: var(--warm-white); transform: translateY(-2px); }
+  .btn-subtext { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.42); font-style: italic; margin-top: 6px; }
+  .btn-credit { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); margin-top: 4px; }
+  .text-link { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.55); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s ease; border-bottom: 1px solid rgba(43,43,43,0.2); padding-bottom: 1px; }
+  .text-link:hover { color: var(--charcoal); border-color: rgba(43,43,43,0.5); }
+  .text-link-light { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.55); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s ease; border-bottom: 1px solid rgba(242,241,238,0.2); padding-bottom: 1px; }
+  .text-link-light:hover { color: var(--warm-white); border-color: rgba(242,241,238,0.5); }
+
+  /* PROOF STRIP */
+  .proof-strip { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 40%, #d4b896 70%, var(--gold) 100%); padding: 26px 40px; text-align: center; }
+  .proof-strip p { font-family: 'Noto Serif Display', serif; font-style: italic; font-size: clamp(14px, 2vw, 18px); color: var(--warm-white); }
+
+  /* SHARED */
+  .section-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px; }
+  .section-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--charcoal); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px; }
+  .section-headline em { font-style: italic; font-weight: 600; color: var(--gold); }
+  .gold-rule { width: 40px; height: 2px; background: var(--gold); margin: 20px 0 28px; }
+  .body-copy { font-family: 'Jost', sans-serif; font-size: clamp(15px, 1.8vw, 17px); font-weight: 300; color: var(--text-body); line-height: 1.9; }
+  .body-copy p + p { margin-top: 20px; }
+  .body-copy strong { color: var(--charcoal); font-weight: 500; }
+
+  /* WHAT THIS IS */
+  .what-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
+  .what-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 15%, rgba(184,154,106,0.07) 0%, transparent 55%); }
+  .what-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .what-section .section-label { color: rgba(242,241,238,0.3); }
+  .what-section .section-headline { color: var(--warm-white); }
+  .what-section .section-headline em { color: var(--gold); }
+  .what-section .gold-rule { opacity: 0.7; }
+  .what-section .body-copy { color: rgba(242,241,238,0.65); }
+  .what-section .body-copy strong { color: var(--warm-white); }
+  .what-right { display: flex; flex-direction: column; gap: 2px; }
+  .not-this-item { padding: 22px 26px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); }
+  .not-this-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
+  .not-this-label.no { color: rgba(242,241,238,0.25); }
+  .not-this-label.yes { color: var(--gold); }
+  .not-this-text { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.6; }
+  .not-this-item.is-yes { background: rgba(184,154,106,0.07); border-color: rgba(184,154,106,0.25); }
+  .not-this-item.is-yes .not-this-text { color: rgba(242,241,238,0.78); }
+
+  /* OUTSIDE VIEW */
+  .differentiator-section { background: var(--charcoal-deep); padding: 80px; border-top: 1px solid rgba(184,154,106,0.15); border-bottom: 1px solid rgba(184,154,106,0.15); }
+  .differentiator-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .diff-left .section-label { color: rgba(242,241,238,0.3); }
+  .diff-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
+  .diff-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .diff-body { font-family: 'Jost', sans-serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 300; color: rgba(242,241,238,0.62); line-height: 1.9; }
+  .diff-body p + p { margin-top: 18px; }
+  .diff-body strong { color: var(--warm-white); font-weight: 400; }
+  .diff-right { display: flex; flex-direction: column; gap: 2px; }
+  .diff-card { padding: 28px 30px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); display: flex; gap: 20px; align-items: flex-start; transition: background 0.3s ease, border-color 0.3s ease; }
+  .diff-card:hover { background: rgba(184,154,106,0.1); border-color: rgba(184,154,106,0.35); }
+  .diff-card:hover .diff-card-text { color: rgba(242,241,238,0.82); }
+  .diff-card:hover .diff-card-num { color: rgba(184,154,106,0.5); }
+  .diff-card.featured { background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.3); }
+  .diff-card-num { font-family: 'Noto Serif Display', serif; font-size: 1.8rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.25); line-height: 1; flex-shrink: 0; min-width: 32px; }
+  .diff-card.featured .diff-card-num { color: rgba(184,154,106,0.55); }
+  .diff-card-title { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .diff-card.featured .diff-card-title { color: var(--gold-bright); }
+  .diff-card-text { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.65; }
+  .diff-card.featured .diff-card-text { color: rgba(242,241,238,0.75); }
+
+  /* PHASES */
+  .phases-section { background: var(--linen); padding: 108px 80px; }
+  .phases-inner { max-width: 1000px; margin: 0 auto; }
+  .phases-header { margin-bottom: 72px; max-width: 620px; }
+  .phases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .phase-card { background: var(--warm-white); padding: 44px 40px; position: relative; overflow: hidden; border: 1px solid rgba(167,166,148,0.3); transition: border-color 0.3s ease; }
+  .phase-card:hover { border-color: var(--gold); }
+  .phase-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.3s ease; }
+  .phase-card:hover::before { opacity: 1; }
+  .phase-card.audit-card { border-color: rgba(184,154,106,0.35); background: #f7f5f0; }
+  .phase-card.audit-card::before { opacity: 0.4; }
+  .phase-num { font-family: 'Noto Serif Display', serif; font-size: 4rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.15); line-height: 1; margin-bottom: 20px; display: block; }
+  .phase-timing { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .phase-name { font-family: 'Noto Serif Display', serif; font-size: 1.3rem; font-weight: 800; color: var(--charcoal); margin-bottom: 20px; line-height: 1.2; }
+  .phase-name em { font-style: italic; font-weight: 600; }
+  .phase-desc { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.8; margin-bottom: 24px; }
+  .phase-deliverables { display: flex; flex-direction: column; gap: 8px; }
+  .phase-deliverable { display: flex; align-items: flex-start; gap: 12px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.5; }
+  .phase-deliverable::before { content: ''; width: 5px; height: 5px; min-width: 5px; background: var(--gold); border-radius: 50%; margin-top: 7px; }
+  .phase-experience { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--linen); font-family: 'Noto Serif Display', serif; font-size: 0.9rem; font-style: italic; font-weight: 300; color: var(--text-secondary); line-height: 1.7; }
+  .audit-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(184,154,106,0.12); border: 1px solid rgba(184,154,106,0.3); padding: 8px 14px; margin-bottom: 20px; }
+  .audit-badge span { font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dark); }
+
+  /* CAMPAIGN LAYERS */
+  .layers-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
+  .layers-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(184,154,106,0.06) 0%, transparent 55%); }
+  .layers-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+  .layers-header { margin-bottom: 64px; }
+  .layers-section .section-label { color: rgba(242,241,238,0.3); }
+  .layers-section .section-headline { color: var(--warm-white); }
+  .layers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 48px; }
+  .layer-card { padding: 36px 32px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); transition: background 0.3s ease; }
+  .layer-card:hover { background: rgba(242,241,238,0.07); }
+  .layer-card.personal { background: rgba(184,154,106,0.07); border-color: rgba(184,154,106,0.25); }
+  .layer-card.personal:hover { background: rgba(184,154,106,0.11); }
+  .layer-letter { font-family: 'Noto Serif Display', serif; font-size: 3.5rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.2); line-height: 1; margin-bottom: 20px; display: block; }
+  .layer-card.personal .layer-letter { color: rgba(184,154,106,0.4); }
+  .layer-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .layer-card.personal .layer-label { color: var(--gold-bright); }
+  .layer-name { font-family: 'Noto Serif Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--warm-white); margin-bottom: 14px; line-height: 1.2; }
+  .layer-desc { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.75; }
+  .layer-desc strong { color: rgba(242,241,238,0.82); font-weight: 400; }
+  .layer-card.personal .layer-desc { color: rgba(242,241,238,0.68); }
+  .layers-note { padding: 28px 32px; background: rgba(184,154,106,0.08); border: 1px solid rgba(184,154,106,0.25); border-left: 3px solid var(--gold-bright); }
+  .layers-note p { font-family: 'Noto Serif Display', serif; font-size: 1rem; font-style: italic; font-weight: 300; color: rgba(242,241,238,0.75); line-height: 1.7; }
+  .layers-note strong { color: var(--warm-white); font-weight: 600; font-style: normal; }
+
+  /* RESULTS */
+  .results-section { background: var(--taupe); padding: 108px 80px; position: relative; overflow: hidden; }
+  .results-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(184,154,106,0.1) 0%, transparent 55%); }
+  .results-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+  .results-header { margin-bottom: 64px; max-width: 580px; }
+  .results-section .section-label { color: var(--eyebrow-on-taupe); }
+  .results-section .section-headline { color: var(--warm-white); }
+  .results-section .section-headline em { color: var(--charcoal); font-style: italic; }
+  .results-section .gold-rule { background: var(--gold-bright); opacity: 0.8; }
+  .results-section .body-copy { color: rgba(43,43,43,0.72); }
+  .scenarios-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 48px; }
+  .scenario-card { padding: 40px 36px; background: rgba(43,43,43,0.06); border: 1px solid rgba(184,154,106,0.2); transition: background 0.3s ease, border-color 0.3s ease; }
+  .scenario-card .scenario-recovery { color: var(--charcoal-deep); }
+  .scenario-card .scenario-desc { color: rgba(43,43,43,0.72); }
+  .scenario-card .scenario-note { color: rgba(43,43,43,0.52); border-top-color: rgba(43,43,43,0.15); }
+  .scenario-card:hover .scenario-recovery { color: var(--warm-white); }
+  .scenario-card:hover .scenario-desc { color: rgba(242,241,238,0.8); }
+  .scenario-card:hover .scenario-note { color: rgba(242,241,238,0.55); border-top-color: rgba(242,241,238,0.15); }
+  .scenario-card:hover { background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.4); }
+  .scenario-icp { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 12px; }
+  .scenario-recovery { font-family: 'Noto Serif Display', serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 800; font-style: italic; color: var(--warm-white); line-height: 1.1; margin-bottom: 12px; }
+  .scenario-desc { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.7); line-height: 1.75; margin-bottom: 14px; }
+  .scenario-note { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.48); line-height: 1.65; font-style: italic; padding-top: 14px; border-top: 1px solid rgba(43,43,43,0.12); }
+  .results-note { padding: 28px 32px; background: rgba(43,43,43,0.07); border: 1px solid rgba(43,43,43,0.12); border-left: 3px solid var(--gold-bright); }
+  .results-note p { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: rgba(43,43,43,0.65); line-height: 1.8; }
+  .results-note strong { color: var(--charcoal); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commitment-section { background: var(--charcoal-deep); padding: 108px 80px; position: relative; overflow: hidden; }
+  .commitment-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(184,154,106,0.08) 0%, transparent 60%); }
+  .commitment-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .commitment-section .section-label { color: rgba(242,241,238,0.3); }
+  .commitment-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px; }
+  .commitment-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .commitment-section .gold-rule { background: var(--gold-bright); }
+  .commitment-body { font-family: 'Jost', sans-serif; font-size: clamp(15px, 1.8vw, 17px); font-weight: 300; color: rgba(242,241,238,0.62); line-height: 1.9; }
+  .commitment-body p + p { margin-top: 18px; }
+  .commitment-body strong { color: var(--warm-white); font-weight: 400; }
+  .commitment-box { background: rgba(184,154,106,0.08); border: 1px solid rgba(184,154,106,0.3); padding: 40px; position: relative; }
+  .commitment-box::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--gold-bright); }
+  .commitment-statement { font-family: 'Noto Serif Display', serif; font-size: clamp(1rem, 1.8vw, 1.25rem); font-style: italic; font-weight: 300; color: rgba(242,241,238,0.88); line-height: 1.75; margin-bottom: 32px; }
+  .commitment-terms { display: flex; flex-direction: column; gap: 14px; }
+  .commitment-term { display: flex; align-items: flex-start; gap: 14px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.65; }
+  .commitment-term::before { content: ''; width: 5px; height: 5px; min-width: 5px; background: var(--gold-bright); border-radius: 50%; margin-top: 7px; }
+
+  /* QUALIFIERS */
+  .qualifiers-section { background: var(--warm-white); padding: 108px 80px; border-top: 1px solid var(--linen); }
+  .qualifiers-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .qualifier-list { display: flex; flex-direction: column; gap: 2px; margin-top: 8px; }
+  .qualifier-item { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; background: var(--linen); border: 1px solid rgba(167,166,148,0.3); }
+  .qualifier-icon { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; margin-top: 1px; flex-shrink: 0; }
+  .qualifier-icon.yes { background: rgba(184,154,106,0.2); color: var(--gold-dark); }
+  .qualifier-icon.no { background: rgba(43,43,43,0.08); color: rgba(43,43,43,0.35); }
+  .qualifier-text { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.55; }
+  .qualifier-text.muted { color: var(--text-secondary); }
+  .disqualifier-note { margin-top: 24px; padding: 20px 24px; background: rgba(43,43,43,0.03); border: 1px solid rgba(167,166,148,0.25); border-left: 2px solid var(--taupe); }
+  .disqualifier-note p { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; font-style: italic; }
+
+  /* INVESTMENT */
+  .pricing-section { background: var(--taupe); padding: 108px 80px; position: relative; overflow: hidden; }
+  .pricing-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 25%, rgba(184,154,106,0.1) 0%, transparent 55%); }
+  .pricing-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+  .pricing-header { margin-bottom: 56px; }
+  .pricing-section .section-label { color: var(--eyebrow-on-taupe); }
+  .pricing-section .section-headline { color: var(--warm-white); }
+  .pricing-section .section-headline em { color: var(--charcoal); font-style: italic; }
+  .pricing-section .gold-rule { background: var(--gold-bright); opacity: 0.8; }
+  .pricing-intro { font-family: 'Jost', sans-serif; font-size: clamp(14px, 1.7vw, 16px); font-weight: 300; color: rgba(43,43,43,0.72); line-height: 1.85; max-width: 600px; }
+  .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 2px; margin-bottom: 32px; max-width: 560px; }
+  .pricing-card { padding: 44px 40px; background: rgba(43,43,43,0.05); border: 1px solid rgba(184,154,106,0.2); transition: background 0.3s ease, border-color 0.3s ease; }
+  .pricing-card .pricing-amount { color: var(--charcoal-deep); }
+  .pricing-card .pricing-name { color: var(--charcoal); }
+  .pricing-card .pricing-include { color: rgba(43,43,43,0.72); }
+  .pricing-card .pricing-commitment { color: var(--charcoal); }
+  .pricing-card:hover { background: rgba(43,43,43,0.12); border-color: rgba(184,154,106,0.45); }
+  .pricing-card:hover .pricing-amount { color: var(--warm-white); }
+  .pricing-card:hover .pricing-name { color: var(--warm-white); }
+  .pricing-card:hover .pricing-include { color: rgba(242,241,238,0.72); }
+  .pricing-card:hover .pricing-commitment { color: var(--warm-white); }
+  .pricing-tier { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 12px; }
+  .pricing-name { font-family: 'Noto Serif Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 16px; }
+  .pricing-amount { font-family: 'Noto Serif Display', serif; font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 800; font-style: italic; color: var(--warm-white); line-height: 1; margin-bottom: 8px; }
+  .pricing-splits { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+  .pricing-split { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.55); font-style: italic; }
+  .pricing-credit { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 24px; padding: 10px 14px; background: rgba(184,154,106,0.1); border-left: 2px solid var(--gold-dark); }
+  .pricing-includes { display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid rgba(43,43,43,0.1); }
+  .pricing-include { display: flex; align-items: flex-start; gap: 12px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.72); line-height: 1.5; }
+  .pricing-include::before { content: ''; width: 5px; height: 5px; min-width: 5px; background: var(--gold-bright); border-radius: 50%; margin-top: 7px; }
+  .pricing-commitment { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-white); margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(43,43,43,0.1); }
+  .deposit-block { background: rgba(43,43,43,0.06); border: 1px solid rgba(184,154,106,0.22); padding: 36px 40px; }
+  .deposit-block p { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: rgba(43,43,43,0.72); line-height: 1.85; margin-bottom: 14px; }
+  .deposit-block p:last-child { margin-bottom: 0; }
+  .deposit-block strong { color: var(--charcoal); font-weight: 500; }
+
+  /* FUNNEL PATH */
+  .funnel-section { background: var(--warm-white); padding: 108px 80px; border-top: 1px solid var(--linen); }
+  .funnel-inner { max-width: 1000px; margin: 0 auto; }
+  .funnel-header { margin-bottom: 64px; max-width: 580px; }
+  .funnel-steps { display: flex; flex-direction: column; gap: 2px; }
+  .funnel-step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; padding: 36px 0; border-bottom: 1px solid var(--linen); }
+  .funnel-step:last-child { border-bottom: none; }
+  .funnel-step-num { font-family: 'Noto Serif Display', serif; font-size: 3rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.2); line-height: 1; padding-top: 4px; }
+  .funnel-step-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .funnel-step-name { font-family: 'Noto Serif Display', serif; font-size: 1.2rem; font-weight: 800; color: var(--charcoal); margin-bottom: 12px; line-height: 1.2; }
+  .funnel-step-name em { font-style: italic; font-weight: 600; }
+  .funnel-step-desc { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.8; }
+  .funnel-step-price { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-secondary); margin-top: 12px; }
+  .funnel-step-price span { color: var(--gold-dark); }
+  .funnel-step-cta { margin-top: 16px; }
+
+  /* CTA */
+  .cta-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(184,154,106,0.07) 0%, transparent 65%); }
+  .cta-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .cta-eyebrow { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(242,241,238,0.3); margin-bottom: 24px; }
+  .cta-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
+  .cta-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .cta-subhead { font-family: 'Jost', sans-serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.8; margin-bottom: 16px; }
+  .cta-scarcity { font-family: 'Noto Serif Display', serif; font-size: clamp(0.95rem, 1.6vw, 1.15rem); font-weight: 300; color: rgba(242,241,238,0.45); line-height: 1.7; margin-bottom: 8px; }
+  .cta-scarcity em { font-style: italic; color: var(--gold-bright); }
+  .cta-standard { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,241,238,0.22); margin-bottom: 0; }
+  .cta-rule { width: 40px; height: 1px; background: var(--gold-rule); margin: 0 auto 48px; }
+  .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .cta-divider { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 400; color: var(--gold-bright); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+  .cta-bottom-note { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.25); font-style: italic; margin-top: 20px; line-height: 1.65; max-width: 480px; }
+
+  /* FOOTER */
+  .footer { background: var(--charcoal-deep); padding: 52px 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(184,154,106,0.1); }
+  .footer-logo { font-family: 'Noto Serif Display', serif; font-size: 16px; font-weight: 600; color: rgba(242,241,238,0.32); }
+  .footer-logo sup { font-size: 9px; color: var(--gold); vertical-align: super; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-link { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,241,238,0.35); text-decoration: none; transition: color 0.2s ease; }
+  .footer-link:hover { color: var(--gold); }
+  .footer-link.portal { color: rgba(184,154,106,0.6); border-bottom: 1px solid rgba(184,154,106,0.25); padding-bottom: 1px; }
+  .footer-link.portal:hover { color: var(--gold-bright); }
+  .footer-tagline { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.25); letter-spacing: 0.14em; text-transform: uppercase; }
+
+
+  /* TAUPE SECTION CARD OVERRIDES */
+  .scenario-card { color: var(--charcoal); }
+  .scenario-card:hover .scenario-desc,
+  .scenario-card:hover .scenario-note { color: rgba(242,241,238,0.82); }
+  .scenario-card:hover .scenario-recovery { color: var(--warm-white); }
+  .pricing-card { transition: background 0.3s ease, border-color 0.3s ease; }
+  .pricing-card:hover { background: rgba(184,154,106,0.1); border-color: rgba(184,154,106,0.38); }
+
+  /* DARK GOLD EYEBROWS ON DARK SECTIONS */
+  .differentiator-section .section-label,
+  .layers-section .section-label,
+  .commitment-section .section-label { color: var(--gold-bright); opacity: 0.55; }
+
+  /* SECTION HEADLINE EM — WHITE ON TAUPE */
+  .results-section .section-headline em { color: var(--warm-white); font-style: italic; }
+  .pricing-section .section-headline em { color: var(--warm-white); font-style: italic; }
+
+  /* GOLD LIGHTER ON TAUPE SECTIONS */
+  .results-section .gold-rule { background: var(--gold-bright); opacity: 0.6; }
+  .pricing-section .gold-rule { background: var(--gold-bright); opacity: 0.6; }
+  .results-section .scenario-icp { color: rgba(242,241,238,0.55); }
+  .results-note strong { color: var(--charcoal-deep); }
+
+  /* FOOTER GOLD SEPARATORS */
+  .footer-links { gap: 28px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    .nav { padding: 16px 24px; } .nav-link { display: none; }
+    .hero { padding: 110px 32px 80px; }
+    .hero-specs { flex-direction: column; }
+    .hero-spec { border-right: 1px solid rgba(43,43,43,0.12); }
+    .what-inner, .differentiator-inner, .commitment-inner, .qualifiers-inner { grid-template-columns: 1fr; gap: 48px; }
+    .phases-grid, .layers-grid, .scenarios-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .funnel-step { grid-template-columns: 48px 1fr; gap: 20px; }
+    .what-section, .differentiator-section, .phases-section, .layers-section, .results-section, .commitment-section, .qualifiers-section, .pricing-section, .funnel-section, .cta-section { padding: 72px 32px; }
+    .footer { padding: 40px 32px; flex-direction: column; align-items: flex-start; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://que-athena.github.io/linesintandem/" class="nav-logo" target="_blank" rel="noopener">LinesinTandem<sup>™</sup></a>
+  <div class="nav-right">
+    <a href="https://que-athena.github.io/linesintandem/" class="nav-link" target="_blank" rel="noopener">Home</a>
+    <a href="https://que-athena.github.io/linesintandem/audit.html" class="nav-link" target="_blank" rel="noopener">In Relationship Audit™</a>
+    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="nav-cta" target="_blank" rel="noopener">Begin the Audit →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Revenue in Tandem™ — 90-Day Strategist-Led Engagement</div>
+    <h1 class="hero-headline">They did not leave.<br>They went <em>quiet.</em></h1>
+    <p class="hero-subhead">And quiet is recoverable — with the right precision, the right timing, and a firm willing to stay in it until the relationships act.</p>
+    <p class="hero-subhead-2">No ad spend. No cold outreach. No new offers. The clients who already trust you are the highest-value asset in your business. Most owners never go back for them. We do.</p>
+    <div class="hero-specs">
+      <div class="hero-spec"><div class="hero-spec-label">Engagement</div><div class="hero-spec-value">90 Days</div></div>
+      <div class="hero-spec"><div class="hero-spec-label">Delivery</div><div class="hero-spec-value">Fully Async</div></div>
+      <div class="hero-spec"><div class="hero-spec-label">Oversight</div><div class="hero-spec-value">Strategist-Led</div></div>
+      <div class="hero-spec"><div class="hero-spec-label">Our Commitment</div><div class="hero-spec-value gold">20 Clients Back</div></div>
+    </div>
+    <div class="hero-cta-group">
+      <div class="hero-cta-dual">
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank" rel="noopener">Begin The In Relationship Audit™ — $1,500 →</a>
+        <p class="btn-subtext">No sprint commitment until you receive and accept your custom proposal.</p>
+        <p class="btn-credit">$1,500 credited in full toward your sprint</p>
+      </div>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="text-link" target="_blank" rel="noopener">Not ready to commit? Start with The In Relationship Reveal™ — Complimentary →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <p>"The relationship is already there. It just went quiet."</p>
+</div>
+
+<!-- WHAT THIS IS -->
+<section class="what-section" id="what">
+  <div class="what-inner">
+    <div class="what-left">
+      <div class="section-label">What this is</div>
+      <h2 class="section-headline">Not a campaign.<br><em>An activation.</em></h2>
+      <div class="gold-rule"></div>
+      <div class="body-copy">
+        <p>Any agency can send emails. Most do — and the clients come back once, go quiet again, and the cycle repeats. Because the emails were never the problem. The experience was.</p>
+        <p>Revenue in Tandem™ starts somewhere different. Before we touch your contact list, <strong>we look at your business from the outside — the way your clients do.</strong> The Outside View™ documents exactly where relationships are breaking down before you ever know they are. Then we fix it. Then we bring your clients back to something worth returning to.</p>
+        <p>The campaign and the experience move together. That is why the results compound instead of fade.</p>
+      </div>
+    </div>
+    <div class="what-right">
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A broadcast email to your full list with no strategy behind it</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A strategy deck you are left to implement yourself</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A campaign that brings clients back to the same experience that lost them</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">Ad spend, new acquisition, or anything that starts from zero</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A consultant who hands off a document and disappears</div></div>
+      <div class="not-this-item is-yes"><div class="not-this-label yes">This</div><div class="not-this-text">A fully executed, strategist-led activation — The Outside View™, three simultaneous campaign layers, personal outreach from the lead strategist, and a commitment to stay until 20 clients are back in your books.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE OUTSIDE VIEW -->
+<section class="differentiator-section" id="outsideview">
+  <div class="differentiator-inner">
+    <div class="diff-left">
+      <div class="section-label">What makes this different</div>
+      <h2 class="diff-headline">We look at your business<br>the way your clients<br><em>do.</em></h2>
+      <div class="gold-rule" style="background: var(--gold-bright); opacity: 0.7;"></div>
+      <div class="diff-body">
+        <p>Before a single campaign deploys, we conduct The Outside View™ — a complete review of your digital and virtual client-facing presence. Website. Reviews. Booking flow. Social presence. Automated follow-up. Everything a client encounters in the digital environment before and after they walk through your door.</p>
+        <p>This is the part of the client experience that operates without you in the room. <strong>And it is often where the relationship quietly breaks down.</strong> Where the follow-up that should exist simply does not. Where the booking flow loses them before they ever confirm.</p>
+        <p>The findings are documented and returned to you with notes on what could be strengthened. When those gaps are addressed, the campaigns land in a stronger environment — and recovered clients are more likely to remain active. This is one part of a complete client experience picture. The in-person and operational layer is a separate engagement we offer at sprint close.</p>
+      </div>
+    </div>
+    <div class="diff-right">
+      <div class="diff-card featured">
+        <div class="diff-card-num">01</div>
+        <div>
+          <div class="diff-card-title">The Outside View™</div>
+          <div class="diff-card-text">A complete review of your public-facing business from the client's perspective — website, reviews, booking flow, social, and visible post-visit follow-up. Documented before the first campaign launches.</div>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-num">02</div>
+        <div>
+          <div class="diff-card-title">In The Quiet Map™ Refined</div>
+          <div class="diff-card-text">Your In The Quiet Map™ projection — first built during the Relationship Audit™ — is refined with live list data. You see exactly which relationships to activate first and what they are worth.</div>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-num">03</div>
+        <div>
+          <div class="diff-card-title">What Your Clients Actually Find</div>
+          <div class="diff-card-text">The Outside View™ documents the digital client experience as it exists today — what clients encounter, where the gaps are, and where the environment could be strengthened. The findings come back to you with clear notes. Addressing them means your clients return to something better than what they left.</div>
+        </div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-card-num">04</div>
+        <div>
+          <div class="diff-card-title">Three Campaign Layers Deploy</div>
+          <div class="diff-card-text">Broadcast reactivation. Personal outreach from the lead strategist. Win-back sequences for relationships that went quiet after showing genuine interest. All three running simultaneously.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PHASES -->
+<section class="phases-section" id="how">
+  <div class="phases-inner">
+    <div class="phases-header">
+      <div class="section-label">How it works</div>
+      <h2 class="section-headline">Four phases.<br><em>One outcome.</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-copy">Every sprint moves through the same four phases. Structured, sequenced, and overseen by the lead strategist at every critical moment. A dedicated section of the live sprint dashboard closes each phase — progress tracked, targets visible, notes updated in real time. You always know exactly where things stand.</p>
+    </div>
+    <div class="phases-grid">
+
+      <div class="phase-card audit-card">
+        <div class="audit-badge"><span>Includes The Outside View™</span></div>
+        <span class="phase-num">01</span>
+        <div class="phase-timing">Days 1 — 21 · Foundation and Audit</div>
+        <div class="phase-name">The Outside View.<br><em>Then the Campaigns.</em></div>
+        <p class="phase-desc">The Outside View™ digital review was completed during the audit. Phase 01 takes everything further. Your contact list is segmented across three priority tiers. In The Quiet Map™ — first built during the audit — is refined with live list data: real contact records, real recency, real value. All campaign copy is written in your voice and staged for launch. ESP and CRM access is collected, and a deeper review of the automated touchpoints that reach your clients is completed and added to the findings already in your hands. Campaigns launch day 22.</p>
+        <div class="phase-deliverables">
+          <div class="phase-deliverable">Full contact list segmentation across three priority tiers</div>
+          <div class="phase-deliverable">In The Quiet Map™ refined with live list data — exact contacts, exact value</div>
+          <div class="phase-deliverable">Deeper review of automated client touchpoints with ESP/CRM access</div>
+          <div class="phase-deliverable">Dashboard activated — sprint countdown, projected target, and progress tracking live</div>
+          <div class="phase-deliverable">All campaign copy written in your voice, staged and ready for day 22 launch</div>
+        </div>
+        <p class="phase-experience">What you experience: a Welcome Loom, a streamlined onboarding form, and within two weeks — your contact base mapped by value and recency, your campaign copy ready, and your dashboard showing exactly what the sprint is targeting. Before a single message goes out.</p>
+      </div>
+
+      <div class="phase-card">
+        <span class="phase-num">02</span>
+        <div class="phase-timing">Days 22 — 75 · Three-Layer Execution</div>
+        <div class="phase-name">Campaigns and<br><em>Personal Outreach.</em></div>
+        <p class="phase-desc">Three campaign layers run simultaneously against different segments with different approaches. The full list receives a broadcast sequence. Your top 15 to 20 highest-value quiet relationships are handled directly by the lead strategist — personally, not delegated. Contacts who showed genuine intent and went quiet get a precision win-back sequence. Every word in your voice. Every deployment inside your platform.</p>
+        <div class="phase-deliverables">
+          <div class="phase-deliverable">Layer A — Broadcast reactivation sequence to your full list</div>
+          <div class="phase-deliverable">Layer B — Personal outreach to your top 15–20 quiet contacts, handled directly by the lead strategist</div>
+          <div class="phase-deliverable">Layer C — Win-back sequence for relationships that showed intent and went quiet</div>
+          <div class="phase-deliverable">Live performance dashboard — check progress on your schedule</div>
+        </div>
+        <p class="phase-experience">What you experience: inbound conversations beginning to arrive. Clients you had not heard from in months reaching back out. A live dashboard showing you exactly what is moving — on your schedule, not ours.</p>
+      </div>
+
+      <div class="phase-card">
+        <span class="phase-num">03</span>
+        <div class="phase-timing">Days 76 — 90 · Deepening and Closing</div>
+        <div class="phase-name">Momentum<br><em>Followed Through.</em></div>
+        <p class="phase-desc">You are running your business. The sprint is running itself. Warm contacts who responded but have not yet confirmed are brought back into conversation. Nothing falls through.</p>
+        <div class="phase-deliverables">
+          <div class="phase-deliverable">Continued campaign deployment and optimization</div>
+          <div class="phase-deliverable">Active follow-through on warm but uncommitted contacts</div>
+          <div class="phase-deliverable">Dashboard live throughout — full visibility whenever you want it</div>
+          <div class="phase-deliverable">Lead strategist available for any adjustments required</div>
+        </div>
+        <p class="phase-experience">What you experience: a rhythm. You check the dashboard when you want. Conversations close through the week. You are not managing this — you are receiving it.</p>
+      </div>
+
+      <div class="phase-card">
+        <span class="phase-num">04</span>
+        <div class="phase-timing">Day 90 · Sprint Close</div>
+        <div class="phase-name">Results and<br><em>What Comes Next.</em></div>
+        <p class="phase-desc">The In Tandem Report™ — a full written record of everything the sprint produced — and a personal Loom close the activation. Every campaign layer reviewed. Relationships returned. Revenue recovered. The contacts still in motion documented. And a clear picture of what consistent, deliberate attention to your client relationships can produce — not in theory, but based on what just happened in your business.</p>
+        <div class="phase-deliverables">
+          <div class="phase-deliverable">The In Tandem Report™ — full sprint summary and results documentation</div>
+          <div class="phase-deliverable">Confirmed returns and recovered revenue documented</div>
+          <div class="phase-deliverable">Personal Loom from the lead strategist walking through results</div>
+          <div class="phase-deliverable">A clear picture of what consistent retention looks like from here — built on what just happened in your business</div>
+        </div>
+        <p class="phase-experience">What you experience: the complete picture of 90 days of deliberate activation — and a clear understanding of exactly what your client relationships are worth when someone is genuinely paying attention to them.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN LAYERS -->
+<section class="layers-section" id="layers">
+  <div class="layers-inner">
+    <div class="layers-header">
+      <div class="section-label">The execution layer</div>
+      <h2 class="section-headline">Three campaigns.<br><em>Plus the Outside View.</em></h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="layers-grid">
+      <div class="layer-card">
+        <span class="layer-letter">A</span>
+        <div class="layer-label">Broadcast Reactivation</div>
+        <div class="layer-name">Your Full List — Warmed and Invited Back</div>
+        <p class="layer-desc">A sequenced campaign deployed to your entire contact base. <strong>Warm-up, genuine value, direct invitation.</strong> Written in your voice. Deployed in your platform. Built to move quiet contacts from absent to aware to booked — without a single word that reads like a marketing message, because it is not one.</p>
+      </div>
+      <div class="layer-card personal">
+        <span class="layer-letter">B</span>
+        <div class="layer-label">Personal Outreach — Lead Strategist</div>
+        <div class="layer-name">Your Highest-Value Contacts — Reached Directly</div>
+        <p class="layer-desc">Your top 15 to 20 quiet relationships receive a direct, personal touchpoint — not a broadcast. <strong>The lead strategist handles these personally.</strong> Direct messages. Personal Looms. The approach is calibrated to each relationship. This is the layer that no campaign replaces — and the one that closes the most significant relationships.</p>
+      </div>
+      <div class="layer-card">
+        <span class="layer-letter">C</span>
+        <div class="layer-label">Win-Back Sequence</div>
+        <div class="layer-name">Stalled Relationships — Re-Entered with Precision</div>
+        <p class="layer-desc">A separate sequence for contacts who showed genuine interest and went quiet. <strong>A completely different emotional register.</strong> Softer re-entry. A value touchpoint. A gentle ask. A clear close. These are not cold leads. They are warm relationships that lost momentum. This sequence finds them exactly where they are.</p>
+      </div>
+      <div class="layer-card">
+        <span class="layer-letter">+</span>
+        <div class="layer-label">The Outside View™ — Runs Before All Three</div>
+        <div class="layer-name">The Root Cause — Not Just the Symptom</div>
+        <p class="layer-desc">Before any campaign layer deploys, The Outside View™ identifies exactly where client relationships are quietly breaking down. <strong>We address the experience before we bring the clients back.</strong> That is the difference between a campaign that peaks in week two and an activation that compounds across 90 days. One brings clients back. The other gives them a reason to stay.</p>
+      </div>
+    </div>
+    <div class="layers-note">
+      <p><strong>The Outside View™ is not separate from the campaigns — it is what makes them work.</strong> When clients return to an experience that has been deliberately reviewed and addressed, they stay. The broadcast reactivation brings them back. The personal outreach converts the most valuable relationships. But it is The Outside View™ that determines whether those clients remain active or go quiet again in six months. We run all three layers simultaneously. The experience layer runs first — because the campaign success depends on it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="results">
+  <div class="results-inner">
+    <div class="results-header">
+      <div class="section-label">What this produces</div>
+      <h2 class="section-headline"><span style="color:var(--charcoal-deep);">The revenue is already</span><br><em>in your business.</em></h2>
+      <div class="gold-rule"></div>
+      <p class="body-copy">These scenarios reflect confirmed booking value during the sprint window and the annual relationship value of returned clients. Your In The Quiet Map™ — refined in the first 14 days with live list data — shows you the specific figures for your business before a single campaign launches.</p>
+    </div>
+    <div class="scenarios-grid">
+
+      <div class="scenario-card">
+        <div class="scenario-icp">MedSpa</div>
+        <div class="scenario-recovery">$32,000 — $72,000</div>
+        <p class="scenario-desc" style="font-size:11px;color:rgba(242,241,238,0.5);margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Jost',sans-serif;">Annual recovered relationship value</p>
+        <p class="scenario-desc">20 confirmed bookings from quiet clients during the sprint window at $400 to $600 per visit. Clients who already trust the practice, had every intention of returning, and simply needed to be asked. A returned MedSpa client visits four to six times per year on average.</p>
+        <p class="scenario-note">At four to six visits per year, those 20 returned relationships represent $32,000 to $72,000 in annual recovered revenue — before retail, add-ons, or referrals. The commitment is 20 confirmed bookings. The return is everything that follows.</p>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-icp">Luxury Spa</div>
+        <div class="scenario-recovery">$40,000 — $72,000</div>
+        <p class="scenario-desc" style="font-size:11px;color:rgba(242,241,238,0.5);margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Jost',sans-serif;">Annual recovered relationship value</p>
+        <p class="scenario-desc">20 confirmed bookings from quiet clients at $250 to $400 average service value. Clients who loved the experience and went quiet — not because they lost interest but because no one reached back out. A returned spa client visits five to eight times per year.</p>
+        <p class="scenario-note">20 confirmed bookings represents $5,000 to $8,000 in immediate sprint-window revenue and $40,000 to $72,000 in annual value once those relationships are active again. The sprint recovers the relationship. The visits follow without effort.</p>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-icp">Cosmetic Dermatology Practice</div>
+        <div class="scenario-recovery">$36,000 — $70,000</div>
+        <p class="scenario-desc" style="font-size:11px;color:rgba(242,241,238,0.5);margin-bottom:10px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Jost',sans-serif;">Annual recovered relationship value</p>
+        <p class="scenario-desc">20 confirmed bookings at $300 to $700 per visit — Botox, filler, laser, resurfacing, or peels. Cash-pay, elective services where the client relationship is the entire retention engine. Clients who trusted the provider and went quiet not because they were unhappy, but because no one reached back out.</p>
+        <p class="scenario-note">A returned cosmetic dermatology client visits three to five times per year. At that frequency, 20 recovered relationships represent $36,000 to $70,000 in annual value — before referrals, which begin reliably the moment the client feels genuinely attended to again.</p>
+      </div>
+
+    </div>
+    <div class="results-note">
+      <p><strong>Annual relationship value figures use conservative assumptions and documented visit frequency averages by business type.</strong> Your In The Quiet Map™, refined in the first 14 days with live data, gives you specific projections before the campaigns launch. You know exactly what the sprint is worth before anything moves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENT -->
+<section class="commitment-section" id="commitment">
+  <div class="commitment-inner">
+    <div>
+      <div class="section-label">The Commitment</div>
+      <h2 class="commitment-headline">We stay until<br>the relationships<br><em>come back.</em></h2>
+      <div class="gold-rule"></div>
+      <div class="commitment-body">
+        <p>Our commitment is <strong>a minimum of 20 confirmed bookings from quiet contacts within the 90-day sprint window.</strong> At your average service value and visit frequency, those 20 returned relationships represent significantly more than a sprint-window transaction. They represent an active client roster that compounds in value every year they stay engaged.</p>
+        <p>If 20 confirmed bookings are not reached within 90 days, we continue working at no additional cost until they are. <strong>There is no exit until the results exist.</strong></p>
+        <p>The qualifying criteria exist precisely so we only take on activations we are confident we can deliver. The commitment is not a safety net. It is the standard we build every engagement around.</p>
+      </div>
+    </div>
+    <div class="commitment-box">
+      <p class="commitment-statement">"A minimum of 20 confirmed bookings from quiet contacts within the 90-day sprint window — or we continue working at no additional cost until that commitment is met."</p>
+      <div class="commitment-terms">
+        <div class="commitment-term">Measured from verified bookings confirmed by returned contacts during the 90-day sprint window</div>
+        <div class="commitment-term">A returned contact is any client with no active booking in the 90 days prior to sprint launch who confirms a booking at any point during the sprint</div>
+        <div class="commitment-term">A confirmed booking requires a paid deposit or full payment received during the sprint window — verbal commitments and open inquiries do not qualify</div>
+        <div class="commitment-term">Service completion is not required to fall within the sprint window — confirmed booking with payment is the qualifying event</div>
+        <div class="commitment-term">Applies to qualifying engagements — list size, revenue threshold, and business history criteria confirmed during The In Relationship Audit™</div>
+        <div class="commitment-term">Client has reviewed The Outside View™ findings and confirmed readiness to act before campaign launch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFIERS -->
+<section class="qualifiers-section" id="who">
+  <div class="qualifiers-inner">
+    <div>
+      <div class="section-label">Is this right for you</div>
+      <h2 class="section-headline">Revenue in Tandem™<br>is built for <em>established</em><br>businesses.</h2>
+      <div class="gold-rule"></div>
+      <p class="body-copy">The sprint works because your client relationships already exist. The trust is already there. The history is already there. We are activating something real — not building it from scratch. That requires a business with an established contact base and an owner willing to act on what The Outside View™ surfaces.</p>
+    </div>
+    <div>
+      <div class="qualifier-list">
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">Minimum $600K annual revenue — single location standard sprint</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">Minimum 400 contacts with documented client purchase history</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">At least 18 months in operation with an established client history</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">An existing booking system or CRM with usable contact data</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">A premium service business where the client experience is central — MedSpa, luxury spa, cosmetic dermatology practice, bridal studio, members club, private wellness venue</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">An owner or GM ready to act on what The Outside View™ surfaces within a 14-day window</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon yes">✓</div><div class="qualifier-text">No major operational disruption planned during the 90-day sprint window</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon no">✗</div><div class="qualifier-text muted">Still building your initial client base — Revenue in Tandem™ activates existing relationships, not new ones</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon no">✗</div><div class="qualifier-text muted">Annual revenue below $600K — the recovery math does not scale to the investment at this stage</div></div>
+        <div class="qualifier-item"><div class="qualifier-icon no">✗</div><div class="qualifier-text muted">Franchise or corporate-owned location without direct access to client contact data</div></div>
+      </div>
+      <div class="disqualifier-note">
+        <p>Not certain you qualify? <a href="https://que-athena.github.io/linesintandem/audit.html" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px;">The In Relationship Audit™</a> is the scoping process that tells you — in precise written detail — before any sprint commitment is made. That is exactly what it is designed to do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="pricing-section" id="investment">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-label">Investment</div>
+      <h2 class="section-headline"><span style="color:var(--charcoal-deep);">Your sprint is</span><br><em>scoped to your business.</em></h2>
+      <div class="gold-rule"></div>
+      <p class="pricing-intro">Pricing is determined by list size, revenue profile, location count, and complexity — assessed during The In Relationship Audit™. Every client receives a custom proposal before any sprint commitment is made.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-tier">Revenue in Tandem™</div>
+        <div class="pricing-name">90-Day Sprint — Single Location</div>
+        <div class="pricing-amount">$18,500+</div>
+        <div class="pricing-splits">
+          <div class="pricing-split">Pay in full: $18,500+</div>
+          <div class="pricing-split">Split payment: $9,500 at launch · $9,000 at day 45</div>
+        </div>
+        <div class="pricing-credit">$1,500 Relationship Audit™ credited in full toward sprint</div>
+        <div class="pricing-includes">
+          <div class="pricing-include">The Outside View™ — complete public-facing experience audit</div>
+          <div class="pricing-include">In The Quiet Map™ refined with live list data</div>
+          <div class="pricing-include">Full contact list segmentation across three priority tiers</div>
+          <div class="pricing-include">Three simultaneous campaign layers</div>
+          <div class="pricing-include">Layer B personal outreach — lead strategist handles top 15–20 quiet contacts directly</div>
+          <div class="pricing-include">All copy written in your voice, deployed in your platform</div>
+          <div class="pricing-include">Live performance dashboard throughout the sprint</div>
+          <div class="pricing-include">The In Tandem Report™ and personal Loom walkthrough at close</div>
+          <div class="pricing-include">Retention recommendation — what consistent client relationships look like from here</div>
+        </div>
+        <div class="pricing-commitment">20 Confirmed Returns — Our Commitment</div>
+      </div>
+
+    </div>
+
+    <div class="deposit-block">
+      <p><strong>Every sprint begins with <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline;text-underline-offset:3px;">The In Relationship Audit™ — $1,500</a>, credited in full toward your sprint.</strong> The audit scopes the engagement, reserves your slot, and produces In The Quiet Map™, The Outside View™ experience review, a written strategy brief, a personal Loom walkthrough, and a custom sprint proposal built entirely around your business.</p>
+      <p>The In Relationship Audit™ is nonrefundable. It initiates real work. If you choose not to proceed after receiving your proposal, everything produced is yours to keep and act on immediately. Multi-location and complex engagements are scoped individually — your proposal will reflect the specific investment for your business.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FUNNEL PATH -->
+<section class="funnel-section" id="path">
+  <div class="funnel-inner">
+    <div class="funnel-header">
+      <div class="section-label">The path forward</div>
+      <h2 class="section-headline">Three steps to<br><em>recovering</em> what is already yours.</h2>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="funnel-steps">
+
+      <div class="funnel-step">
+        <div class="funnel-step-num">01</div>
+        <div>
+          <div class="funnel-step-label">Complimentary — No Commitment Required</div>
+          <div class="funnel-step-name">The In Relationship <em>Reveal™</em></div>
+          <div class="funnel-step-desc">A six-section assessment that surfaces exactly where client revenue is sitting quiet in your business — and what it is costing you each month it stays there. Your results are reviewed personally and returned within 24 hours. It takes ten minutes. Most owners find it clarifying in a way that surprises them.</div>
+          <div class="funnel-step-price">Complimentary · <span>No commitment required</span></div>
+          <div class="funnel-step-cta"><a href="https://que-athena.github.io/linesintandem/assessment.html" class="text-link" target="_blank" rel="noopener">Begin The In Relationship Reveal™ →</a></div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-step-num">02</div>
+        <div>
+          <div class="funnel-step-label">The Diagnostic — Credited Toward Sprint</div>
+          <div class="funnel-step-name">The In Relationship <em>Audit™</em></div>
+          <div class="funnel-step-desc">A private, asynchronous engagement that produces In The Quiet Map™, The Outside View™ experience review, a written strategy brief, a personal Loom walkthrough, and a custom sprint proposal built around your specific business. No discovery calls. One business. One lead strategist. Complete clarity on where the revenue is, what went quiet, and exactly what it would take to bring it back.</div>
+          <div class="funnel-step-price">$1,500 · <span>Credited in full toward Revenue in Tandem™</span></div>
+          <div class="funnel-step-cta"><a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="text-link" target="_blank" rel="noopener">Begin The In Relationship Audit™ →</a></div>
+        </div>
+      </div>
+
+      <div class="funnel-step">
+        <div class="funnel-step-num">03</div>
+        <div>
+          <div class="funnel-step-label">Full Activation — 90 Days</div>
+          <div class="funnel-step-name">Revenue in <em>Tandem™</em></div>
+          <div class="funnel-step-desc">A fully executed, strategist-led activation. The Outside View™. Three simultaneous campaign layers. Personal outreach from the lead strategist on your highest-value quiet relationships. A live performance dashboard. A commitment to stay until 20 confirmed returns are in your books. You run your business. We recover the relationships that built it.</div>
+          <div class="funnel-step-price">From $18,500+ · <span>$1,500 In Relationship Audit™ credited toward sprint</span></div>
+          <div class="funnel-step-cta"><a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="text-link" target="_blank" rel="noopener">Begin with The In Relationship Audit™ →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="begin">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">The next step</div>
+    <h2 class="cta-headline">The clients are<br><em>still there.</em></h2>
+    <p class="cta-subhead">They did not leave. They went quiet. And quiet is recoverable — with the right precision, the right timing, and a firm willing to stay in it until the relationships act.</p>
+    <p class="cta-scarcity">LinesinTandem™ works with <em>four clients at a time.</em></p>
+    <p class="cta-standard">That is not a constraint. That is the standard.</p>
+    <div style="height:52px;"></div>
+    <div class="cta-buttons">
+      <div>
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank" rel="noopener">Begin The In Relationship Audit™ — $1,500 →</a>
+        <p style="font-size:12px;font-weight:300;color:rgba(242,241,238,0.32);font-style:italic;margin-top:8px;line-height:1.65;text-align:center;">Credited in full toward Revenue in Tandem™. No sprint commitment until you accept your proposal.</p>
+      </div>
+      <div class="cta-divider">or</div>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="btn-secondary" target="_blank" rel="noopener">Start with The In Relationship Reveal™ — Complimentary →</a>
+      <p class="cta-bottom-note">The In Relationship Audit™ is nonrefundable and initiates your scoping process immediately. Everything produced is yours regardless of whether you proceed to the sprint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">LinesinTandem<sup>™</sup></div>
+  <div class="footer-links">
+    <a href="https://que-athena.github.io/linesintandem/" class="footer-link" target="_blank" rel="noopener">Home</a>
+    <a href="https://que-athena.github.io/linesintandem/assessment.html" class="footer-link" target="_blank" rel="noopener">In Relationship Reveal</a>
+    <a href="https://que-athena.github.io/linesintandem/audit.html" class="footer-link" target="_blank" rel="noopener">In Relationship Audit</a>
+    <a href="https://que-athena.github.io/linesintandem/contact.html" class="footer-link" target="_blank" rel="noopener">Contact</a>
+  </div>
+  <div class="footer-tagline">Bring them back. Keep them close.</div>
+  <div style="font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:rgba(242,241,238,0.2);letter-spacing:0.1em;">© 2023–2026 LinesinTandem™. All rights reserved.</div>
+</footer>
+
+<button style="position:fixed;bottom:32px;right:32px;z-index:500;width:44px;height:44px;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s,background 0.2s;pointer-events:none;" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M8 4L4 8M8 4L12 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+  window.addEventListener('scroll', function() {
+    var btn = document.getElementById('scrollTop');
+    if (window.scrollY > 400) { btn.style.opacity='1'; btn.style.transform='translateY(0)'; btn.style.pointerEvents='all'; }
+    else { btn.style.opacity='0'; btn.style.transform='translateY(12px)'; btn.style.pointerEvents='none'; }
+  });
+</script>
+
+</body>
+</html>
