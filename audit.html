@@ -20,9 +20,10 @@
     --gold-dark: #8a6a48;
     --gold-bright: #cca96e;
     --gold-light: #d4bc90;
+    --gold-lighter: #e2cfa4;
     --gold-rule: rgba(184,154,106,0.28);
     --eyebrow-on-taupe: rgba(43,43,43,0.52);
-    --eyebrow-on-dark: rgba(184,154,106,0.6);
+    --eyebrow-on-dark: rgba(212,188,144,0.72);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -105,7 +106,7 @@
   .not-item:hover { background: rgba(242,241,238,0.08); border-color: rgba(242,241,238,0.18); }
   .not-item.is-yes { background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.28); }
   .not-item.is-yes:hover { background: rgba(184,154,106,0.14); border-color: rgba(184,154,106,0.45); }
-  .not-item-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; color: rgba(242,241,238,0.25); }
+  .not-item-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; color: var(--eyebrow-on-dark); }
   .not-item.is-yes .not-item-label { color: var(--gold-bright); }
   .not-item-text { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.65; }
   .not-item.is-yes .not-item-text { color: rgba(242,241,238,0.82); }
@@ -171,17 +172,15 @@
   .proposal-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .proposal-left {}
   .proposal-right { display: flex; flex-direction: column; gap: 2px; }
-  .proposal-card { padding: 28px 32px; background: rgba(43,43,43,0.06); border: 1px solid rgba(43,43,43,0.1); transition: background 0.3s, border-color 0.3s; cursor: default; }
-  .proposal-card:hover { background: rgba(184,154,106,0.1); border-color: rgba(184,154,106,0.32); }
+  .proposal-card { padding: 28px 32px; background: rgba(43,43,43,0.06); border: 1px solid rgba(43,43,43,0.1); transition: color 0.3s; cursor: default; }
   .proposal-card:hover .proposal-card-label { color: var(--gold-dark); }
   .proposal-card:hover .proposal-card-text { color: var(--warm-white); }
   .proposal-card.featured { background: rgba(43,43,43,0.1); border-color: rgba(43,43,43,0.18); border-left: 3px solid var(--gold-dark); }
-  .proposal-card.featured:hover { background: rgba(184,154,106,0.14); border-color: rgba(184,154,106,0.45); }
   .proposal-card.featured:hover .proposal-card-label { color: var(--gold-dark); }
   .proposal-card.featured:hover .proposal-card-text { color: var(--warm-white); }
-  .proposal-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 8px; }
+  .proposal-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 8px; transition: color 0.3s; }
   .proposal-card.featured .proposal-card-label { color: var(--gold-dark); }
-  .proposal-card-text { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.72); line-height: 1.72; }
+  .proposal-card-text { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.72); line-height: 1.72; transition: color 0.3s; }
   .proposal-card.featured .proposal-card-text { color: rgba(242,241,238,0.82); }
 
   /* ══════════════════════════════════
@@ -234,7 +233,7 @@
   .final-scarcity em { font-style: italic; color: var(--gold-bright); font-weight: 400; }
   .final-standard { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,241,238,0.22); margin-bottom: 56px; }
   .final-cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .final-divider { font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(242,241,238,0.18); }
+  .final-divider { font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lighter); opacity: 0.6; }
 
   /* ── FOOTER ── */
   .footer { background: var(--charcoal-deep); padding: 52px 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(184,154,106,0.1); }
@@ -243,8 +242,6 @@
   .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
   .footer-link { font-size: 10px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,241,238,0.38); text-decoration: none; transition: color 0.2s; }
   .footer-link:hover { color: var(--gold); }
-  .footer-link.portal { color: rgba(184,154,106,0.6); border-bottom: 1px solid rgba(184,154,106,0.25); padding-bottom: 1px; }
-  .footer-link.portal:hover { color: var(--gold-bright); }
   .footer-tagline { font-family: 'Noto Serif Display', serif; font-size: 12px; font-style: italic; font-weight: 300; color: rgba(242,241,238,0.3); }
   .footer-bottom { width: 100%; border-top: 1px solid rgba(242,241,238,0.08); padding-top: 16px; margin-top: 4px; }
   .footer-copyright { font-size: 10px; font-weight: 300; color: rgba(242,241,238,0.28); letter-spacing: 0.08em; }
@@ -278,34 +275,34 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://que-athena.github.io/linesintandem/" class="nav-logo">LinesinTandem<sup>™</sup></a>
+  <a href="https://que-athena.github.io/linesintandem/" class="nav-logo" target="_blank">LinesinTandem<sup>™</sup></a>
   <div class="nav-right">
-    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="nav-cta">Begin the Audit →</a>
+    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="nav-cta" target="_blank">Begin the Audit →</a>
   </div>
 </nav>
 
 <!-- ══ SECTION 1: HERO ══ -->
 <section class="hero" id="top">
   <div class="hero-inner">
-    <div class="hero-eyebrow">The Relationship Audit™ — LinesinTandem™</div>
+    <div class="hero-eyebrow">In Relationship Audit™ — LinesinTandem™</div>
     <h1 class="hero-headline">
       A precise visual picture of<br>where your client revenue<br><em>is waiting to be recovered.</em>
     </h1>
     <p class="hero-subhead">Before you commit to a sprint. Before you commit to anything. A complete diagnostic of your client relationships, your experience gaps, and the exact revenue your quiet list represents.</p>
-    <p class="hero-body">Not a strategy session. Not a discovery call. A named deliverable — The Quiet Map™ — built specifically around your business and delivered within five business days of your intake submission. Built on fifteen years of running a six-figure beauty business where relationships were the only growth strategy that mattered.</p>
+    <p class="hero-body">Not a strategy session. Not a discovery call. A named deliverable — In The Quiet Map™ — built specifically around your business and delivered within five business days of your intake submission. Built on fifteen years of running a six-figure beauty business where relationships were the only growth strategy that mattered.</p>
     <div class="hero-cta-group">
       <div>
-        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright">Begin The Relationship Audit™ — $1,500 →</a>
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
         <p class="hero-price-note">Credited in full toward Revenue in Tandem™. No sprint commitment required.</p>
       </div>
-      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="hero-secondary">Not ready? Start with The Relationship Reveal™ — Complimentary →</a>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="hero-secondary" target="_blank">Not ready? Start with In Relationship Reveal™ — Complimentary →</a>
     </div>
   </div>
 </section>
 
 <!-- PROOF STRIP -->
 <div class="proof-strip">
-  <p>The Reveal showed you the gap. The Audit shows you what it is worth.</p>
+  <p>In Relationship Reveal™ showed you the gap. In Relationship Audit™ shows you what it is worth.</p>
 </div>
 
 <!-- ══ SECTION 2: WHAT IT IS / IS NOT ══ -->
@@ -316,7 +313,7 @@
       <h2 class="section-headline on-dark">Not a report.<br><em>A picture.</em></h2>
       <div class="gold-rule"></div>
       <div class="body-copy on-dark">
-        <p>Most diagnostics hand you a document and leave you to figure out what it means. The Relationship Audit™ is different. It starts with a visual — a projected picture of what your quiet client relationships are worth and how recoverable they are — and builds everything else around what that picture reveals.</p>
+        <p>Most diagnostics hand you a document and leave you to figure out what it means. In Relationship Audit™ is different. It starts with a visual — a projected picture of what your quiet client relationships are worth and how recoverable they are — and builds everything else around what that picture reveals.</p>
         <p>It is asynchronous, private, and built entirely around your business. No calls. No group sessions. No waiting rooms. One business. One lead strategist. Complete clarity on where the revenue is, what is breaking down, and exactly what it would take to recover it.</p>
       </div>
     </div>
@@ -350,9 +347,9 @@
   <div class="map-inner">
     <div class="map-header">
       <div class="section-label">The deliverable</div>
-      <h2 class="section-headline">Everything is inside<br><em>The Quiet Map™.</em></h2>
+      <h2 class="section-headline">Everything is inside<br><em>In The Quiet Map™.</em></h2>
       <div class="gold-rule"></div>
-      <p class="body-copy" style="max-width:640px;">The Quiet Map™ is not a component of the audit. It is the audit. A single named deliverable that contains everything LinesinTandem™ produces — starting with what you can see before a single word of analysis is written.</p>
+      <p class="body-copy" style="max-width:640px;">In The Quiet Map™ is not a component of the audit. It is the audit. A single named deliverable that contains everything LinesinTandem™ produces — starting with what you can see before a single word of analysis is written.</p>
     </div>
 
     <!-- Simulated chart -->
@@ -405,7 +402,7 @@
         <span class="map-component-num">04</span>
         <div class="map-component-tag">Personal · Recorded · Walkthrough</div>
         <div class="map-component-name">The Personal <em>Loom Walkthrough</em></div>
-        <div class="map-component-desc">A recorded video from the lead strategist walking you through every element of your Quiet Map™ — the visual, the findings, the brief, and the proposal. So nothing requires interpretation. You watch it once and you know exactly what it means for your business.</div>
+        <div class="map-component-desc">A recorded video from the lead strategist walking you through every element of your In The Quiet Map™ — the visual, the findings, the brief, and the proposal. So nothing requires interpretation. You watch it once and you know exactly what it means for your business.</div>
       </div>
     </div>
   </div>
@@ -414,8 +411,8 @@
 <!-- ══ MID-PAGE CTA ══ -->
 <div class="midpage-cta">
   <div class="midpage-cta-inner">
-    <p class="midpage-cta-text">Your Quiet Map™ is built from your specific data and delivered within five business days of your intake submission.</p>
-    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright">Begin The Relationship Audit™ — $1,500 →</a>
+    <p class="midpage-cta-text">Your In The Quiet Map™ is built from your specific data and delivered within five business days of your intake submission.</p>
+    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
     <p class="midpage-cta-note">Credited in full toward Revenue in Tandem™. No sprint commitment required.</p>
   </div>
 </div>
@@ -435,8 +432,8 @@
         <div class="how-step-content">
           <div class="how-step-label">Purchase</div>
           <div class="how-step-name">You begin <em>immediately.</em></div>
-          <div class="how-step-desc">Your confirmation page and confirmation email deliver two things instantly — a link to the private assessment and a link to your intake form. No waiting. No scheduling. The intake form saves your progress automatically so you can complete it at your own pace.</div>
-          <div class="how-step-detail">If you have already completed The Relationship Reveal™ publicly, your private assessment link is still included — the private version gives us additional context beyond what the public assessment captures.</div>
+          <div class="how-step-desc">Your confirmation page and confirmation email deliver two things instantly — a link to the private client assessment and a link to your intake form. No waiting. No scheduling. The intake form saves your progress automatically so you can complete it at your own pace.</div>
+          <div class="how-step-detail">The private assessment is exclusive to audit clients and is your starting point if you have not yet completed In Relationship Reveal™. If you have already completed it publicly, your intake form is the next step — you can move straight there.</div>
         </div>
       </div>
       <div class="how-step">
@@ -444,15 +441,15 @@
         <div class="how-step-content">
           <div class="how-step-label">Intake</div>
           <div class="how-step-name">You complete your <em>submission.</em></div>
-          <div class="how-step-desc">Your intake form covers your business profile, revenue data, contact list details, platform access, brand voice, and what you want the audit to address. The more specific your answers, the more precise your Quiet Map™ will be. Your five-business-day delivery window starts the moment your completed intake is received.</div>
+          <div class="how-step-desc">Your intake form covers your business profile, revenue data, contact list details, platform access, brand voice, and what you want the audit to address. The more specific your answers, the more precise your In The Quiet Map™ will be. Your five-business-day delivery window starts the moment your completed intake is received.</div>
         </div>
       </div>
       <div class="how-step">
         <div class="how-step-num">03</div>
         <div class="how-step-content">
           <div class="how-step-label">Production</div>
-          <div class="how-step-name">We build your <em>Quiet Map™.</em></div>
-          <div class="how-step-desc">The lead strategist reviews your intake responses and private assessment, conducts a complete Outside View™ of your public-facing business, constructs the visual revenue projection, writes the strategy brief, records the personal Loom walkthrough, and builds your sprint proposal.</div>
+          <div class="how-step-name">We build your <em>In The Quiet Map™.</em></div>
+          <div class="how-step-desc">The lead strategist reviews your intake responses and assessment, conducts a complete Outside View™ of your public-facing business, constructs the visual revenue projection, writes the strategy brief, records the personal Loom walkthrough, and builds your sprint proposal.</div>
           <div class="how-step-detail">No outsourcing. No templates. One business. One lead strategist. Every element built from your specific data.</div>
         </div>
       </div>
@@ -460,8 +457,8 @@
         <div class="how-step-num">04</div>
         <div class="how-step-content">
           <div class="how-step-label">Delivery</div>
-          <div class="how-step-name">Your Quiet Map™ <em>arrives.</em></div>
-          <div class="how-step-desc">Your complete Quiet Map™ is delivered to your inbox within five business days of your intake submission. The visual projection, The Outside View™ findings, the written brief, and the personal Loom walkthrough — everything in one delivery. Your sprint proposal arrives with it.</div>
+          <div class="how-step-name">Your In The Quiet Map™ <em>arrives.</em></div>
+          <div class="how-step-desc">Your complete In The Quiet Map™ is delivered to your inbox within five business days of your intake submission. The visual projection, The Outside View™ findings, the written brief, and the personal Loom walkthrough — everything in one delivery. Your sprint proposal arrives with it.</div>
         </div>
       </div>
     </div>
@@ -472,11 +469,11 @@
 <section class="proposal-section" id="proposal">
   <div class="proposal-inner">
     <div class="proposal-left">
-      <div class="section-label on-taupe">Inside your Quiet Map™</div>
+      <div class="section-label on-taupe">Inside your In The Quiet Map™</div>
       <h2 class="section-headline on-taupe">Your sprint proposal<br>arrives <em>with it.</em></h2>
       <div class="gold-rule"></div>
       <div class="body-copy">
-        <p>Every Quiet Map™ includes a <strong>custom sprint proposal built around your specific findings.</strong> It is not a generic offer — it is a <strong>scoped, priced engagement</strong> built on what your audit actually reveals about your business.</p>
+        <p>Every In The Quiet Map™ includes a <strong>custom sprint proposal built around your specific findings.</strong> It is not a generic offer — it is a <strong>scoped, priced engagement</strong> built on what your audit actually reveals about your business.</p>
         <p>The proposal reflects <strong>your business right now.</strong> Your list. Your numbers. Your available window. Six months from now those projections look different and the available slot looks different. The proposal is <strong>a snapshot of what is possible today</strong> — and it carries a <strong>seven-day response window</strong> from delivery.</p>
         <p>We understand the sprint is not right for every business at every stage. The proposal will tell you clearly <strong>which path makes sense</strong> — and if the timing or fit is not right for Revenue in Tandem™, we will say so directly rather than offer something that does not serve you.</p>
       </div>
@@ -510,7 +507,7 @@
       <h2 class="section-headline on-dark">Built for businesses<br>ready to see the<br><em>number directly.</em></h2>
       <div class="gold-rule"></div>
       <div class="body-copy on-dark">
-        <p>The Relationship Audit™ is for business owners who are done operating without knowing what their quiet client list is actually worth. The ones who are ready to stop guessing and see it in writing — visually, specifically, with a path forward attached.</p>
+        <p>In Relationship Audit™ is for business owners who are done operating without knowing what their quiet client list is actually worth. The ones who are ready to stop guessing and see it in writing — visually, specifically, with a path forward attached.</p>
       </div>
     </div>
     <div class="who-right">
@@ -531,7 +528,7 @@
         <div><strong>You are a MedSpa, luxury spa, aesthetic practice, bridal studio, members club, or premium wellness venue</strong> where the client experience is the product and relationships are the retention mechanism.</div>
       </div>
       <div class="who-not">
-        <p class="who-not-text"><strong style="color:rgba(242,241,238,0.45); font-style:normal;">The Relationship Audit™ is built for businesses where the conditions for recovery already exist.</strong> If you are still building your initial client base or if your annual revenue is below $600,000, the timing is not right yet — and we would rather tell you plainly than take your investment before it is. The Relationship Reveal™ is complimentary and the right place to begin.</p>
+        <p class="who-not-text"><strong style="color:rgba(242,241,238,0.45); font-style:normal;">In Relationship Audit™ is built for businesses where the conditions for recovery already exist.</strong> If you are still building your initial client base or if your annual revenue is below $600,000, the timing is not right yet — and we would rather tell you plainly than take your investment before it is. In Relationship Reveal™ is complimentary and the right place to begin.</p>
       </div>
     </div>
   </div>
@@ -548,13 +545,13 @@
         <p class="investment-credit-text"><strong>Credited in full toward Revenue in Tandem™.</strong> If you proceed to the sprint, your $1,500 audit investment is applied directly to your sprint investment — not as a discount, as a deposit. You are not spending $1,500 on a diagnostic. You are reserving your place in the process.</p>
       </div>
       <div class="investment-keep">
-        <p class="investment-keep-text">If you receive your Quiet Map™ and choose not to proceed with the sprint, everything produced is yours to keep and act on immediately. The visual projection, The Outside View™, the strategy brief, the Loom walkthrough — all of it. The audit is nonrefundable and the work is real.</p>
+        <p class="investment-keep-text">If you receive your In The Quiet Map™ and choose not to proceed with the sprint, everything produced is yours to keep and act on immediately. The visual projection, The Outside View™, the strategy brief, the Loom walkthrough — all of it. The audit is nonrefundable and the work is real.</p>
       </div>
-      <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright">Begin The Relationship Audit™ — $1,500 →</a>
+      <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
       <p style="font-size:12px; font-weight:300; color:var(--text-secondary); font-style:italic; margin-top:10px; line-height:1.65;">You will receive your private assessment link and intake form immediately on your confirmation page and by email.</p>
     </div>
     <div class="investment-right">
-      <div class="investment-includes-label">Everything inside The Quiet Map™</div>
+      <div class="investment-includes-label">Everything inside In The Quiet Map™</div>
       <div class="investment-include"><strong>The Visual Revenue Projection</strong> — a tiered chart of your quiet relationships and projected recoverable revenue by probability tier</div>
       <div class="investment-include"><strong>The Outside View™</strong> — a complete audit of your public-facing business from the client's perspective: website, reviews, social, booking flow, and post-visit follow-up</div>
       <div class="investment-include"><strong>The Written Strategy Brief</strong> — your specific gaps, their root causes, and a sequenced execution plan built around what will generate results fastest</div>
@@ -570,7 +567,7 @@
     <div class="final-label">The next step</div>
     <p class="final-statement">
       The revenue is already in your business.<br>
-      <em>The Quiet Map™ shows you exactly where — and what recovering it looks like.</em>
+      <em>In The Quiet Map™ shows you exactly where — and what recovering it looks like.</em>
     </p>
     <div class="final-rule"></div>
     <p class="final-scarcity">LinesinTandem™ works with <em>four clients at a time.</em></p>
@@ -578,11 +575,11 @@
     <div class="final-rule"></div>
     <div class="final-cta-buttons">
       <div>
-        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright">Begin The Relationship Audit™ — $1,500 →</a>
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
         <p class="btn-subtext">Credited in full toward Revenue in Tandem™. Intake form and private assessment delivered immediately on confirmation.</p>
       </div>
       <div class="final-divider">or</div>
-      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="btn-secondary light">Start with The Relationship Reveal™ — Complimentary →</a>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="btn-secondary light" target="_blank">Start with In Relationship Reveal™ — Complimentary →</a>
     </div>
   </div>
 </section>
@@ -591,11 +588,10 @@
 <footer class="footer">
   <div class="footer-logo">LinesinTandem<sup>™</sup></div>
   <div class="footer-links">
-    <a href="https://que-athena.github.io/linesintandem/assessment.html" class="footer-link">Relationship Reveal</a>
-    <a href="https://que-athena.github.io/linesintandem/audit.html" class="footer-link">Relationship Audit</a>
-    <a href="https://que-athena.github.io/linesintandem/rit.html" class="footer-link">Revenue in Tandem</a>
-    <a href="mailto:que@linesintandem.com" class="footer-link">Contact</a>
-    <a href="https://billing.stripe.com/p/login/14k3dJ6NV55j8sEcMM" class="footer-link portal" target="_blank">Client Portal →</a>
+    <a href="https://que-athena.github.io/linesintandem/assessment.html" class="footer-link" target="_blank">Relationship Reveal</a>
+    <a href="https://que-athena.github.io/linesintandem/audit.html" class="footer-link" target="_blank">Relationship Audit</a>
+    <a href="https://que-athena.github.io/linesintandem/rit.html" class="footer-link" target="_blank">Revenue in Tandem</a>
+    <a href="contact.html" class="footer-link" target="_blank">Contact</a>
   </div>
   <div class="footer-tagline">Bring them back. Keep them close.</div>
   <div class="footer-bottom">
@@ -640,10 +636,6 @@
       setTimeout(() => { if(bar2) bar2.style.width = '52%'; }, 300);
       setTimeout(() => { if(bar3) bar3.style.width = '22%'; }, 500);
 
-      // MedSpa: 847 contacts · $480 avg · 4 visits/yr
-      // High Priority: 127 contacts × 70% × $480 × 4 = $171,072
-      // Mid-Range: 296 contacts × 40% × $480 × 2 = $113,664
-      // Dormant: 424 contacts × 18% × $480 × 1 = $36,634
       animateValue(val1, 0, 171072, 1400, '$');
       setTimeout(() => animateValue(val2, 0, 113664, 1400, '$'), 200);
       setTimeout(() => animateValue(val3, 0, 36634, 1400, '$'), 400);
@@ -664,7 +656,6 @@
   }
 
   window.addEventListener('scroll', animateBars);
-  // Also check on load in case already in view
   window.addEventListener('load', animateBars);
 </script>
 
