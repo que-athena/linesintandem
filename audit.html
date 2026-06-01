@@ -659,5 +659,17 @@
   window.addEventListener('load', animateBars);
 </script>
 
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+    if (!email) return;
+    fetch('https://hook.us2.make.com/ffymkj7wr5ioc95hrpot7rtnffm3lmrl', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'audit-page', timestamp: new Date().toISOString() })
+    }).catch(function() {});
+  })();
+</script>
 </body>
 </html>
