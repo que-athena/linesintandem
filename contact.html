@@ -45,13 +45,18 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
   /* ══════════════════════════════════
-     LAYOUT
+     LAYOUT — KEY FIX:
+     page-wrap sits below fixed nav via margin-top.
+     Left panel is sticky within the scrolling page.
+     Right panel is in normal flow and grows with content.
+     Footer spans full width below both panels.
   ══════════════════════════════════ */
   .page-wrap {
-    min-height: 100vh;
+    margin-top: 57px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 57px;
+    grid-template-rows: auto auto;
+    min-height: calc(100vh - 57px);
   }
 
   /* ── LEFT PANEL ── */
@@ -64,8 +69,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
+    overflow-y: auto;
     isolation: isolate;
+    align-self: start;
   }
   .left-panel::before {
     content: '';
@@ -74,6 +80,7 @@
     background:
       radial-gradient(ellipse at 10% 90%, rgba(184,154,106,0.12) 0%, transparent 55%),
       radial-gradient(ellipse at 90% 10%, rgba(242,241,238,0.04) 0%, transparent 50%);
+    pointer-events: none;
   }
   .left-panel::after {
     content: '';
@@ -106,11 +113,7 @@
     opacity: 0;
     animation: fadeUp 0.8s ease 0.2s forwards;
   }
-  .left-headline em {
-    font-style: italic;
-    font-weight: 600;
-    color: var(--warm-white);
-  }
+  .left-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
   .left-rule {
     width: 40px;
     height: 2px;
@@ -142,7 +145,6 @@
   }
   .left-body strong { color: rgba(43,43,43,0.82); font-weight: 500; }
 
-  /* What to expect list */
   .expect-list {
     display: flex;
     flex-direction: column;
@@ -177,7 +179,6 @@
   }
   .expect-text strong { color: rgba(43,43,43,0.78); font-weight: 500; }
 
-  /* Left bottom */
   .left-bottom {
     position: relative;
     z-index: 1;
@@ -199,7 +200,6 @@
     pointer-events: none;
   }
 
-  /* Form intro */
   .form-intro {
     margin-bottom: 52px;
     opacity: 0;
@@ -298,38 +298,17 @@
   input[type="text"]::placeholder,
   input[type="email"]::placeholder,
   input[type="tel"]::placeholder,
-  textarea::placeholder {
-    color: rgba(242,241,238,0.2);
-    font-style: italic;
-  }
+  textarea::placeholder { color: rgba(242,241,238,0.2); font-style: italic; }
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="tel"]:focus,
-  textarea:focus {
-    border-color: rgba(184,154,106,0.65);
-    background: rgba(242,241,238,0.07);
-  }
+  textarea:focus { border-color: rgba(184,154,106,0.65); background: rgba(242,241,238,0.07); }
 
-  /* Divider between sections */
-  .form-divider {
-    width: 100%;
-    height: 1px;
-    background: rgba(184,154,106,0.15);
-    margin: 36px 0;
-  }
+  .form-divider { width: 100%; height: 1px; background: rgba(184,154,106,0.15); margin: 36px 0; }
 
-  /* Contact fields row */
-  .contact-fields {
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.75s forwards;
-  }
-  .contact-fields .field-group {
-    opacity: 1;
-    animation: none;
-    margin-bottom: 0;
-  }
+  .contact-fields { opacity: 0; animation: fadeUp 0.8s ease 0.75s forwards; }
+  .contact-fields .field-group { opacity: 1; animation: none; margin-bottom: 0; }
 
-  /* Phone optional note */
   .phone-note {
     font-size: 11px;
     font-weight: 300;
@@ -339,12 +318,7 @@
     line-height: 1.6;
   }
 
-  /* Submit area */
-  .submit-area {
-    margin-top: 44px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.85s forwards;
-  }
+  .submit-area { margin-top: 44px; opacity: 0; animation: fadeUp 0.8s ease 0.85s forwards; }
   .submit-btn {
     display: inline-block;
     background: var(--gold-bright);
@@ -360,71 +334,18 @@
     transition: background 0.3s, color 0.3s, transform 0.2s;
     width: 100%;
   }
-  .submit-btn:hover {
-    background: var(--gold-dark);
-    color: var(--warm-white);
-    transform: translateY(-2px);
-  }
-  .submit-note {
-    font-size: 12px;
-    font-weight: 300;
-    color: rgba(242,241,238,0.28);
-    font-style: italic;
-    margin-top: 14px;
-    line-height: 1.72;
-    text-align: center;
-  }
+  .submit-btn:hover { background: var(--gold-dark); color: var(--warm-white); transform: translateY(-2px); }
+  .submit-note { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.28); font-style: italic; margin-top: 14px; line-height: 1.72; text-align: center; }
 
   /* ── SUCCESS STATE ── */
-  .success-state {
-    display: none;
-    text-align: center;
-    padding: 80px 0;
-    opacity: 0;
-    animation: fadeIn 0.6s ease forwards;
-  }
+  .success-state { display: none; text-align: center; padding: 80px 0; opacity: 0; animation: fadeIn 0.6s ease forwards; }
   .success-state.visible { display: block; }
-  .success-icon {
-    width: 52px;
-    height: 52px;
-    border: 1px solid rgba(184,154,106,0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 32px;
-  }
-  .success-headline {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    font-weight: 800;
-    color: var(--warm-white);
-    line-height: 1.1;
-    margin-bottom: 20px;
-    letter-spacing: -0.01em;
-  }
+  .success-icon { width: 52px; height: 52px; border: 1px solid rgba(184,154,106,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; }
+  .success-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
   .success-headline em { font-style: italic; color: var(--gold-bright); }
-  .success-body {
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(242,241,238,0.52);
-    line-height: 1.88;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-  .success-rule {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(180deg, var(--gold-rule), transparent);
-    margin: 36px auto;
-  }
-  .success-next {
-    font-size: 13px;
-    font-weight: 300;
-    color: rgba(242,241,238,0.35);
-    line-height: 1.8;
-    font-style: italic;
-  }
+  .success-body { font-size: 15px; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.88; max-width: 420px; margin: 0 auto; }
+  .success-rule { width: 1px; height: 48px; background: linear-gradient(180deg, var(--gold-rule), transparent); margin: 36px auto; }
+  .success-next { font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.35); line-height: 1.8; font-style: italic; }
 
   /* ── FOOTER ── */
   .footer {
@@ -448,7 +369,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .page-wrap { grid-template-columns: 1fr; }
-    .left-panel { position: relative; top: 0; height: auto; padding: 88px 28px 60px; }
+    .left-panel { position: relative; top: 0; height: auto; overflow-y: visible; padding: 88px 28px 60px; }
     .right-panel { padding: 60px 28px 80px; }
     .nav { padding: 14px 24px; }
     .field-group { grid-template-columns: 1fr; }
@@ -488,7 +409,7 @@
         </div>
         <div class="expect-item">
           <span class="expect-num">02</span>
-          <p class="expect-text"><strong>If there is a fit,</strong> you will receive the complimentary In Relationship Reveal™ and a link to book a conversation.</p>
+          <p class="expect-text"><strong>If there is a fit,</strong> you will receive the complimentary Quiet Relationship Reveal™ and a link to book a conversation.</p>
         </div>
         <div class="expect-item">
           <span class="expect-num">03</span>
@@ -504,17 +425,14 @@
   <!-- ══ RIGHT PANEL ══ -->
   <main class="right-panel">
 
-    <!-- Form intro -->
     <div class="form-intro">
       <div class="form-eyebrow">Four questions</div>
       <h2 class="form-headline">Tell us what is<br><em>actually going on.</em></h2>
       <p class="form-subtext">No preamble needed. No polished pitch. Just answer as directly as you can — we read every submission personally.</p>
     </div>
 
-    <!-- THE FORM -->
     <form class="contact-form" id="contactForm" novalidate>
 
-      <!-- Q1 -->
       <div class="field-block" style="--delay: 0.4s">
         <span class="field-label">Question 01</span>
         <p class="field-question">Are you ready for the problem your business is facing to be totally resolved?</p>
@@ -522,7 +440,6 @@
         <textarea name="q1_ready" rows="4" placeholder="Be direct with yourself here…" required></textarea>
       </div>
 
-      <!-- Q2 -->
       <div class="field-block" style="--delay: 0.48s">
         <span class="field-label">Question 02</span>
         <p class="field-question">What has been stopping you from fixing this yourself so far?</p>
@@ -530,7 +447,6 @@
         <textarea name="q2_stopping" rows="4" placeholder="The real answer, not the polished one…" required></textarea>
       </div>
 
-      <!-- Q3 -->
       <div class="field-block" style="--delay: 0.56s">
         <span class="field-label">Question 03</span>
         <p class="field-question">What made you reach out today instead of last month?</p>
@@ -538,7 +454,6 @@
         <textarea name="q3_today" rows="4" placeholder="What changed…" required></textarea>
       </div>
 
-      <!-- Q4 -->
       <div class="field-block" style="--delay: 0.64s">
         <span class="field-label">Question 04</span>
         <p class="field-question">What happens if you do not solve this in the next 90 days?</p>
@@ -548,7 +463,6 @@
 
       <div class="form-divider"></div>
 
-      <!-- Contact fields -->
       <div class="contact-fields">
         <div class="field-group">
           <div class="field-block paired" style="--delay: 0.72s">
@@ -574,7 +488,6 @@
         </div>
       </div>
 
-      <!-- Submit -->
       <div class="submit-area">
         <button type="submit" class="submit-btn">Submit — LinesinTandem™ Will Be In Touch →</button>
         <p class="submit-note">You will receive a confirmation immediately. A personal response follows within one business day.</p>
@@ -582,7 +495,6 @@
 
     </form>
 
-    <!-- SUCCESS STATE -->
     <div class="success-state" id="successState">
       <div class="success-icon">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -592,8 +504,8 @@
       <h2 class="success-headline">Received.<br><em>We will be in touch.</em></h2>
       <p class="success-body">Your submission has been sent. A confirmation is on its way to your inbox, followed by a personal response within one business day.</p>
       <div class="success-rule"></div>
-      <p class="success-next">If you have not yet completed In Relationship Reveal™, it is the right place to start — and it is complimentary.</p>
-      <a href="https://que-athena.github.io/linesintandem/assessment.html" target="_blank" style="display:inline-block; margin-top: 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal-deep); background: var(--gold-bright); padding: 16px 40px; text-decoration: none; transition: background 0.3s, color 0.3s;">Start In Relationship Reveal™ — Complimentary →</a>
+      <p class="success-next">If you have not yet completed the Quiet Relationship Reveal™, it is the right place to start — and it is complimentary.</p>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" target="_blank" style="display:inline-block; margin-top: 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal-deep); background: var(--gold-bright); padding: 16px 40px; text-decoration: none; transition: background 0.3s, color 0.3s;">Start The Quiet Relationship Reveal™ — Complimentary →</a>
     </div>
 
   </main>
@@ -602,8 +514,8 @@
   <footer class="footer">
     <div class="footer-logo">LinesinTandem<sup>™</sup></div>
     <div class="footer-links">
-      <a href="assessment.html" class="footer-link" target="_blank">Relationship Reveal</a>
-      <a href="audit.html" class="footer-link" target="_blank">Relationship Audit</a>
+      <a href="assessment.html" class="footer-link" target="_blank">Quiet Relationship Reveal</a>
+      <a href="audit.html" class="footer-link" target="_blank">Quiet Relationship Audit</a>
       <a href="rit.html" class="footer-link" target="_blank">Revenue in Tandem</a>
     </div>
     <div class="footer-copyright">© 2023–2026 LinesinTandem™. All rights reserved.</div>
@@ -612,10 +524,6 @@
 </div>
 
 <script>
-  // ── GOOGLE FORM SUBMISSION ──
-  // Replace this URL with your actual Google Form action URL
-  // To find it: open your Google Form → right-click → Inspect → find the <form> action attribute
-  // It looks like: https://docs.google.com/forms/d/e/XXXXXXXX/formResponse
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCWkMIgakzpXOaYVgJSfYK6nHpzHxsy0vqjEDgfJo2wh-tXw/formResponse';
 
   const FIELD_MAP = {
@@ -635,7 +543,6 @@
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    // Basic validation
     const required = form.querySelectorAll('[required]');
     let valid = true;
     required.forEach(field => {
@@ -648,12 +555,10 @@
     });
     if (!valid) return;
 
-    // Disable button
     const btn = form.querySelector('.submit-btn');
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    // Build FormData for Google Forms (no-cors iframe trick)
     const data = new FormData(form);
     const googleData = new FormData();
     for (const [key, entryId] of Object.entries(FIELD_MAP)) {
@@ -661,23 +566,18 @@
     }
 
     try {
-      // Submit to Google Forms via no-cors (response is opaque — that is expected)
       await fetch(GOOGLE_FORM_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: googleData,
       });
-    } catch (err) {
-      // no-cors fetch always throws — treat as success if we got here
-    }
+    } catch (err) {}
 
-    // Show success regardless (Google Forms no-cors always returns opaque response)
     form.style.display = 'none';
     successState.classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Clear validation styling on input
   form.querySelectorAll('input, textarea').forEach(field => {
     field.addEventListener('input', () => {
       field.style.borderBottomColor = '';
