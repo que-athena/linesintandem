@@ -3,271 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Relationship Audit™ | LinesinTandem™</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>The Quiet Relationship Audit™ | LinesinTandem™</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Jost:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --taupe: #a7a694;
-    --taupe-dark: #6e6d5c;
     --linen: #e4e2dd;
     --warm-white: #f2f1ee;
     --charcoal: #2b2b2b;
-    --charcoal-deep: #1a1917;
+    --charcoal-deep: #1e1c19;
     --charcoal-mid: #222220;
     --text-body: #4a4a47;
     --text-secondary: #7a7870;
     --gold: #b89a6a;
     --gold-dark: #8a6a48;
-    --gold-bright: #cca96e;
-    --gold-light: #d4bc90;
-    --gold-lighter: #e2cfa4;
-    --gold-rule: rgba(184,154,106,0.28);
-    --eyebrow-on-taupe: rgba(43,43,43,0.52);
-    --eyebrow-on-dark: rgba(212,188,144,0.72);
+    --gold-bright: #c9a96e;
+    --eyebrow-on-taupe: rgba(43,43,43,0.5);
+    --gold-rule: rgba(184,154,106,0.3);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
 
-  /* ── NAV ── */
-  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 52px; display: flex; justify-content: space-between; align-items: center; background: rgba(167,166,148,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(43,43,43,0.1); pointer-events: all; }
+  /* NAV */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 52px; display: flex; justify-content: space-between; align-items: center; background: rgba(167,166,148,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(43,43,43,0.1); }
   .nav-logo { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 600; color: var(--warm-white); letter-spacing: 0.02em; text-decoration: none; }
   .nav-logo sup { font-size: 9px; vertical-align: super; }
   .nav-right { display: flex; align-items: center; gap: 24px; }
-  .nav-link { font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.62); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-link:hover { color: var(--warm-white); }
-  .nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); background: var(--gold); padding: 10px 24px; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .nav-cta { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); background: var(--gold); padding: 10px 24px; text-decoration: none; transition: background 0.3s ease; }
   .nav-cta:hover { background: var(--gold-dark); color: var(--warm-white); }
 
-  /* ── SHARED ── */
-  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 14px; }
-  .section-label.on-dark { color: var(--eyebrow-on-dark); }
-  .section-label.on-taupe { color: var(--eyebrow-on-taupe); }
-  .section-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--charcoal); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 20px; }
-  .section-headline em { font-style: italic; font-weight: 600; color: var(--gold); }
-  .section-headline.on-dark { color: var(--warm-white); }
-  .section-headline.on-dark em { color: var(--gold-bright); }
-  .section-headline.on-taupe { color: var(--charcoal-deep); }
-  .section-headline.on-taupe em { color: var(--warm-white); }
-  .gold-rule { width: 40px; height: 2px; background: var(--gold); margin: 20px 0 28px; }
-  .body-copy { font-size: clamp(15px, 1.8vw, 17px); font-weight: 300; color: var(--text-body); line-height: 1.9; }
-  .body-copy p + p { margin-top: 20px; }
-  .body-copy strong { color: var(--charcoal); font-weight: 500; }
-  .body-copy.on-dark { color: rgba(242,241,238,0.62); }
-  .body-copy.on-dark strong { color: var(--warm-white); font-weight: 400; }
+  /* HERO */
+  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 140px 80px 100px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(242,241,238,0.06) 0%, transparent 50%), radial-gradient(ellipse at 10% 80%, rgba(184,154,106,0.12) 0%, transparent 55%); }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+  .hero-eyebrow { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
+  .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.4rem, 5vw, 4.4rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.05; margin-bottom: 28px; letter-spacing: -0.02em; opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards; }
+  .hero-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
+  .hero-subhead { font-family: 'Noto Serif Display', serif; font-size: clamp(1rem, 2vw, 1.3rem); font-style: italic; font-weight: 300; color: rgba(43,43,43,0.68); line-height: 1.65; margin-bottom: 20px; max-width: 620px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-subhead-2 { font-family: 'Jost', sans-serif; font-size: clamp(13px, 1.5vw, 15px); font-weight: 300; color: rgba(43,43,43,0.52); line-height: 1.8; margin-bottom: 48px; max-width: 560px; opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards; }
+  .hero-cta-group { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; opacity: 0; animation: fadeUp 0.8s ease 0.65s forwards; }
+  .hero-cta-dual { display: flex; flex-direction: column; gap: 8px; }
 
-  /* ── BUTTONS ── */
-  .btn-primary { display: inline-block; background: var(--gold); color: var(--warm-white); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 52px; text-decoration: none; transition: background 0.3s, color 0.3s, transform 0.2s; border: none; cursor: pointer; }
+  /* BUTTONS */
+  .btn-primary { display: inline-block; background: var(--gold); color: var(--warm-white); font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 20px 48px; text-decoration: none; transition: all 0.3s ease; }
   .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); }
   .btn-primary.bright { background: var(--gold-bright); color: var(--charcoal-deep); }
   .btn-primary.bright:hover { background: var(--gold-dark); color: var(--warm-white); transform: translateY(-2px); }
-  .btn-secondary { display: inline-block; background: transparent; font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; padding: 18px 44px; text-decoration: none; transition: all 0.3s; cursor: pointer; }
-  .btn-secondary.light { color: rgba(242,241,238,0.65); border: 1px solid rgba(242,241,238,0.22); }
-  .btn-secondary.light:hover { background: rgba(242,241,238,0.08); color: var(--warm-white); border-color: rgba(242,241,238,0.55); transform: translateY(-2px); }
-  .text-link { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.55); text-decoration: none; letter-spacing: 0.06em; border-bottom: 1px solid rgba(242,241,238,0.2); padding-bottom: 1px; transition: all 0.2s; }
-  .text-link:hover { color: var(--warm-white); border-color: rgba(242,241,238,0.5); }
-  .btn-subtext { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.36); font-style: italic; margin-top: 8px; line-height: 1.65; }
+  .btn-subtext { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.42); font-style: italic; margin-top: 6px; }
+  .text-link { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.55); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s ease; border-bottom: 1px solid rgba(43,43,43,0.2); padding-bottom: 1px; }
+  .text-link:hover { color: var(--charcoal); border-color: rgba(43,43,43,0.5); }
+  .text-link-light { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.55); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s ease; border-bottom: 1px solid rgba(242,241,238,0.2); padding-bottom: 1px; }
+  .text-link-light:hover { color: var(--warm-white); }
+  .btn-secondary { display: inline-block; background: transparent; color: rgba(242,241,238,0.7); font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; padding: 18px 48px; text-decoration: none; transition: all 0.3s ease; border: 1px solid rgba(242,241,238,0.2); }
+  .btn-secondary:hover { border-color: rgba(242,241,238,0.5); color: var(--warm-white); transform: translateY(-2px); }
 
-  /* ── ANIMATIONS ── */
+  /* PROOF STRIP */
+  .proof-strip { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 40%, #d4b896 70%, var(--gold) 100%); padding: 26px 40px; text-align: center; }
+  .proof-strip p { font-family: 'Noto Serif Display', serif; font-style: italic; font-size: clamp(14px, 2vw, 18px); color: var(--warm-white); }
+
+  /* SHARED */
+  .section-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 16px; }
+  .section-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; color: var(--charcoal); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px; }
+  .section-headline em { font-style: italic; font-weight: 600; color: var(--gold); }
+  .gold-rule { width: 40px; height: 2px; background: var(--gold); margin: 20px 0 28px; }
+  .body-copy { font-family: 'Jost', sans-serif; font-size: clamp(15px, 1.8vw, 17px); font-weight: 300; color: var(--text-body); line-height: 1.9; }
+  .body-copy p + p { margin-top: 20px; }
+  .body-copy strong { color: var(--charcoal); font-weight: 500; }
+
+  /* WHAT THIS IS */
+  .what-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
+  .what-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 15%, rgba(184,154,106,0.07) 0%, transparent 55%); }
+  .what-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .what-section .section-label { color: rgba(242,241,238,0.3); }
+  .what-section .section-headline { color: var(--warm-white); }
+  .what-section .section-headline em { color: var(--gold); }
+  .what-section .gold-rule { opacity: 0.7; }
+  .what-section .body-copy { color: rgba(242,241,238,0.65); }
+  .what-section .body-copy strong { color: var(--warm-white); }
+  .what-right { display: flex; flex-direction: column; gap: 2px; }
+  .not-this-item { padding: 22px 26px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); }
+  .not-this-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; }
+  .not-this-label.no { color: rgba(242,241,238,0.25); }
+  .not-this-label.yes { color: var(--gold); }
+  .not-this-text { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.6; }
+  .not-this-item.is-yes { background: rgba(184,154,106,0.07); border-color: rgba(184,154,106,0.25); }
+  .not-this-item.is-yes .not-this-text { color: rgba(242,241,238,0.78); }
+
+  /* DELIVERABLE */
+  .deliverable-section { background: var(--charcoal-deep); padding: 108px 80px; border-top: 1px solid rgba(184,154,106,0.15); border-bottom: 1px solid rgba(184,154,106,0.15); position: relative; overflow: hidden; }
+  .deliverable-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(184,154,106,0.06) 0%, transparent 55%); }
+  .deliverable-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+  .deliverable-header { margin-bottom: 64px; max-width: 600px; }
+  .deliverable-section .section-label { color: var(--gold-bright); opacity: 0.55; }
+  .deliverable-section .section-headline { color: var(--warm-white); }
+  .deliverable-section .section-headline em { color: var(--gold-bright); }
+
+  /* PROJECTION VISUAL */
+  .projection-block { background: rgba(242,241,238,0.04); border: 1px solid rgba(184,154,106,0.2); padding: 40px; margin-bottom: 48px; }
+  .projection-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(242,241,238,0.3); margin-bottom: 8px; }
+  .projection-title { font-family: 'Noto Serif Display', serif; font-size: 1.05rem; font-weight: 600; font-style: italic; color: var(--warm-white); margin-bottom: 28px; line-height: 1.4; }
+  .projection-bars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 20px; }
+  .projection-bar-item { background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); padding: 20px; }
+  .projection-bar-tier { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .projection-bar-value { font-family: 'Noto Serif Display', serif; font-size: 1.6rem; font-weight: 800; font-style: italic; color: rgba(242,241,238,0.25); }
+  .projection-note { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.3); line-height: 1.7; font-style: italic; }
+
+  /* DELIVERABLE CARDS */
+  .deliverable-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .deliverable-card { padding: 36px 32px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); display: flex; gap: 20px; align-items: flex-start; transition: background 0.3s ease, border-color 0.3s ease; }
+  .deliverable-card:hover { background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.3); }
+  .deliverable-card:hover .deliverable-card-text { color: rgba(242,241,238,0.78); }
+  .deliverable-card-num { font-family: 'Noto Serif Display', serif; font-size: 1.8rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.2); line-height: 1; flex-shrink: 0; min-width: 32px; }
+  .deliverable-card-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .deliverable-card-title { font-family: 'Noto Serif Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--warm-white); margin-bottom: 10px; line-height: 1.2; }
+  .deliverable-card-title em { font-style: italic; font-weight: 600; }
+  .deliverable-card-text { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.65; }
+  .deliverable-cta { margin-top: 56px; text-align: center; }
+
+  /* HOW IT WORKS */
+  .how-section { background: var(--linen); padding: 108px 80px; }
+  .how-inner { max-width: 1000px; margin: 0 auto; }
+  .how-header { margin-bottom: 72px; max-width: 600px; }
+  .how-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .how-step { background: var(--warm-white); padding: 44px 40px; border: 1px solid rgba(167,166,148,0.3); transition: border-color 0.3s ease; position: relative; overflow: hidden; }
+  .how-step:hover { border-color: var(--gold); }
+  .how-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.3s ease; }
+  .how-step:hover::before { opacity: 1; }
+  .how-step-num { font-family: 'Noto Serif Display', serif; font-size: 4rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.12); line-height: 1; margin-bottom: 20px; display: block; }
+  .how-step-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .how-step-name { font-family: 'Noto Serif Display', serif; font-size: 1.2rem; font-weight: 800; color: var(--charcoal); margin-bottom: 16px; line-height: 1.2; }
+  .how-step-name em { font-style: italic; font-weight: 600; }
+  .how-step-desc { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.8; }
+
+  /* PROPOSAL */
+  .proposal-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
+  .proposal-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(184,154,106,0.06) 0%, transparent 55%); }
+  .proposal-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .proposal-section .section-label { color: rgba(242,241,238,0.3); }
+  .proposal-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px; }
+  .proposal-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .proposal-body { font-family: 'Jost', sans-serif; font-size: clamp(14px, 1.7vw, 16px); font-weight: 300; color: rgba(242,241,238,0.62); line-height: 1.9; }
+  .proposal-body p + p { margin-top: 18px; }
+  .proposal-body strong { color: var(--warm-white); font-weight: 400; }
+  .proposal-paths { display: flex; flex-direction: column; gap: 2px; }
+  .proposal-path { padding: 28px 30px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); transition: background 0.3s ease; }
+  .proposal-path:hover { background: rgba(242,241,238,0.07); }
+  .proposal-path.featured { background: rgba(184,154,106,0.07); border-color: rgba(184,154,106,0.25); }
+  .proposal-path-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .proposal-path.featured .proposal-path-label { color: var(--gold-bright); }
+  .proposal-path-text { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.6); line-height: 1.75; }
+  .proposal-path.featured .proposal-path-text { color: rgba(242,241,238,0.78); }
+  .proposal-window { margin-top: 24px; padding: 20px 24px; background: rgba(184,154,106,0.06); border: 1px solid rgba(184,154,106,0.18); border-left: 2px solid var(--gold-bright); }
+  .proposal-window p { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.75; }
+  .proposal-window strong { color: rgba(242,241,238,0.8); font-weight: 400; }
+
+  /* WHO THIS IS FOR */
+  .who-section { background: var(--warm-white); padding: 108px 80px; border-top: 1px solid var(--linen); }
+  .who-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .who-cards { display: flex; flex-direction: column; gap: 2px; }
+  .who-card { display: flex; gap: 20px; padding: 24px 20px; background: var(--linen); border: 1px solid rgba(167,166,148,0.3); align-items: flex-start; }
+  .who-card-num { font-family: 'Noto Serif Display', serif; font-size: 1.4rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.3); line-height: 1; flex-shrink: 0; min-width: 28px; padding-top: 2px; }
+  .who-card-text { font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.65; }
+  .who-card-text strong { color: var(--charcoal); font-weight: 500; }
+  .who-note { margin-top: 20px; padding: 20px 24px; background: rgba(43,43,43,0.03); border: 1px solid rgba(167,166,148,0.25); border-left: 2px solid var(--taupe); }
+  .who-note p { font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; font-style: italic; }
+
+  /* INVESTMENT */
+  .investment-section { background: var(--taupe); padding: 108px 80px; position: relative; overflow: hidden; }
+  .investment-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 25%, rgba(184,154,106,0.1) 0%, transparent 55%); }
+  .investment-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .investment-section .section-label { color: var(--eyebrow-on-taupe); }
+  .investment-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(3rem, 6vw, 6rem); font-weight: 800; font-style: italic; color: var(--charcoal-deep); line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .investment-sub { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 28px; }
+  .investment-credit { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); padding: 12px 16px; background: rgba(184,154,106,0.12); border-left: 2px solid var(--gold-dark); margin-bottom: 32px; }
+  .investment-body { font-family: 'Jost', sans-serif; font-size: clamp(14px, 1.7vw, 16px); font-weight: 300; color: rgba(43,43,43,0.72); line-height: 1.85; }
+  .investment-body p + p { margin-top: 16px; }
+  .investment-body strong { color: var(--charcoal); font-weight: 500; }
+  .investment-includes { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(43,43,43,0.12); }
+  .investment-includes-label { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 16px; }
+  .investment-include { display: flex; align-items: flex-start; gap: 12px; font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.7); line-height: 1.5; margin-bottom: 10px; }
+  .investment-include::before { content: ''; width: 5px; height: 5px; min-width: 5px; background: var(--gold-bright); border-radius: 50%; margin-top: 7px; }
+  .investment-include strong { color: var(--charcoal); font-weight: 500; }
+  .investment-right { display: flex; flex-direction: column; gap: 24px; }
+  .investment-cta-block { display: flex; flex-direction: column; gap: 12px; }
+  .investment-note { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.45); font-style: italic; line-height: 1.65; }
+
+  /* CTA */
+  .cta-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(184,154,106,0.07) 0%, transparent 65%); }
+  .cta-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .cta-eyebrow { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(242,241,238,0.3); margin-bottom: 24px; }
+  .cta-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
+  .cta-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .cta-subhead { font-family: 'Jost', sans-serif; font-size: clamp(14px, 1.6vw, 16px); font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.8; margin-bottom: 16px; }
+  .cta-scarcity { font-family: 'Noto Serif Display', serif; font-size: clamp(0.95rem, 1.6vw, 1.15rem); font-weight: 300; color: rgba(242,241,238,0.45); line-height: 1.7; margin-bottom: 8px; }
+  .cta-scarcity em { font-style: italic; color: var(--gold-bright); }
+  .cta-standard { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,241,238,0.22); margin-bottom: 0; }
+  .cta-rule { width: 40px; height: 1px; background: var(--gold-rule); margin: 0 auto 48px; }
+  .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .cta-divider { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 400; color: var(--gold-bright); letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+  .cta-bottom-note { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.25); font-style: italic; margin-top: 20px; line-height: 1.65; max-width: 480px; }
+
+  /* FOOTER */
+  .footer { background: var(--charcoal-deep); padding: 52px 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(184,154,106,0.1); }
+  .footer-logo { font-family: 'Noto Serif Display', serif; font-size: 16px; font-weight: 600; color: rgba(242,241,238,0.32); }
+  .footer-logo sup { font-size: 9px; color: var(--gold); vertical-align: super; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-link { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,241,238,0.35); text-decoration: none; transition: color 0.2s ease; }
+  .footer-link:hover { color: var(--gold); }
+  .footer-tagline { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.25); letter-spacing: 0.14em; text-transform: uppercase; }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ══════════════════════════════════
-     SECTION 1 — HERO
-  ══════════════════════════════════ */
-  .hero { background: var(--taupe); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 80px 100px; position: relative; overflow: hidden; isolation: isolate; text-align: center; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 60%, rgba(184,154,106,0.1) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(242,241,238,0.04) 0%, transparent 50%); }
-  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-  .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
-  .hero-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
-  .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.6rem, 5vw, 4.4rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.04; letter-spacing: -0.02em; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.9s ease 0.25s forwards; }
-  .hero-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
-  .hero-subhead { font-family: 'Noto Serif Display', serif; font-size: clamp(1.05rem, 1.9vw, 1.3rem); font-style: italic; font-weight: 300; color: rgba(43,43,43,0.68); line-height: 1.68; margin-bottom: 14px; max-width: 600px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeUp 0.9s ease 0.4s forwards; }
-  .hero-body { display: inline-block; font-size: clamp(13px, 1.4vw, 15px); font-weight: 300; color: rgba(43,43,43,0.58); line-height: 1.88; margin-bottom: 52px; max-width: 560px; margin-left: auto; margin-right: auto; opacity: 0; animation: fadeUp 0.9s ease 0.5s forwards; background: rgba(43,43,43,0.07); border: 1px solid rgba(43,43,43,0.1); border-left: 3px solid var(--gold-dark); padding: 20px 28px; text-align: left; }
-  .hero-body strong { color: rgba(43,43,43,0.78); font-weight: 500; }
-  .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 16px; opacity: 0; animation: fadeUp 0.9s ease 0.65s forwards; }
-  .hero-price-note { font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.48); font-style: italic; margin-top: 8px; line-height: 1.65; }
-  .hero-secondary { font-size: 12px; font-weight: 300; color: rgba(43,43,43,0.55); text-decoration: none; letter-spacing: 0.06em; border-bottom: 1px solid rgba(43,43,43,0.2); padding-bottom: 1px; transition: all 0.2s; }
-  .hero-secondary:hover { color: var(--charcoal); border-color: rgba(43,43,43,0.5); }
-
-  /* ── PROOF STRIP ── */
-  .proof-strip { background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 38%, #d4b896 68%, var(--gold) 100%); padding: 26px 40px; text-align: center; }
-  .proof-strip p { font-family: 'Noto Serif Display', serif; font-style: italic; font-size: clamp(15px, 2vw, 20px); color: var(--warm-white); letter-spacing: 0.02em; }
-
-  /* ══════════════════════════════════
-     SECTION 2 — WHAT IT IS NOT
-  ══════════════════════════════════ */
-  .not-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
-  .not-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 15%, rgba(184,154,106,0.07) 0%, transparent 55%); }
-  .not-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .not-left {}
-  .not-items { display: flex; flex-direction: column; gap: 2px; }
-  .not-item { padding: 24px 28px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); transition: background 0.3s, border-color 0.3s; cursor: default; }
-  .not-item:hover { background: rgba(242,241,238,0.08); border-color: rgba(242,241,238,0.18); }
-  .not-item.is-yes { background: rgba(184,154,106,0.08); border-color: rgba(184,154,106,0.28); }
-  .not-item.is-yes:hover { background: rgba(184,154,106,0.14); border-color: rgba(184,154,106,0.45); }
-  .not-item-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 8px; color: var(--eyebrow-on-dark); }
-  .not-item.is-yes .not-item-label { color: var(--gold-bright); }
-  .not-item-text { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.65; }
-  .not-item.is-yes .not-item-text { color: rgba(242,241,238,0.82); }
-
-  /* ══════════════════════════════════
-     SECTION 3 — THE QUIET MAP
-  ══════════════════════════════════ */
-  .map-section { background: var(--linen); padding: 108px 80px; }
-  .map-inner { max-width: 1000px; margin: 0 auto; }
-  .map-header { margin-bottom: 64px; }
-  .map-visual { background: var(--charcoal-deep); padding: 56px 60px; margin-bottom: 2px; position: relative; overflow: hidden; }
-  .map-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(184,154,106,0.06) 0%, transparent 50%); }
-  .map-visual-inner { position: relative; z-index: 1; }
-  .map-visual-label { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--eyebrow-on-dark); margin-bottom: 20px; }
-  .map-visual-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.3rem, 2.2vw, 1.8rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 32px; letter-spacing: -0.01em; }
-  .map-visual-headline em { font-style: italic; color: var(--gold-bright); font-weight: 600; }
-
-  /* Simulated chart bars */
-  .map-chart { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
-  .map-bar-row { display: grid; grid-template-columns: 140px 1fr 80px; gap: 16px; align-items: center; }
-  .map-bar-label { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(242,241,238,0.45); text-align: right; }
-  .map-bar-track { height: 28px; background: rgba(242,241,238,0.06); position: relative; overflow: hidden; }
-  .map-bar-fill { height: 100%; position: absolute; left: 0; top: 0; transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-  .map-bar-fill.tier-1 { background: linear-gradient(90deg, var(--gold-dark), var(--gold-bright)); width: 0%; }
-  .map-bar-fill.tier-2 { background: linear-gradient(90deg, rgba(184,154,106,0.6), rgba(184,154,106,0.85)); width: 0%; }
-  .map-bar-fill.tier-3 { background: linear-gradient(90deg, rgba(184,154,106,0.25), rgba(184,154,106,0.45)); width: 0%; }
-  .map-bar-value { font-family: 'Noto Serif Display', serif; font-size: 1rem; font-style: italic; font-weight: 700; color: var(--gold-bright); text-align: right; }
-  .map-bar-value.muted { color: rgba(242,241,238,0.4); }
-  .map-chart-note { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.3); font-style: italic; line-height: 1.65; border-top: 1px solid rgba(242,241,238,0.07); padding-top: 20px; }
-
-  /* Map components */
-  .map-components { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-  .map-component { padding: 32px 36px; background: var(--warm-white); border: 1px solid rgba(167,166,148,0.3); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; cursor: default; }
-  .map-component:hover { background: var(--linen); border-color: rgba(184,154,106,0.45); box-shadow: 0 4px 20px rgba(43,43,43,0.07); }
-  .map-component-num { font-family: 'Noto Serif Display', serif; font-size: 3rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.15); line-height: 1; margin-bottom: 8px; display: block; transition: color 0.3s; }
-  .map-component:hover .map-component-num { color: rgba(184,154,106,0.3); }
-  .map-component-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; display: block; }
-  .map-component-name { font-family: 'Noto Serif Display', serif; font-size: 1.1rem; font-weight: 800; color: var(--charcoal); margin-bottom: 10px; line-height: 1.2; }
-  .map-component-name em { font-style: italic; font-weight: 600; color: var(--gold-dark); }
-  .map-component-desc { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.75; }
-
-  /* ══════════════════════════════════
-     SECTION 4 — HOW IT WORKS
-  ══════════════════════════════════ */
-  .how-section { background: var(--warm-white); padding: 108px 80px; }
-  .how-inner { max-width: 1000px; margin: 0 auto; }
-  .how-header { margin-bottom: 64px; max-width: 580px; }
-  .how-steps { display: flex; flex-direction: column; gap: 2px; }
-  .how-step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; padding: 36px 0; border-bottom: 1px solid var(--linen); }
-  .how-step:last-child { border-bottom: none; }
-  .how-step-num { font-family: 'Noto Serif Display', serif; font-size: 3.5rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.18); line-height: 1; padding-top: 4px; }
-  .how-step-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .how-step-name { font-family: 'Noto Serif Display', serif; font-size: 1.2rem; font-weight: 800; color: var(--charcoal); margin-bottom: 10px; line-height: 1.2; }
-  .how-step-name em { font-style: italic; font-weight: 600; }
-  .how-step-desc { font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.82; }
-  .how-step-detail { margin-top: 14px; padding: 16px 20px; background: var(--linen); border-left: 2px solid var(--gold); font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.72; font-style: italic; }
-
-  /* ══════════════════════════════════
-     SECTION 5 — THE PROPOSAL
-  ══════════════════════════════════ */
-  .proposal-section { background: var(--taupe); padding: 108px 80px; position: relative; overflow: hidden; }
-  .proposal-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 20%, rgba(184,154,106,0.1) 0%, transparent 55%); }
-  .proposal-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .proposal-left {}
-  .proposal-right { display: flex; flex-direction: column; gap: 2px; }
-  .proposal-card { padding: 28px 32px; background: rgba(43,43,43,0.06); border: 1px solid rgba(43,43,43,0.1); transition: color 0.3s; cursor: default; }
-  .proposal-card:hover .proposal-card-label { color: var(--gold-dark); }
-  .proposal-card:hover .proposal-card-text { color: var(--warm-white); }
-  .proposal-card.featured { background: rgba(43,43,43,0.1); border-color: rgba(43,43,43,0.18); border-left: 3px solid var(--gold-dark); }
-  .proposal-card.featured:hover .proposal-card-label { color: var(--gold-dark); }
-  .proposal-card.featured:hover .proposal-card-text { color: var(--warm-white); }
-  .proposal-card-label { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 8px; transition: color 0.3s; }
-  .proposal-card.featured .proposal-card-label { color: var(--gold-dark); }
-  .proposal-card-text { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.72); line-height: 1.72; transition: color 0.3s; }
-  .proposal-card.featured .proposal-card-text { color: rgba(242,241,238,0.82); }
-
-  /* ══════════════════════════════════
-     SECTION 6 — WHO THIS IS FOR
-  ══════════════════════════════════ */
-  .who-section { background: var(--charcoal); padding: 108px 80px; position: relative; overflow: hidden; }
-  .who-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(184,154,106,0.06) 0%, transparent 55%); }
-  .who-inner { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .who-right { display: flex; flex-direction: column; gap: 2px; }
-  .who-criterion { padding: 22px 28px; background: rgba(242,241,238,0.04); border: 1px solid rgba(242,241,238,0.08); font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.55); line-height: 1.8; display: flex; align-items: flex-start; gap: 16px; transition: background 0.3s, border-color 0.3s; cursor: default; }
-  .who-criterion:hover { background: rgba(242,241,238,0.09); border-color: rgba(184,154,106,0.28); color: rgba(242,241,238,0.72); }
-  .who-criterion-num { font-family: 'Noto Serif Display', serif; font-size: 1.8rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.2); line-height: 1; flex-shrink: 0; min-width: 24px; transition: color 0.3s; }
-  .who-criterion:hover .who-criterion-num { color: rgba(184,154,106,0.4); }
-  .who-criterion strong { color: rgba(242,241,238,0.82); font-weight: 400; }
-  .who-criterion:hover strong { color: var(--warm-white); }
-  .who-not { margin-top: 20px; padding: 24px 28px; background: rgba(242,241,238,0.03); border: 1px solid rgba(242,241,238,0.07); border-left: 2px solid rgba(167,166,148,0.4); }
-  .who-not-text { font-size: 13px; font-weight: 300; color: rgba(242,241,238,0.35); line-height: 1.8; font-style: italic; }
-
-  /* ══════════════════════════════════
-     SECTION 7 — INVESTMENT
-  ══════════════════════════════════ */
-  .investment-section { background: var(--warm-white); padding: 108px 80px; border-top: 1px solid var(--linen); }
-  .investment-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .investment-left {}
-  .investment-price { font-family: 'Noto Serif Display', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; font-style: italic; color: var(--charcoal); line-height: 1; margin-bottom: 8px; }
-  .investment-price-label { font-size: 12px; font-weight: 300; color: var(--text-secondary); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 36px; }
-  .investment-credit { padding: 20px 24px; background: var(--linen); border-left: 3px solid var(--gold); margin-bottom: 32px; }
-  .investment-credit-text { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.72; }
-  .investment-credit-text strong { color: var(--charcoal); font-weight: 500; }
-  .investment-keep { padding: 20px 24px; background: rgba(43,43,43,0.03); border: 1px solid rgba(167,166,148,0.25); border-left: 2px solid var(--taupe); margin-bottom: 32px; }
-  .investment-keep-text { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.72; font-style: italic; }
-  .investment-right { display: flex; flex-direction: column; gap: 2px; }
-  .investment-includes-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px; }
-  .investment-include { padding: 20px 24px; background: var(--linen); border: 1px solid rgba(167,166,148,0.3); display: flex; align-items: flex-start; gap: 16px; font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.65; transition: border-color 0.3s; }
-  .investment-include:hover { border-color: rgba(184,154,106,0.4); }
-  .investment-include::before { content: ''; width: 5px; height: 5px; min-width: 5px; background: var(--gold); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
-  .investment-include strong { color: var(--charcoal); font-weight: 500; }
-
-  /* ══════════════════════════════════
-     SECTION 8 — FINAL CTA
-  ══════════════════════════════════ */
-  .final-section { background: var(--charcoal-deep); padding: 120px 80px; text-align: center; position: relative; overflow: hidden; }
-  .final-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(184,154,106,0.09) 0%, transparent 55%); }
-  .final-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-  .final-label { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(242,241,238,0.22); margin-bottom: 48px; }
-  .final-statement { font-family: 'Noto Serif Display', serif; font-size: clamp(1.2rem, 2.2vw, 1.65rem); font-style: italic; font-weight: 300; color: rgba(242,241,238,0.62); line-height: 1.82; margin-bottom: 48px; }
-  .final-statement em { font-style: normal; font-weight: 400; color: var(--warm-white); }
-  .final-rule { width: 1px; height: 52px; background: linear-gradient(180deg, var(--gold-rule), transparent); margin: 0 auto 48px; }
-  .final-scarcity { font-family: 'Noto Serif Display', serif; font-size: clamp(0.95rem, 1.6vw, 1.15rem); font-weight: 300; color: rgba(242,241,238,0.45); line-height: 1.7; margin-bottom: 8px; }
-  .final-scarcity em { font-style: italic; color: var(--gold-bright); font-weight: 400; }
-  .final-standard { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(242,241,238,0.22); margin-bottom: 56px; }
-  .final-cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .final-divider { font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-lighter); opacity: 0.6; }
-
-  /* ── FOOTER ── */
-  .footer { background: var(--charcoal-deep); padding: 52px 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid rgba(184,154,106,0.1); }
-  .footer-logo { font-family: 'Noto Serif Display', serif; font-size: 16px; font-weight: 600; color: rgba(242,241,238,0.32); letter-spacing: 0.02em; }
-  .footer-logo sup { font-size: 8px; vertical-align: super; }
-  .footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
-  .footer-link { font-size: 10px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,241,238,0.38); text-decoration: none; transition: color 0.2s; }
-  .footer-link:hover { color: var(--gold); }
-  .footer-tagline { font-family: 'Noto Serif Display', serif; font-size: 12px; font-style: italic; font-weight: 300; color: rgba(242,241,238,0.3); }
-  .footer-bottom { width: 100%; border-top: 1px solid rgba(242,241,238,0.08); padding-top: 16px; margin-top: 4px; }
-  .footer-copyright { font-size: 10px; font-weight: 300; color: rgba(242,241,238,0.28); letter-spacing: 0.08em; }
-
-  /* ── MID-PAGE CTA ── */
-  .midpage-cta { background: var(--charcoal-mid); padding: 64px 80px; text-align: center; border-top: 1px solid rgba(184,154,106,0.12); border-bottom: 1px solid rgba(184,154,106,0.12); }
-  .midpage-cta-inner { max-width: 600px; margin: 0 auto; }
-  .midpage-cta-text { font-family: 'Noto Serif Display', serif; font-size: clamp(1rem, 1.8vw, 1.2rem); font-style: italic; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.72; margin-bottom: 28px; }
-  .midpage-cta-note { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.3); font-style: italic; margin-top: 10px; line-height: 1.65; }
-
-  /* ── SCROLL TO TOP ── */
-  .scroll-top { position: fixed; bottom: 32px; right: 32px; z-index: 500; width: 44px; height: 44px; background: var(--gold); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, background 0.2s; pointer-events: none; }
-  .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-  .scroll-top:hover { background: var(--gold-dark); }
-  .scroll-top svg { display: block; }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .nav { padding: 14px 24px; }
-    .hero { padding: 110px 28px 80px; }
-    .not-inner, .proposal-inner, .who-inner, .investment-inner { grid-template-columns: 1fr; gap: 48px; }
-    .map-components { grid-template-columns: 1fr; }
-    .map-bar-row { grid-template-columns: 100px 1fr 70px; }
-    .not-section, .map-section, .how-section, .proposal-section, .who-section, .investment-section, .final-section, .midpage-cta { padding: 72px 28px; }
-    .how-step { grid-template-columns: 52px 1fr; gap: 20px; }
-    .footer { padding: 40px 28px; flex-direction: column; align-items: flex-start; }
+    .nav { padding: 16px 24px; }
+    .hero { padding: 110px 32px 80px; }
+    .what-inner, .proposal-inner, .who-inner, .investment-inner { grid-template-columns: 1fr; gap: 48px; }
+    .how-steps, .deliverable-cards, .projection-bars { grid-template-columns: 1fr; }
+    .what-section, .deliverable-section, .how-section, .proposal-section, .who-section, .investment-section, .cta-section { padding: 72px 32px; }
+    .footer { padding: 40px 32px; flex-direction: column; align-items: flex-start; gap: 20px; }
   }
 </style>
 </head>
@@ -275,149 +232,130 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://que-athena.github.io/linesintandem/" class="nav-logo" target="_blank">LinesinTandem<sup>™</sup></a>
+  <a href="https://que-athena.github.io/linesintandem/" class="nav-logo" target="_blank" rel="noopener">LinesinTandem<sup>™</sup></a>
   <div class="nav-right">
-    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="nav-cta" target="_blank">Begin the Audit →</a>
+    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="nav-cta" target="_blank" rel="noopener">Begin the Audit →</a>
   </div>
 </nav>
 
-<!-- ══ SECTION 1: HERO ══ -->
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-inner">
-    <div class="hero-eyebrow">In Relationship Audit™ — LinesinTandem™</div>
-    <h1 class="hero-headline">
-      A precise visual picture of<br>where your client revenue<br><em>is waiting to be recovered.</em>
-    </h1>
+    <div class="hero-eyebrow">Quiet Relationship Audit™ — LinesinTandem™</div>
+    <h1 class="hero-headline">A precise visual picture of<br>where your client revenue<br><em>is waiting to be recovered.</em></h1>
     <p class="hero-subhead">Before you commit to a sprint. Before you commit to anything. A complete diagnostic of your client relationships, your experience gaps, and the exact revenue your quiet list represents.</p>
-    <p class="hero-body">Not a strategy session. Not a discovery call. A named deliverable — In The Quiet Map™ — built specifically around your business and delivered within five business days of your intake submission. Built on fifteen years of running a six-figure beauty business where relationships were the only growth strategy that mattered.</p>
+    <p class="hero-subhead-2">Not a strategy session. Not a discovery call. A named deliverable — In The Quiet Map™ — built specifically around your business and delivered within five business days of your intake submission. The methodology behind fifteen years of running a six-figure business where relationships were the only growth strategy that mattered.</p>
     <div class="hero-cta-group">
-      <div>
-        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
-        <p class="hero-price-note">Credited in full toward Revenue in Tandem™. No sprint commitment required.</p>
+      <div class="hero-cta-dual">
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank" rel="noopener">Begin The Quiet Relationship Audit™ — $1,500 →</a>
+        <p class="btn-subtext">Credited in full toward Revenue in Tandem™. No sprint commitment required.</p>
       </div>
-      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="hero-secondary" target="_blank">Not ready? Start with In Relationship Reveal™ — Complimentary →</a>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="text-link" target="_blank" rel="noopener">Not ready? Start with The Quiet Relationship Reveal™ — Complimentary →</a>
     </div>
   </div>
 </section>
 
 <!-- PROOF STRIP -->
 <div class="proof-strip">
-  <p>In Relationship Reveal™ showed you the gap. In Relationship Audit™ shows you what it is worth.</p>
+  <p>The Quiet Relationship Reveal™ showed you the gap. The Quiet Relationship Audit™ shows you what it is worth.</p>
 </div>
 
-<!-- ══ SECTION 2: WHAT IT IS / IS NOT ══ -->
-<section class="not-section" id="what">
-  <div class="not-inner">
-    <div class="not-left">
-      <div class="section-label on-dark">What this is</div>
-      <h2 class="section-headline on-dark">Not a report.<br><em>A picture.</em></h2>
+<!-- WHAT THIS IS -->
+<section class="what-section" id="what">
+  <div class="what-inner">
+    <div class="what-left">
+      <div class="section-label">What this is</div>
+      <h2 class="section-headline">Not a report.<br><em>A picture.</em></h2>
       <div class="gold-rule"></div>
-      <div class="body-copy on-dark">
-        <p>Most diagnostics hand you a document and leave you to figure out what it means. In Relationship Audit™ is different. It starts with a visual — a projected picture of what your quiet client relationships are worth and how recoverable they are — and builds everything else around what that picture reveals.</p>
+      <div class="body-copy">
+        <p>Most diagnostics hand you a document and leave you to figure out what it means. The Quiet Relationship Audit™ is different. It starts with a visual — a projected picture of what your quiet client relationships are worth and how recoverable they are — and builds everything else around what that picture reveals.</p>
         <p>It is asynchronous, private, and built entirely around your business. No calls. No group sessions. No waiting rooms. One business. One lead strategist. Complete clarity on where the revenue is, what is breaking down, and exactly what it would take to recover it.</p>
       </div>
     </div>
-    <div class="not-items">
-      <div class="not-item">
-        <div class="not-item-label">Not this</div>
-        <div class="not-item-text">A generic strategy template with your name on it</div>
-      </div>
-      <div class="not-item">
-        <div class="not-item-label">Not this</div>
-        <div class="not-item-text">A discovery call that leaves the work to you</div>
-      </div>
-      <div class="not-item">
-        <div class="not-item-label">Not this</div>
-        <div class="not-item-text">A report full of observations with no path forward</div>
-      </div>
-      <div class="not-item">
-        <div class="not-item-label">Not this</div>
-        <div class="not-item-text">A sprint commitment before you have seen the numbers</div>
-      </div>
-      <div class="not-item is-yes">
-        <div class="not-item-label">This</div>
-        <div class="not-item-text">A visual projection of your recoverable revenue. A complete analysis of your experience gaps. A written strategy brief. A personal Loom walkthrough. And a custom sprint proposal built around your specific business — if the numbers support it.</div>
-      </div>
+    <div class="what-right">
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A generic strategy template with your name on it</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A discovery call that leaves the work to you</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A report full of observations with no path forward</div></div>
+      <div class="not-this-item"><div class="not-this-label no">Not this</div><div class="not-this-text">A sprint commitment before you have seen the numbers</div></div>
+      <div class="not-this-item is-yes"><div class="not-this-label yes">This</div><div class="not-this-text">A visual projection of your recoverable revenue. A complete analysis of your experience gaps. A written strategy brief. A personal Loom walkthrough. And a custom sprint proposal built around your specific business — if the numbers support it.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 3: THE QUIET MAP ══ -->
-<section class="map-section" id="quietmap">
-  <div class="map-inner">
-    <div class="map-header">
+<!-- THE DELIVERABLE -->
+<section class="deliverable-section" id="deliverable">
+  <div class="deliverable-inner">
+    <div class="deliverable-header">
       <div class="section-label">The deliverable</div>
       <h2 class="section-headline">Everything is inside<br><em>In The Quiet Map™.</em></h2>
-      <div class="gold-rule"></div>
-      <p class="body-copy" style="max-width:640px;">In The Quiet Map™ is not a component of the audit. It is the audit. A single named deliverable that contains everything LinesinTandem™ produces — starting with what you can see before a single word of analysis is written.</p>
+      <div class="gold-rule" style="background: var(--gold-bright); opacity: 0.7;"></div>
+      <p style="font-family:'Jost',sans-serif;font-size:clamp(14px,1.6vw,16px);font-weight:300;color:rgba(242,241,238,0.62);line-height:1.9;">In The Quiet Map™ is not a component of the audit. It is the audit. A single named deliverable that contains everything LinesinTandem™ produces — starting with what you can see before a single word of analysis is written.</p>
     </div>
 
-    <!-- Simulated chart -->
-    <div class="map-visual">
-      <div class="map-visual-inner">
-        <div class="map-visual-label">Projected Revenue Recovery — MedSpa · 847 Quiet Contacts · Avg $480 Per Visit</div>
-        <h3 class="map-visual-headline">Your quiet list, <em>visualized by tier.</em></h3>
-        <div class="map-chart" id="mapChart">
-          <div class="map-bar-row">
-            <div class="map-bar-label">High Priority</div>
-            <div class="map-bar-track"><div class="map-bar-fill tier-1" id="bar1"></div></div>
-            <div class="map-bar-value" id="val1">$0</div>
-          </div>
-          <div class="map-bar-row">
-            <div class="map-bar-label">Mid-Range</div>
-            <div class="map-bar-track"><div class="map-bar-fill tier-2" id="bar2"></div></div>
-            <div class="map-bar-value" id="val2">$0</div>
-          </div>
-          <div class="map-bar-row">
-            <div class="map-bar-label">Dormant</div>
-            <div class="map-bar-track"><div class="map-bar-fill tier-3" id="bar3"></div></div>
-            <div class="map-bar-value muted" id="val3">$0</div>
-          </div>
+    <div class="projection-block">
+      <div class="projection-label">Projected Revenue Recovery — MedSpa · 847 Quiet Contacts · Avg $480 Per Visit</div>
+      <div class="projection-title">Your quiet list, visualized by tier.</div>
+      <div class="projection-bars">
+        <div class="projection-bar-item">
+          <div class="projection-bar-tier">High Priority</div>
+          <div class="projection-bar-value">$0</div>
         </div>
-        <p class="map-chart-note">Example output based on a qualifying MedSpa with 847 quiet contacts, $480 average service value, and a 4-visit annual frequency. High Priority tier = top 15% of spenders with 70%+ recovery probability. Mid-Range = 35% of list at 40% probability. Dormant = remaining contacts at 18% probability. Your numbers are built from your actual intake data — these are representative projections only.</p>
+        <div class="projection-bar-item">
+          <div class="projection-bar-tier">Mid-Range</div>
+          <div class="projection-bar-value">$0</div>
+        </div>
+        <div class="projection-bar-item">
+          <div class="projection-bar-tier">Long-Term</div>
+          <div class="projection-bar-value">$0</div>
+        </div>
+      </div>
+      <p class="projection-note">Example output based on a qualifying MedSpa with 847 quiet contacts, $480 average service value, and a 4-visit annual frequency. High Priority tier = top 15% of spenders with 70%+ recovery probability. Mid-Range = 35% of list at 40% probability. Long-Term = remaining contacts at 18% probability. Your numbers are built from your actual intake data — these are representative projections only.</p>
+    </div>
+
+    <div class="deliverable-cards">
+      <div class="deliverable-card">
+        <div class="deliverable-card-num">01</div>
+        <div>
+          <div class="deliverable-card-label">Visual · Projected Revenue by Tier</div>
+          <div class="deliverable-card-title">The Visual <em>Projection</em></div>
+          <p class="deliverable-card-text">A tiered chart of your quiet relationships — estimated count, projected revenue by recovery probability, and what the numbers look like before and after reactivation. Built from your intake form and publicly available business data before list access is established.</p>
+        </div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-card-num">02</div>
+        <div>
+          <div class="deliverable-card-label">Audit · Website · Reviews · Social · Booking</div>
+          <div class="deliverable-card-title">The Outside <em>View™</em></div>
+          <p class="deliverable-card-text">A complete audit of your business from the client's perspective — website, reviews, social presence, booking flow, and visible post-visit follow-up. What a client sees, feels, and decides before and after they engage. Where the experience breaks down. Where the relationship goes quiet. The findings form the foundation the sprint is built on.</p>
+        </div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-card-num">03</div>
+        <div>
+          <div class="deliverable-card-label">Gaps · Root Causes · Execution Plan</div>
+          <div class="deliverable-card-title">The Written <em>Strategy Brief</em></div>
+          <p class="deliverable-card-text">Your specific gaps, their root causes, and a sequenced plan of execution built around what will generate results fastest. Written observations from your intake submission and private assessment responses, cross-referenced with The Outside View™ findings.</p>
+        </div>
+      </div>
+      <div class="deliverable-card">
+        <div class="deliverable-card-num">04</div>
+        <div>
+          <div class="deliverable-card-label">Personal · Recorded · Walkthrough</div>
+          <div class="deliverable-card-title">The Personal <em>Loom Walkthrough</em></div>
+          <p class="deliverable-card-text">A recorded video from the lead strategist walking you through every element of your In The Quiet Map™ — the visual, the findings, the brief, and the proposal. So nothing requires interpretation. You watch it once and you know exactly what it means for your business.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Four components -->
-    <div class="map-components">
-      <div class="map-component">
-        <span class="map-component-num">01</span>
-        <div class="map-component-tag">Visual · Projected Revenue by Tier</div>
-        <div class="map-component-name">The Visual <em>Projection</em></div>
-        <div class="map-component-desc">A tiered chart of your quiet relationships — estimated count, projected revenue by recovery probability, and what the numbers look like before and after reactivation. Built from your intake form and publicly available business data before list access is established.</div>
-      </div>
-      <div class="map-component">
-        <span class="map-component-num">02</span>
-        <div class="map-component-tag">Audit · Website · Reviews · Social · Booking</div>
-        <div class="map-component-name">The Outside <em>View™</em></div>
-        <div class="map-component-desc">A personal audit of your business from the outside — website, reviews, social presence, testimonials, booking flow, and visible follow-up practices. What a client sees, feels, and decides before and after they engage with your business. Where the experience breaks down. Where the relationship goes quiet.</div>
-      </div>
-      <div class="map-component">
-        <span class="map-component-num">03</span>
-        <div class="map-component-tag">Gaps · Root Causes · Execution Plan</div>
-        <div class="map-component-name">The Written <em>Strategy Brief</em></div>
-        <div class="map-component-desc">Your specific gaps, their root causes, and a sequenced plan of execution built around what will generate results fastest. Written observations from your intake submission and private assessment responses, cross-referenced with The Outside View™ findings.</div>
-      </div>
-      <div class="map-component">
-        <span class="map-component-num">04</span>
-        <div class="map-component-tag">Personal · Recorded · Walkthrough</div>
-        <div class="map-component-name">The Personal <em>Loom Walkthrough</em></div>
-        <div class="map-component-desc">A recorded video from the lead strategist walking you through every element of your In The Quiet Map™ — the visual, the findings, the brief, and the proposal. So nothing requires interpretation. You watch it once and you know exactly what it means for your business.</div>
-      </div>
+    <div class="deliverable-cta">
+      <p style="font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:rgba(242,241,238,0.4);margin-bottom:24px;letter-spacing:0.04em;">Your In The Quiet Map™ is built from your specific data and delivered within five business days of your intake submission.</p>
+      <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank" rel="noopener">Begin The Quiet Relationship Audit™ — $1,500 →</a>
+      <p style="font-family:'Jost',sans-serif;font-size:12px;font-weight:300;color:rgba(242,241,238,0.3);font-style:italic;margin-top:10px;">Credited in full toward Revenue in Tandem™. No sprint commitment required.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ MID-PAGE CTA ══ -->
-<div class="midpage-cta">
-  <div class="midpage-cta-inner">
-    <p class="midpage-cta-text">Your In The Quiet Map™ is built from your specific data and delivered within five business days of your intake submission.</p>
-    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
-    <p class="midpage-cta-note">Credited in full toward Revenue in Tandem™. No sprint commitment required.</p>
-  </div>
-</div>
-
-<!-- ══ SECTION 4: HOW IT WORKS ══ -->
+<!-- HOW IT WORKS -->
 <section class="how-section" id="how">
   <div class="how-inner">
     <div class="how-header">
@@ -427,159 +365,157 @@
       <p class="body-copy">Fully asynchronous. You move at your pace. The clock starts when you submit your intake — not when you purchase.</p>
     </div>
     <div class="how-steps">
+
       <div class="how-step">
-        <div class="how-step-num">01</div>
-        <div class="how-step-content">
-          <div class="how-step-label">Purchase</div>
-          <div class="how-step-name">You begin <em>immediately.</em></div>
-          <div class="how-step-desc">Your confirmation page and confirmation email deliver two things instantly — a link to the private client assessment and a link to your intake form. No waiting. No scheduling. The intake form saves your progress automatically so you can complete it at your own pace.</div>
-          <div class="how-step-detail">The private assessment is exclusive to audit clients and is your starting point if you have not yet completed In Relationship Reveal™. If you have already completed it publicly, your intake form is the next step — you can move straight there.</div>
-        </div>
+        <span class="how-step-num">01</span>
+        <div class="how-step-label">Purchase</div>
+        <div class="how-step-name">You begin <em>immediately.</em></div>
+        <p class="how-step-desc">Your confirmation page and confirmation email deliver two things instantly — a link to the private client assessment and a link to your intake form. No waiting. No scheduling. The intake form saves your progress automatically so you can complete it at your own pace. The private assessment is exclusive to audit clients and is your starting point if you have not yet completed The Quiet Relationship Reveal™. If you have already completed it, your intake form is the next step.</p>
       </div>
+
       <div class="how-step">
-        <div class="how-step-num">02</div>
-        <div class="how-step-content">
-          <div class="how-step-label">Intake</div>
-          <div class="how-step-name">You complete your <em>submission.</em></div>
-          <div class="how-step-desc">Your intake form covers your business profile, revenue data, contact list details, platform access, brand voice, and what you want the audit to address. The more specific your answers, the more precise your In The Quiet Map™ will be. Your five-business-day delivery window starts the moment your completed intake is received.</div>
-        </div>
+        <span class="how-step-num">02</span>
+        <div class="how-step-label">Intake</div>
+        <div class="how-step-name">You complete your <em>submission.</em></div>
+        <p class="how-step-desc">Your intake form covers your business profile, revenue data, contact list details, platform access, brand voice, and what you want the audit to address. The more specific your answers, the more precise your In The Quiet Map™ will be. Your five-business-day delivery window starts the moment your completed intake is received.</p>
       </div>
+
       <div class="how-step">
-        <div class="how-step-num">03</div>
-        <div class="how-step-content">
-          <div class="how-step-label">Production</div>
-          <div class="how-step-name">We build your <em>In The Quiet Map™.</em></div>
-          <div class="how-step-desc">The lead strategist reviews your intake responses and assessment, conducts a complete Outside View™ of your public-facing business, constructs the visual revenue projection, writes the strategy brief, records the personal Loom walkthrough, and builds your sprint proposal.</div>
-          <div class="how-step-detail">No outsourcing. No templates. One business. One lead strategist. Every element built from your specific data.</div>
-        </div>
+        <span class="how-step-num">03</span>
+        <div class="how-step-label">Production</div>
+        <div class="how-step-name">We build your <em>In The Quiet Map™.</em></div>
+        <p class="how-step-desc">The lead strategist reviews your intake responses and assessment, conducts a complete Outside View™ of your public-facing business, constructs the visual revenue projection, writes the strategy brief, records the personal Loom walkthrough, and builds your sprint proposal. No outsourcing. No templates. One business. One lead strategist. Every element built from your specific data.</p>
       </div>
+
       <div class="how-step">
-        <div class="how-step-num">04</div>
-        <div class="how-step-content">
-          <div class="how-step-label">Delivery</div>
-          <div class="how-step-name">Your In The Quiet Map™ <em>arrives.</em></div>
-          <div class="how-step-desc">Your complete In The Quiet Map™ is delivered to your inbox within five business days of your intake submission. The visual projection, The Outside View™ findings, the written brief, and the personal Loom walkthrough — everything in one delivery. Your sprint proposal arrives with it.</div>
-        </div>
+        <span class="how-step-num">04</span>
+        <div class="how-step-label">Delivery</div>
+        <div class="how-step-name">Your In The Quiet Map™ <em>arrives.</em></div>
+        <p class="how-step-desc">Your complete In The Quiet Map™ is delivered to your inbox within five business days of your intake submission. The visual projection, The Outside View™ findings, the written brief, and the personal Loom walkthrough — everything in one delivery. Your sprint proposal arrives with it.</p>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 5: THE PROPOSAL ══ -->
+<!-- THE PROPOSAL -->
 <section class="proposal-section" id="proposal">
   <div class="proposal-inner">
-    <div class="proposal-left">
-      <div class="section-label on-taupe">Inside your In The Quiet Map™</div>
-      <h2 class="section-headline on-taupe">Your sprint proposal<br>arrives <em>with it.</em></h2>
-      <div class="gold-rule"></div>
-      <div class="body-copy">
+    <div>
+      <div class="section-label">Inside your In The Quiet Map™</div>
+      <h2 class="proposal-headline">Your sprint proposal<br>arrives <em>with it.</em></h2>
+      <div class="gold-rule" style="background: var(--gold-bright);"></div>
+      <div class="proposal-body">
         <p>Every In The Quiet Map™ includes a <strong>custom sprint proposal built around your specific findings.</strong> It is not a generic offer — it is a <strong>scoped, priced engagement</strong> built on what your audit actually reveals about your business.</p>
-        <p>The proposal reflects <strong>your business right now.</strong> Your list. Your numbers. Your available window. Six months from now those projections look different and the available slot looks different. The proposal is <strong>a snapshot of what is possible today</strong> — and it carries a <strong>seven-day response window</strong> from delivery.</p>
-        <p>We understand the sprint is not right for every business at every stage. The proposal will tell you clearly <strong>which path makes sense</strong> — and if the timing or fit is not right for Revenue in Tandem™, we will say so directly rather than offer something that does not serve you.</p>
+        <p>The proposal reflects <strong>your business right now.</strong> Your list. Your numbers. Your available window. The proposal is <strong>a snapshot of what is possible today</strong> — and it carries a <strong>seven-day response window</strong> from delivery.</p>
+        <p>If the sprint is the right next step, the proposal includes the commitment: <strong>a minimum of 20 confirmed bookings from clients who went quiet, within 90 days</strong> — or we continue working at no additional cost until that commitment is met. The Encore Experience™ is included for every returning client. Everything runs on Tandem OS.</p>
+        <p>We understand the sprint is not right for every business at every stage. The proposal will tell you clearly <strong>which path makes sense</strong> — and if the timing or fit is not right, we will say so directly.</p>
       </div>
     </div>
-    <div class="proposal-right">
-      <div class="proposal-card featured">
-        <div class="proposal-card-label">If the sprint is right for you</div>
-        <div class="proposal-card-text">A fully scoped Revenue in Tandem™ proposal — investment, payment schedule, sprint start date, and the specific reactivation strategy your audit findings support. Your $1,500 audit investment is credited in full.</div>
+    <div>
+      <div class="proposal-paths">
+        <div class="proposal-path featured">
+          <div class="proposal-path-label">If the sprint is right for you</div>
+          <p class="proposal-path-text">A fully scoped Revenue in Tandem™ proposal — investment, payment schedule, sprint start date, and the specific reactivation strategy your audit findings support. Your $1,500 audit investment is credited in full.</p>
+        </div>
+        <div class="proposal-path">
+          <div class="proposal-path-label">If a standalone offering makes more sense</div>
+          <p class="proposal-path-text">A recommendation for a more appropriate next step based on your current list size, revenue profile, or business stage — with a clear explanation of why and what to do first.</p>
+        </div>
+        <div class="proposal-path">
+          <div class="proposal-path-label">If the timing is not right</div>
+          <p class="proposal-path-text">An honest note that now is not the right moment — and what would need to be true before it is. LinesinTandem™ does not take engagements we cannot deliver on. The audit exists to tell the truth.</p>
+        </div>
       </div>
-      <div class="proposal-card">
-        <div class="proposal-card-label">If a standalone offering makes more sense</div>
-        <div class="proposal-card-text">A recommendation for a more appropriate next step based on your current list size, revenue profile, or business stage — with a clear explanation of why and what to do first.</div>
-      </div>
-      <div class="proposal-card">
-        <div class="proposal-card-label">If the timing is not right</div>
-        <div class="proposal-card-text">An honest note that now is not the right moment — and what would need to be true before it is. LinesinTandem™ does not take engagements we cannot deliver on. The audit exists to tell the truth.</div>
-      </div>
-      <div class="proposal-card">
-        <div class="proposal-card-label">The response window</div>
-        <div class="proposal-card-text">Seven days from proposal delivery. The numbers in your proposal reflect your business today — and our capacity reflects today's availability. Both change. The window exists because the proposal is real, not open-ended.</div>
+      <div class="proposal-window">
+        <p><strong>The response window is seven days from proposal delivery.</strong> The numbers in your proposal reflect your business today — and our capacity reflects today's availability. Both change. The window exists because the proposal is real, not open-ended.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 6: WHO THIS IS FOR ══ -->
+<!-- WHO THIS IS FOR -->
 <section class="who-section" id="who">
   <div class="who-inner">
-    <div class="who-left">
-      <div class="section-label on-dark">Who this is for</div>
-      <h2 class="section-headline on-dark">Built for businesses<br>ready to see the<br><em>number directly.</em></h2>
+    <div>
+      <div class="section-label">Who this is for</div>
+      <h2 class="section-headline">Built for businesses<br>ready to see the<br><em>number directly.</em></h2>
       <div class="gold-rule"></div>
-      <div class="body-copy on-dark">
-        <p>In Relationship Audit™ is for business owners who are done operating without knowing what their quiet client list is actually worth. The ones who are ready to stop guessing and see it in writing — visually, specifically, with a path forward attached.</p>
-      </div>
+      <p class="body-copy">The Quiet Relationship Audit™ is for business owners who are done operating without knowing what their quiet client list is actually worth. The ones who are ready to stop guessing and see it in writing — visually, specifically, with a path forward attached.</p>
     </div>
-    <div class="who-right">
-      <div class="who-criterion">
-        <span class="who-criterion-num">01</span>
-        <div><strong>Your business generates $600,000 or more annually</strong> and you already sense that retention is a more powerful lever than acquisition — you just have not had the picture to act on it.</div>
+    <div>
+      <div class="who-cards">
+        <div class="who-card">
+          <div class="who-card-num">01</div>
+          <p class="who-card-text"><strong>Your business generates $600,000 or more annually</strong> and you already sense that retention is a more powerful lever than acquisition — you just have not had the picture to act on it.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-card-num">02</div>
+          <p class="who-card-text"><strong>You have a contact list with real purchase history</strong> — clients who visited, spent, and went quiet — that has not been deliberately worked in six months or more.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-card-num">03</div>
+          <p class="who-card-text"><strong>You want clarity before commitment.</strong> The audit gives you the full picture — visual, written, and walked through personally — before you decide whether the sprint is the right next move.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-card-num">04</div>
+          <p class="who-card-text"><strong>You are a MedSpa, luxury spa, cosmetic dermatology practice, bridal studio, members club, or premium wellness venue</strong> where the client experience is the product and relationships are the retention mechanism.</p>
+        </div>
       </div>
-      <div class="who-criterion">
-        <span class="who-criterion-num">02</span>
-        <div><strong>You have a contact list with real purchase history</strong> — clients who visited, spent, and went quiet — that has not been deliberately worked in six months or more.</div>
-      </div>
-      <div class="who-criterion">
-        <span class="who-criterion-num">03</span>
-        <div><strong>You want clarity before commitment.</strong> The audit gives you the full picture — visual, written, and walked through personally — before you decide whether the sprint is the right next move.</div>
-      </div>
-      <div class="who-criterion">
-        <span class="who-criterion-num">04</span>
-        <div><strong>You are a MedSpa, luxury spa, aesthetic practice, bridal studio, members club, or premium wellness venue</strong> where the client experience is the product and relationships are the retention mechanism.</div>
-      </div>
-      <div class="who-not">
-        <p class="who-not-text"><strong style="color:rgba(242,241,238,0.45); font-style:normal;">In Relationship Audit™ is built for businesses where the conditions for recovery already exist.</strong> If you are still building your initial client base or if your annual revenue is below $600,000, the timing is not right yet — and we would rather tell you plainly than take your investment before it is. In Relationship Reveal™ is complimentary and the right place to begin.</p>
+      <div class="who-note">
+        <p>The Quiet Relationship Audit™ is built for businesses where the conditions for recovery already exist. If you are still building your initial client base or if your annual revenue is below $600,000, the timing is not right yet — and we would rather tell you plainly than take your investment before it is. The Quiet Relationship Reveal™ is complimentary and the right place to begin.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 7: INVESTMENT ══ -->
+<!-- INVESTMENT -->
 <section class="investment-section" id="investment">
   <div class="investment-inner">
-    <div class="investment-left">
+    <div>
       <div class="section-label">Investment</div>
-      <div class="investment-price">$1,500</div>
-      <div class="investment-price-label">Pay in full — no split payments</div>
-      <div class="investment-credit">
-        <p class="investment-credit-text"><strong>Credited in full toward Revenue in Tandem™.</strong> If you proceed to the sprint, your $1,500 audit investment is applied directly to your sprint investment — not as a discount, as a deposit. You are not spending $1,500 on a diagnostic. You are reserving your place in the process.</p>
+      <div class="investment-headline">$1,500</div>
+      <div class="investment-sub">Pay in full — no split payments</div>
+      <div class="investment-credit">Credited in full toward Revenue in Tandem™</div>
+      <div class="investment-body">
+        <p>If you proceed to the sprint, your $1,500 audit investment is applied directly to your sprint investment — not as a discount, as a deposit. You are not spending $1,500 on a diagnostic. <strong>You are reserving your place in the process.</strong></p>
+        <p>If you receive your In The Quiet Map™ and choose not to proceed with the sprint, everything produced is yours to keep and act on immediately. The visual projection, The Outside View™, the strategy brief, the Loom walkthrough — all of it. <strong>The audit is nonrefundable and the work is real.</strong></p>
       </div>
-      <div class="investment-keep">
-        <p class="investment-keep-text">If you receive your In The Quiet Map™ and choose not to proceed with the sprint, everything produced is yours to keep and act on immediately. The visual projection, The Outside View™, the strategy brief, the Loom walkthrough — all of it. The audit is nonrefundable and the work is real.</p>
+      <div class="investment-includes">
+        <div class="investment-includes-label">Everything inside In The Quiet Map™</div>
+        <div class="investment-include"><strong>The Visual Revenue Projection</strong> — a tiered chart of your quiet relationships and projected recoverable revenue by probability tier</div>
+        <div class="investment-include"><strong>The Outside View™</strong> — a complete audit of your public-facing business from the client's perspective: website, reviews, social, booking flow, and post-visit follow-up</div>
+        <div class="investment-include"><strong>The Written Strategy Brief</strong> — your specific gaps, their root causes, and a sequenced execution plan built around what will generate results fastest</div>
+        <div class="investment-include"><strong>The Personal Loom Walkthrough</strong> — a recorded video from the lead strategist walking through every element personally so nothing requires interpretation</div>
+        <div class="investment-include"><strong>The Sprint Proposal</strong> — a custom, scoped engagement proposal with a seven-day response window, built on your specific findings</div>
       </div>
-      <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
-      <p style="font-size:12px; font-weight:300; color:var(--text-secondary); font-style:italic; margin-top:10px; line-height:1.65;">You will receive your private assessment link and intake form immediately on your confirmation page and by email.</p>
     </div>
     <div class="investment-right">
-      <div class="investment-includes-label">Everything inside In The Quiet Map™</div>
-      <div class="investment-include"><strong>The Visual Revenue Projection</strong> — a tiered chart of your quiet relationships and projected recoverable revenue by probability tier</div>
-      <div class="investment-include"><strong>The Outside View™</strong> — a complete audit of your public-facing business from the client's perspective: website, reviews, social, booking flow, and post-visit follow-up</div>
-      <div class="investment-include"><strong>The Written Strategy Brief</strong> — your specific gaps, their root causes, and a sequenced execution plan built around what will generate results fastest</div>
-      <div class="investment-include"><strong>The Personal Loom Walkthrough</strong> — a recorded video from the lead strategist walking through every element personally so nothing requires interpretation</div>
-      <div class="investment-include"><strong>The Sprint Proposal</strong> — a custom, scoped engagement proposal with a seven-day response window, built on your specific findings</div>
+      <div class="investment-cta-block">
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank" rel="noopener">Begin The Quiet Relationship Audit™ — $1,500 →</a>
+        <p class="investment-note">You will receive your private assessment link and intake form immediately on your confirmation page and by email.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SECTION 8: FINAL CTA ══ -->
-<section class="final-section" id="begin">
-  <div class="final-inner">
-    <div class="final-label">The next step</div>
-    <p class="final-statement">
-      The revenue is already in your business.<br>
-      <em>In The Quiet Map™ shows you exactly where — and what recovering it looks like.</em>
-    </p>
-    <div class="final-rule"></div>
-    <p class="final-scarcity">LinesinTandem™ works with <em>four clients at a time.</em></p>
-    <p class="final-standard">That is not a constraint. That is the standard.</p>
-    <div class="final-rule"></div>
-    <div class="final-cta-buttons">
+<!-- FINAL CTA -->
+<section class="cta-section" id="begin">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">The next step</div>
+    <h2 class="cta-headline">The revenue is already<br><em>in your business.</em></h2>
+    <p class="cta-subhead">In The Quiet Map™ shows you exactly where — and what recovering it looks like.</p>
+    <p class="cta-scarcity">LinesinTandem™ works with <em>four clients at a time.</em></p>
+    <p class="cta-standard">That is not a constraint. That is the standard.</p>
+    <div class="cta-rule"></div>
+    <div class="cta-buttons">
       <div>
-        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank">Begin In Relationship Audit™ — $1,500 →</a>
-        <p class="btn-subtext">Credited in full toward Revenue in Tandem™. Intake form and private assessment delivered immediately on confirmation.</p>
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="btn-primary bright" target="_blank" rel="noopener">Begin The Quiet Relationship Audit™ — $1,500 →</a>
+        <p style="font-size:12px;font-weight:300;color:rgba(242,241,238,0.32);font-style:italic;margin-top:8px;line-height:1.65;text-align:center;">Credited in full toward Revenue in Tandem™. Intake form and private assessment delivered immediately on confirmation.</p>
       </div>
-      <div class="final-divider">or</div>
-      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="btn-secondary light" target="_blank">Start with In Relationship Reveal™ — Complimentary →</a>
+      <div class="cta-divider">or</div>
+      <a href="https://que-athena.github.io/linesintandem/assessment.html" class="btn-secondary" target="_blank" rel="noopener">Start with The Quiet Relationship Reveal™ — Complimentary →</a>
+      <p class="cta-bottom-note">The Quiet Relationship Audit™ is nonrefundable and initiates your scoping process immediately. Everything produced is yours regardless of whether you proceed to the sprint.</p>
     </div>
   </div>
 </section>
@@ -588,88 +524,26 @@
 <footer class="footer">
   <div class="footer-logo">LinesinTandem<sup>™</sup></div>
   <div class="footer-links">
-    <a href="https://que-athena.github.io/linesintandem/assessment.html" class="footer-link" target="_blank">Relationship Reveal</a>
-    <a href="https://que-athena.github.io/linesintandem/audit.html" class="footer-link" target="_blank">Relationship Audit</a>
-    <a href="https://que-athena.github.io/linesintandem/rit.html" class="footer-link" target="_blank">Revenue in Tandem</a>
-    <a href="contact.html" class="footer-link" target="_blank">Contact</a>
+    <a href="https://que-athena.github.io/linesintandem/assessment.html" class="footer-link" target="_blank" rel="noopener">Quiet Relationship Reveal</a>
+    <a href="https://que-athena.github.io/linesintandem/audit.html" class="footer-link" target="_blank" rel="noopener">Quiet Relationship Audit</a>
+    <a href="https://que-athena.github.io/linesintandem/rit.html" class="footer-link" target="_blank" rel="noopener">Revenue in Tandem</a>
+    <a href="https://que-athena.github.io/linesintandem/contact.html" class="footer-link" target="_blank" rel="noopener">Contact</a>
   </div>
   <div class="footer-tagline">Bring them back. Keep them close.</div>
-  <div class="footer-bottom">
-    <p class="footer-copyright">© 2023–2026 LinesinTandem™. All rights reserved.</p>
-  </div>
+  <div style="font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:rgba(242,241,238,0.2);letter-spacing:0.1em;">© 2023–2026 LinesinTandem™. All rights reserved.</div>
 </footer>
 
-<!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M8 12V4M8 4L4 8M8 4L12 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+<button style="position:fixed;bottom:32px;right:32px;z-index:500;width:44px;height:44px;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s,background 0.2s;pointer-events:none;" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M8 4L4 8M8 4L12 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
 <script>
-  // Scroll to top visibility
   window.addEventListener('scroll', function() {
-    const btn = document.getElementById('scrollTop');
-    if (window.scrollY > 400) { btn.classList.add('visible'); }
-    else { btn.classList.remove('visible'); }
+    var btn = document.getElementById('scrollTop');
+    if (window.scrollY > 400) { btn.style.opacity='1'; btn.style.transform='translateY(0)'; btn.style.pointerEvents='all'; }
+    else { btn.style.opacity='0'; btn.style.transform='translateY(12px)'; btn.style.pointerEvents='none'; }
   });
-
-  // Animate chart bars on scroll into view
-  let barsAnimated = false;
-  function animateBars() {
-    if (barsAnimated) return;
-    const chart = document.getElementById('mapChart');
-    if (!chart) return;
-    const rect = chart.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.85) {
-      barsAnimated = true;
-      window.removeEventListener('scroll', animateBars);
-
-      const bar1 = document.getElementById('bar1');
-      const bar2 = document.getElementById('bar2');
-      const bar3 = document.getElementById('bar3');
-      const val1 = document.getElementById('val1');
-      const val2 = document.getElementById('val2');
-      const val3 = document.getElementById('val3');
-
-      setTimeout(() => { if(bar1) bar1.style.width = '88%'; }, 100);
-      setTimeout(() => { if(bar2) bar2.style.width = '52%'; }, 300);
-      setTimeout(() => { if(bar3) bar3.style.width = '22%'; }, 500);
-
-      animateValue(val1, 0, 171072, 1400, '$');
-      setTimeout(() => animateValue(val2, 0, 113664, 1400, '$'), 200);
-      setTimeout(() => animateValue(val3, 0, 36634, 1400, '$'), 400);
-    }
-  }
-
-  function animateValue(el, start, end, duration, prefix) {
-    const startTime = performance.now();
-    function update(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = Math.floor(start + (end - start) * eased);
-      el.textContent = prefix + value.toLocaleString();
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  window.addEventListener('scroll', animateBars);
-  window.addEventListener('load', animateBars);
 </script>
 
-<script>
-  (function() {
-    const params = new URLSearchParams(window.location.search);
-    const email = params.get('email');
-    if (!email) return;
-    fetch('https://hook.us2.make.com/ffymkj7wr5ioc95hrpot7rtnffm3lmrl', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, source: 'audit-page', timestamp: new Date().toISOString() })
-    }).catch(function() {});
-  })();
-</script>
 </body>
 </html>
