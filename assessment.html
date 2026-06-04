@@ -38,10 +38,10 @@
   .progress-label { position: fixed; top: 60px; right: 52px; z-index: 99; font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(43,43,43,0.35); background: rgba(167,166,148,0.95); padding: 4px 10px; }
 
   /* HERO */
-  .hero { background: var(--taupe); min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 52px 80px; position: relative; overflow: hidden; }
+  .hero { background: var(--taupe); min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 140px 80px 100px; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 10%, rgba(242,241,238,0.06) 0%, transparent 50%), radial-gradient(ellipse at 10% 80%, rgba(184,154,106,0.12) 0%, transparent 55%); }
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-  .hero-inner { position: relative; z-index: 1; max-width: 860px; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hero-inner { position: relative; z-index: 1; max-width: 700px; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; }
   .hero-eyebrow { font-family: 'Jost', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards; }
   .hero-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 800; color: var(--charcoal-deep); line-height: 1.06; margin-bottom: 48px; letter-spacing: -0.02em; opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards; }
   .hero-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
@@ -154,8 +154,7 @@
   @media (max-width: 900px) {
     .nav { padding: 16px 24px; }
     .progress-label { right: 24px; }
-    .hero { padding: 110px 24px 64px; align-items: flex-start; }
-    .hero-inner { align-items: flex-start; }
+    .hero { padding: 110px 28px 80px; }
     .assessment { padding: 56px 24px; }
     .pattern-section, .submit-section, .upsell-section { padding: 72px 24px; }
     .footer { padding: 40px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -180,7 +179,7 @@
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-eyebrow">Complimentary — The Quiet Relationship Reveal™</div>
-    <h1 class="hero-headline">You already know which clients<br>went quiet. <em>This shows you<br>what that silence is worth.</em></h1>
+    <h1 class="hero-headline">You already know which clients<br>went quiet.<br><em>This shows you<br>what that silence is worth.</em></h1>
     <div class="hero-notice">
       <p class="hero-para"><strong>This is not a quiz. It is a diagnostic.</strong> Work through each section honestly — not how you intend to operate, but how you actually do. The more accurate your answers, the more useful your results. Your responses are reviewed personally and returned within 24 hours.</p>
     </div>
