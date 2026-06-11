@@ -21,18 +21,13 @@
     --border: rgba(167,166,148,0.35);
     --eyebrow-on-dark: rgba(242,241,238,0.3);
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--warm-white); color: var(--charcoal); overflow-x: hidden; }
-
-  /* ── NAV ── */
   .nav { background: var(--charcoal-deep); padding: 22px 52px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(184,154,106,0.2); position: sticky; top: 0; z-index: 100; }
   .nav-logo { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 600; color: var(--warm-white); text-decoration: none; }
   .nav-logo sup { font-size: 10px; color: var(--gold); vertical-align: super; }
   .nav-badge { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(242,241,238,0.4); border: 1px solid rgba(242,241,238,0.1); padding: 8px 18px; }
-
-  /* ── HERO ── */
   .hero { background: var(--charcoal-mid); padding: 72px 0 64px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(184,154,106,0.15); }
   .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 60%, rgba(184,154,106,0.07) 0%, transparent 60%); }
   .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
@@ -42,8 +37,6 @@
   .hero-title em { font-style: italic; color: var(--gold-bright); }
   .hero-sub { font-size: 15px; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.82; max-width: 540px; }
   .hero-sub strong { color: rgba(242,241,238,0.8); font-weight: 400; }
-
-  /* ── AUTOSAVE BANNER ── */
   .autosave-banner { background: rgba(184,154,106,0.08); border-bottom: 1px solid rgba(184,154,106,0.18); padding: 12px 0; }
   .autosave-banner-inner { max-width: 780px; margin: 0 auto; padding: 0 52px; display: flex; align-items: center; gap: 10px; }
   .autosave-banner-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; animation: pulse 2s ease infinite; }
@@ -53,11 +46,7 @@
   .autosave-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; animation: pulse 2s ease infinite; }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
   .autosave-text { font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.6); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
-
-  /* ── CONTENT ── */
   .content { max-width: 780px; margin: 0 auto; padding: 64px 52px 0; }
-
-  /* ── SECTION HEADERS ── */
   .form-section { margin-bottom: 56px; }
   .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 10px; }
   .section-title { font-family: 'Noto Serif Display', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 700; color: var(--charcoal); margin-bottom: 8px; line-height: 1.2; }
@@ -65,8 +54,6 @@
   .section-desc { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.75; margin-bottom: 28px; font-style: italic; }
   .gold-rule { width: 36px; height: 2px; background: var(--gold); margin-bottom: 28px; }
   .section-divider { height: 1px; background: var(--linen); margin: 8px 0 56px; }
-
-  /* ── FIELDS ── */
   .field { margin-bottom: 22px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; }
   .field-label { display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 8px; }
@@ -75,31 +62,21 @@
   .field-input:focus, .field-textarea:focus, .field-select:focus { border-color: var(--gold); }
   .field-textarea { resize: vertical; min-height: 100px; }
   .field-input::placeholder, .field-textarea::placeholder { color: rgba(74,74,71,0.4); }
-
-  /* Select */
   .select-wrap { position: relative; }
   .select-wrap::after { content: ''; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid var(--taupe); pointer-events: none; }
   .field-select { padding-right: 36px; cursor: pointer; }
-
-  /* Radio / Checkbox */
   .option-group { display: flex; flex-direction: column; gap: 8px; }
   .option-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1.5px solid var(--linen); cursor: pointer; transition: border-color 0.2s, background 0.2s; }
   .option-item:hover { border-color: var(--taupe); background: rgba(184,154,106,0.03); }
   .option-item input[type="radio"], .option-item input[type="checkbox"] { margin-top: 2px; accent-color: var(--gold); flex-shrink: 0; }
   .option-label { font-size: 14px; font-weight: 300; color: var(--text-body); line-height: 1.5; }
   .option-label strong { color: var(--charcoal); font-weight: 500; }
-
-  /* Credentials box */
   .credentials-box { background: var(--linen); border: 1px solid rgba(184,154,106,0.25); border-left: 3px solid var(--gold); padding: 24px 28px; margin-bottom: 22px; }
   .credentials-label { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .credentials-note { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.7; }
-
-  /* Prep note */
   .prep-note { background: rgba(184,154,106,0.07); border: 1px solid rgba(184,154,106,0.2); border-left: 2px solid var(--gold); padding: 16px 20px; margin-bottom: 24px; }
   .prep-note-text { font-size: 13px; font-weight: 300; color: var(--text-body); line-height: 1.75; font-style: italic; }
   .prep-note-text strong { color: var(--charcoal); font-weight: 500; font-style: normal; }
-
-  /* ── SUBMIT ── */
   .submit-section { background: var(--charcoal-mid); padding: 64px 52px; position: relative; overflow: hidden; border-top: 1px solid rgba(184,154,106,0.15); }
   .submit-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 30%, rgba(184,154,106,0.05) 0%, transparent 55%); }
   .submit-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
@@ -110,8 +87,6 @@
   .submit-note { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.28); font-style: italic; margin-top: 16px; line-height: 1.6; }
   .btn-submit { display: inline-block; background: var(--gold-bright); color: var(--charcoal-deep); font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 18px 52px; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
   .btn-submit:hover { background: var(--gold-dark); color: var(--warm-white); transform: translateY(-2px); }
-
-  /* Success */
   .submit-success { display: none; }
   .submit-success.visible { display: block; }
   .success-block { padding: 44px; background: rgba(242,241,238,0.04); border: 1px solid rgba(184,154,106,0.3); border-left: 3px solid var(--gold-bright); }
@@ -119,15 +94,12 @@
   .success-block p { font-size: 15px; font-weight: 300; color: rgba(242,241,238,0.7); line-height: 1.85; margin-bottom: 12px; }
   .success-block p:last-child { margin-bottom: 0; color: rgba(242,241,238,0.4); font-size: 13px; }
   .success-rule { width: 36px; height: 1px; background: var(--gold-bright); opacity: 0.6; margin: 18px 0; }
-
-  /* ── FOOTER ── */
   .footer { background: var(--charcoal-deep); padding: 40px 52px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid rgba(184,154,106,0.1); }
   .footer-brand { font-family: 'Noto Serif Display', serif; font-size: 16px; font-weight: 600; color: rgba(242,241,238,0.32); }
   .footer-brand sup { font-size: 9px; color: var(--gold); vertical-align: super; }
   .footer-link { font-size: 11px; font-weight: 300; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; transition: color 0.2s; }
   .footer-link:hover { color: var(--gold-bright); }
   .footer-copyright { font-size: 10px; font-weight: 300; color: rgba(242,241,238,0.22); letter-spacing: 0.08em; }
-
   @media (max-width: 680px) {
     .nav { padding: 16px 24px; }
     .hero { padding: 56px 0 52px; }
@@ -143,18 +115,14 @@
 </style>
 </head>
 <body>
-
 <nav class="nav">
   <a href="https://que-athena.github.io/linesintandem/" class="nav-logo">LinesinTandem<sup>™</sup></a>
   <div class="nav-badge">Audit Intake</div>
 </nav>
-
 <div class="autosave-bar" id="autosaveBar" role="status" aria-live="polite">
   <div class="autosave-dot"></div>
   <div class="autosave-text">Progress saved</div>
 </div>
-
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-label">The Quiet Relationship Audit™ — Intake Form</div>
@@ -162,24 +130,18 @@
     <p class="hero-sub"><strong>Complete this form after your assessment.</strong> Your responses are what we use to build your visual revenue projection, conduct The Outside View™, and write your strategy brief. The more specific you are, the more precise your In The Quiet Map™ will be.</p>
   </div>
 </section>
-
-<!-- AUTOSAVE BANNER -->
 <div class="autosave-banner">
   <div class="autosave-banner-inner">
     <div class="autosave-banner-dot"></div>
     <span class="autosave-banner-text">Autosave enabled — answers are saved as you type</span>
   </div>
 </div>
-
 <div class="content">
-
-  <!-- SECTION 01: BUSINESS OVERVIEW -->
   <div class="form-section">
     <div class="section-eyebrow">Section 01</div>
     <h2 class="section-title">Your Business <em>Overview</em></h2>
     <p class="section-desc">Basic context about your business. This grounds everything we build in your specific world.</p>
     <div class="gold-rule"></div>
-
     <div class="field-row">
       <div class="field">
         <label class="field-label" for="f_name">Full Name</label>
@@ -190,7 +152,6 @@
         <input class="field-input" type="text" id="f_business" placeholder="Business name" required>
       </div>
     </div>
-
     <div class="field-row">
       <div class="field">
         <label class="field-label" for="f_email">Email Address</label>
@@ -201,43 +162,38 @@
         <input class="field-input" type="tel" id="f_phone" placeholder="+1 (000) 000-0000">
       </div>
     </div>
-
     <div class="field">
       <label class="field-label">Your Role</label>
       <span class="field-note">Who is completing this form? We want to make sure we are speaking to the right person throughout the process.</span>
       <div class="option-group">
-        <label class="option-item"><input type="radio" name="role" value="owner_founder"> <span class="option-label"><strong>Owner / Founder</strong></span></label>
-        <label class="option-item"><input type="radio" name="role" value="practice_gm"> <span class="option-label"><strong>Practice Manager / General Manager</strong></span></label>
-        <label class="option-item"><input type="radio" name="role" value="marketing"> <span class="option-label"><strong>Marketing Director</strong></span></label>
-        <label class="option-item"><input type="radio" name="role" value="operations"> <span class="option-label"><strong>Operations</strong></span></label>
-        <label class="option-item"><input type="radio" name="role" value="other_role"> <span class="option-label"><strong>Other</strong> — add below</span></label>
+        <label class="option-item"><input type="radio" name="role" value="Owner / Founder"> <span class="option-label"><strong>Owner / Founder</strong></span></label>
+        <label class="option-item"><input type="radio" name="role" value="Practice Manager / General Manager"> <span class="option-label"><strong>Practice Manager / General Manager</strong></span></label>
+        <label class="option-item"><input type="radio" name="role" value="Marketing Director"> <span class="option-label"><strong>Marketing Director</strong></span></label>
+        <label class="option-item"><input type="radio" name="role" value="Operations"> <span class="option-label"><strong>Operations</strong></span></label>
+        <label class="option-item"><input type="radio" name="role" value="Other"> <span class="option-label"><strong>Other</strong> — add below</span></label>
       </div>
     </div>
-
     <div class="field" style="margin-top:16px;">
       <label class="field-label" for="f_role_other">If other, describe your role</label>
       <input class="field-input" type="text" id="f_role_other" placeholder="e.g. Studio Director, Brand Manager">
     </div>
-
     <div class="field">
       <label class="field-label">Business Type</label>
       <div class="option-group">
-        <label class="option-item"><input type="radio" name="biz_type" value="medspa"> <span class="option-label"><strong>MedSpa</strong></span></label>
-        <label class="option-item"><input type="radio" name="biz_type" value="luxury_spa"> <span class="option-label"><strong>Luxury Spa</strong></span></label>
-        <label class="option-item"><input type="radio" name="biz_type" value="aesthetic_practice"> <span class="option-label"><strong>Aesthetic Practice</strong></span></label>
-        <label class="option-item"><input type="radio" name="biz_type" value="bridal_studio"> <span class="option-label"><strong>Luxury Bridal Studio</strong></span></label>
-        <label class="option-item"><input type="radio" name="biz_type" value="members_club"> <span class="option-label"><strong>Members Club</strong></span></label>
-        <label class="option-item"><input type="radio" name="biz_type" value="wellness_venue"> <span class="option-label"><strong>Private Wellness Venue</strong></span></label>
-        <label class="option-item"><input type="radio" name="biz_type" value="other"> <span class="option-label"><strong>Other</strong> — add below</span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="MedSpa"> <span class="option-label"><strong>MedSpa</strong></span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="Luxury Spa"> <span class="option-label"><strong>Luxury Spa</strong></span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="Aesthetic Practice"> <span class="option-label"><strong>Aesthetic Practice</strong></span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="Luxury Bridal Studio"> <span class="option-label"><strong>Luxury Bridal Studio</strong></span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="Members Club"> <span class="option-label"><strong>Members Club</strong></span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="Private Wellness Venue"> <span class="option-label"><strong>Private Wellness Venue</strong></span></label>
+        <label class="option-item"><input type="radio" name="biz_type" value="Other"> <span class="option-label"><strong>Other</strong> — add below</span></label>
       </div>
     </div>
-
     <div class="field" style="margin-top:16px;">
       <label class="field-label" for="f_biz_desc">Describe your business in two to three sentences</label>
       <span class="field-note">What you offer, who you serve, and what makes your client experience distinct. If you selected Other above, describe your business type here as well.</span>
       <textarea class="field-textarea" id="f_biz_desc" placeholder="e.g. We are a luxury MedSpa in Scottsdale specializing in aesthetic treatments for women 35+. Our average client spends $450 per visit and we have been operating for six years." required></textarea>
     </div>
-
     <div class="field-row">
       <div class="field">
         <label class="field-label" for="f_location">City and State</label>
@@ -248,13 +204,11 @@
         <input class="field-input" type="text" id="f_years" placeholder="e.g. 6 years">
       </div>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_instagram">Primary Social Handle</label>
       <span class="field-note">Instagram, Facebook, TikTok, or whichever platform you are most active on. We will review this as part of The Outside View™.</span>
       <input class="field-input" type="text" id="f_instagram" placeholder="@yourbusiness or facebook.com/yourbusiness">
     </div>
-
     <div class="field">
       <label class="field-label" for="f_website">Website URL</label>
       <span class="field-note">We will review your website as part of The Outside View™.</span>
@@ -262,14 +216,11 @@
     </div>
   </div>
   <div class="section-divider"></div>
-
-  <!-- SECTION 02: REVENUE & CLIENT PROFILE -->
   <div class="form-section">
     <div class="section-eyebrow">Section 02</div>
     <h2 class="section-title">Revenue and <em>Client Profile</em></h2>
     <p class="section-desc">This is the data that drives your visual revenue projection. Be as specific as you can — ranges are fine.</p>
     <div class="gold-rule"></div>
-
     <div class="field-row">
       <div class="field">
         <label class="field-label" for="f_avg_spend">Average Client Spend</label>
@@ -282,19 +233,16 @@
         <input class="field-input" type="text" id="f_annual_rev" placeholder="e.g. $600K — $900K">
       </div>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_visit_freq">Average client visit frequency</label>
       <span class="field-note">How often does a typical active client visit or purchase?</span>
       <input class="field-input" type="text" id="f_visit_freq" placeholder="e.g. 4 times per year, monthly, quarterly">
     </div>
-
     <div class="field">
       <label class="field-label" for="f_top_services">Your highest-value services or offerings</label>
       <span class="field-note">List the two or three that generate the most revenue per transaction.</span>
       <textarea class="field-textarea" id="f_top_services" placeholder="e.g. 1. Botox and filler packages ($800–1,200) 2. Membership programs ($300/month) 3. Laser resurfacing ($600)" required></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_ideal_client">Describe your ideal returning client</label>
       <span class="field-note">Demographics, behavior, what they value, what keeps them coming back.</span>
@@ -302,14 +250,11 @@
     </div>
   </div>
   <div class="section-divider"></div>
-
-  <!-- SECTION 03: CONTACT LIST -->
   <div class="form-section">
     <div class="section-eyebrow">Section 03</div>
     <h2 class="section-title">Your Contact <em>List</em></h2>
     <p class="section-desc">Everything we need to understand the size, quality, and history of your existing contact base. This is what your visual revenue projection is built from.</p>
     <div class="gold-rule"></div>
-
     <div class="field-row">
       <div class="field">
         <label class="field-label" for="f_list_size">Total contact list size</label>
@@ -322,30 +267,26 @@
         <input class="field-input" type="text" id="f_quiet_size" placeholder="e.g. 600–800">
       </div>
     </div>
-
     <div class="field">
       <label class="field-label">What does your contact list contain?</label>
       <span class="field-note">Select all that apply.</span>
       <div class="option-group">
-        <label class="option-item"><input type="checkbox" name="list_type" value="past_clients"> <span class="option-label">Past clients with purchase history</span></label>
-        <label class="option-item"><input type="checkbox" name="list_type" value="inquiries"> <span class="option-label">Inquiries or consultations that did not convert</span></label>
-        <label class="option-item"><input type="checkbox" name="list_type" value="referrals"> <span class="option-label">Referrals or warm leads who never booked</span></label>
-        <label class="option-item"><input type="checkbox" name="list_type" value="subscribers"> <span class="option-label">Email subscribers with no purchase history</span></label>
-        <label class="option-item"><input type="checkbox" name="list_type" value="partners"> <span class="option-label">Past partners or referral sources</span></label>
+        <label class="option-item"><input type="checkbox" name="list_type" value="Past clients with purchase history"> <span class="option-label">Past clients with purchase history</span></label>
+        <label class="option-item"><input type="checkbox" name="list_type" value="Inquiries or consultations that did not convert"> <span class="option-label">Inquiries or consultations that did not convert</span></label>
+        <label class="option-item"><input type="checkbox" name="list_type" value="Referrals or warm leads who never booked"> <span class="option-label">Referrals or warm leads who never booked</span></label>
+        <label class="option-item"><input type="checkbox" name="list_type" value="Email subscribers with no purchase history"> <span class="option-label">Email subscribers with no purchase history</span></label>
+        <label class="option-item"><input type="checkbox" name="list_type" value="Past partners or referral sources"> <span class="option-label">Past partners or referral sources</span></label>
       </div>
     </div>
-
     <div class="field" style="margin-top:16px;">
       <label class="field-label" for="f_list_source">Where does your contact data live?</label>
       <span class="field-note">CRM, ESP, booking software, spreadsheet — and what platform specifically.</span>
       <textarea class="field-textarea" id="f_list_source" placeholder="e.g. Primarily in Vagaro (our booking software) and a Mailchimp list. Some contacts are in a spreadsheet from before we had a system." required></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_last_outreach">When did you last reach out to your full list?</label>
       <input class="field-input" type="text" id="f_last_outreach" placeholder="e.g. 8 months ago, or never as a full campaign">
     </div>
-
     <div class="field">
       <label class="field-label" for="f_prev_campaigns">Have you run any re-engagement campaigns before?</label>
       <span class="field-note">If yes, what happened? If no, that is completely fine.</span>
@@ -353,126 +294,101 @@
     </div>
   </div>
   <div class="section-divider"></div>
-
-  <!-- SECTION 04: PLATFORM ACCESS -->
   <div class="form-section">
     <div class="section-eyebrow">Section 04</div>
     <h2 class="section-title">Platform Access and <em>Email Setup</em></h2>
     <p class="section-desc">Tell us what you currently have in place. If you have an existing ESP or booking platform you want campaigns deployed through, we will use it. If you do not, campaigns will run through the LinesinTandem™ platform — no additional setup required on your end.</p>
     <div class="gold-rule"></div>
-
     <div class="credentials-box">
       <div class="credentials-label">Credentials collected separately</div>
       <p class="credentials-note">If you have an existing ESP or booking platform you want us to deploy through, you will receive a secure link to share your login credentials after submitting this form. Do not enter passwords or logins anywhere here. If you do not have an existing platform, no credentials are needed — campaigns will run through ours.</p>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_esp">Email service platform (ESP)</label>
       <span class="field-note">The platform you currently use to send email communications — if any. If you do not have one or are unsure, leave this blank or write "none."</span>
       <input class="field-input" type="text" id="f_esp" placeholder="e.g. Mailchimp, Klaviyo, Constant Contact, ActiveCampaign, none">
     </div>
-
     <div class="field">
       <label class="field-label" for="f_booking">Booking or CRM platform</label>
       <span class="field-note">e.g. Vagaro, Mindbody, Jane App, Boulevard, HubSpot — or how you currently manage client records.</span>
       <input class="field-input" type="text" id="f_booking" placeholder="e.g. Vagaro, Mindbody, spreadsheet, none">
     </div>
-
     <div class="field">
       <label class="field-label">Current email setup status</label>
       <div class="option-group">
-        <label class="option-item"><input type="radio" name="esp_status" value="active"> <span class="option-label"><strong>Active and in use</strong> — we send emails regularly and want to keep using it</span></label>
-        <label class="option-item"><input type="radio" name="esp_status" value="setup_not_used"> <span class="option-label"><strong>Set up but rarely used</strong> — the account exists but we do not send consistently</span></label>
-        <label class="option-item"><input type="radio" name="esp_status" value="none"> <span class="option-label"><strong>No existing ESP</strong> — use the LinesinTandem™ platform for this sprint</span></label>
+        <label class="option-item"><input type="radio" name="esp_status" value="Active and in use"> <span class="option-label"><strong>Active and in use</strong> — we send emails regularly and want to keep using it</span></label>
+        <label class="option-item"><input type="radio" name="esp_status" value="Set up but rarely used"> <span class="option-label"><strong>Set up but rarely used</strong> — the account exists but we do not send consistently</span></label>
+        <label class="option-item"><input type="radio" name="esp_status" value="No existing ESP"> <span class="option-label"><strong>No existing ESP</strong> — use the LinesinTandem™ platform for this sprint</span></label>
       </div>
     </div>
-
     <div class="field" style="margin-top:16px;">
       <label class="field-label" for="f_platform_notes">Anything else we should know about your platforms or data</label>
       <textarea class="field-textarea" id="f_platform_notes" placeholder="e.g. Our Vagaro list exports cleanly but some contacts have duplicate entries. Our Mailchimp account has not been used in two years."></textarea>
     </div>
   </div>
   <div class="section-divider"></div>
-
-  <!-- SECTION 05: BRAND VOICE -->
   <div class="form-section">
     <div class="section-eyebrow">Section 05</div>
     <h2 class="section-title">Brand Voice and <em>Communication Style</em></h2>
     <p class="section-desc">Every message we write goes out under your name and in your voice. The more clearly we understand how you communicate, the more your clients will feel like they are hearing from you directly.</p>
     <div class="gold-rule"></div>
-
     <div class="prep-note">
       <p class="prep-note-text"><strong>A note before you start this section:</strong> These questions benefit from a few minutes of thought. If you prefer, draft your answers elsewhere first — then paste them in when you are ready. The quality of your responses here directly shapes how your campaign copy sounds to your clients.</p>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_voice_desc">How would you describe the way your business communicates?</label>
       <span class="field-note">Think about tone, formality, warmth, and how you talk to your best clients.</span>
       <textarea class="field-textarea" id="f_voice_desc" placeholder="e.g. Warm and personal but always professional. We use first names. We do not use exclamation points or promotional language. Our clients expect discretion and sophistication." required></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_voice_example">Share an example of your client communication</label>
       <span class="field-note">Paste a link to a social post, email, or any public-facing message that sounds like you at your best. Alternatively paste the text directly. If you do not have one, describe how you would ideally open a re-engagement message to a quiet client.</span>
       <textarea class="field-textarea" id="f_voice_example" style="min-height:120px;" placeholder="Paste a link (e.g. instagram.com/p/...) or the message text directly..."></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_voice_avoid">What should we never say or do in your client communications?</label>
       <span class="field-note">Words, phrases, tones, or approaches that feel off-brand or that your clients would find jarring.</span>
       <textarea class="field-textarea" id="f_voice_avoid" placeholder="e.g. Never use the word 'deal' or 'discount.' Avoid urgency language. Do not mention competitors. Keep it warm but never overly casual."></textarea>
     </div>
-
     <div class="prep-note">
       <p class="prep-note-text"><strong>Do you have a brand guide?</strong> If you have a brand guide — including one generated from an AI tool — you will be able to share it via the secure credentials link sent after you submit this form. It will be reviewed alongside your voice answers when writing your campaign copy.</p>
     </div>
   </div>
   <div class="section-divider"></div>
-
-  <!-- SECTION 06: AUDIT CONTEXT -->
   <div class="form-section">
     <div class="section-eyebrow">Section 06</div>
     <h2 class="section-title">Audit <em>Context</em></h2>
     <p class="section-desc">Final context that helps us prioritize the right relationships and focus the strategy brief on what matters most for your business right now.</p>
     <div class="gold-rule"></div>
-
     <div class="prep-note">
       <p class="prep-note-text"><strong>Take a moment here:</strong> The goal question at the end of this section is the most important one in the entire form. Think beyond revenue — what would make this audit feel like it genuinely moved something for your business?</p>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_top_contacts">Are there specific past clients you already know are high priority?</label>
       <span class="field-note">Names, categories, or characteristics — not a full list, just the ones that immediately come to mind.</span>
       <textarea class="field-textarea" id="f_top_contacts" placeholder="e.g. We have about 15 clients who used to come monthly and stopped after a staff change. We also have 3 former membership holders who let their memberships lapse last year."></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_disruptions">Any sensitivities or disruptions in the next 90 days we should know about?</label>
       <span class="field-note">Renovations, staff changes, seasonal closures, anything that might affect availability or messaging.</span>
       <textarea class="field-textarea" id="f_disruptions" placeholder="e.g. We are fully closed the first week of December. We are also onboarding a new provider in October so capacity may be limited early on."></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_primary_focus">What is the primary thing you want the audit to address?</label>
       <span class="field-note">The most important gap, question, or situation you want clarity on.</span>
       <textarea class="field-textarea" id="f_primary_focus" placeholder="e.g. We have a large list of past clients who went quiet after Covid and we have never systematically tried to reach them. I want to know what that is worth and where to start." required></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_goal">What does success look like to you at the end of this audit?</label>
       <span class="field-note">Beyond the deliverable — what would make this feel like it genuinely moved something for your business?</span>
       <textarea class="field-textarea" id="f_goal" placeholder="e.g. Seeing familiar faces back in the door. Understanding which relationships are worth pursuing first. Having a clear picture I can actually act on immediately." required></textarea>
     </div>
-
     <div class="field">
       <label class="field-label" for="f_anything_else">Anything else we should know before we begin?</label>
       <textarea class="field-textarea" id="f_anything_else" placeholder="Anything not covered above that would help us serve you better."></textarea>
     </div>
   </div>
-
-</div><!-- end .content -->
-
-<!-- SUBMIT -->
+</div>
 <div class="submit-section">
   <div class="submit-inner">
     <div id="intakeForm">
@@ -482,7 +398,6 @@
       <button class="btn-submit" onclick="submitIntake()">Submit My Intake →</button>
       <p class="submit-note">Your responses are reviewed privately. Platform credentials will be requested separately through a secure link after submission.</p>
     </div>
-
     <div class="submit-success" id="intakeSuccess">
       <div class="success-block">
         <h3>Your intake is complete.</h3>
@@ -493,52 +408,50 @@
     </div>
   </div>
 </div>
-
 <footer class="footer">
   <div class="footer-brand">LinesinTandem<sup>™</sup></div>
   <a href="https://billing.stripe.com/p/login/14k3dJ6NV55j8sEcMM" class="footer-link" target="_blank" rel="noopener noreferrer">Client Portal →</a>
   <div class="footer-copyright">© 2023–2026 LinesinTandem™</div>
 </footer>
-
 <script>
   // ── FORM BACKEND ──
-  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScN4YPa4G-xnmNtlwQ4tA-3c-d_DGfSTicAN4JGH4eEJd8u7g/formResponse';
+  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdBRqwWHkZhN9IgRlscaDWqoto9c8r2EiRIItw_HqhE42_hhw/formResponse';
   const ENTRY = {
-    name:           'entry.1867205635',
-    business:       'entry.86644396',
-    email:          'entry.1752147959',
-    phone:          'entry.178750521',
-    role:           'entry.1229755336',
-    role_other:     'entry.1232441444',
-    biz_type:       'entry.1759119962',
-    biz_desc:       'entry.62321859',
-    location:       'entry.18835163',
-    years:          'entry.1645237974',
-    instagram:      'entry.1711012720',
-    website:        'entry.1933212237',
-    avg_spend:      'entry.817611783',
-    annual_rev:     'entry.1796825746',
-    visit_freq:     'entry.1441402396',
-    top_services:   'entry.1170240298',
-    ideal_client:   'entry.29203544',
-    list_size:      'entry.604361407',
-    quiet_size:     'entry.2116725159',
-    list_type:      'entry.1321514184',
-    list_source:    'entry.1202963448',
-    last_outreach:  'entry.919753687',
-    prev_campaigns: 'entry.2120964240',
-    esp:            'entry.1872456716',
-    booking:        'entry.824277215',
-    esp_status:     'entry.1277597681',
-    platform_notes: 'entry.1592046799',
-    voice_desc:     'entry.1871513585',
-    voice_example:  'entry.186270375',
-    voice_avoid:    'entry.1831981245',
-    top_contacts:   'entry.1040075943',
-    disruptions:    'entry.1890097793',
-    primary_focus:  'entry.207113990',
-    goal:           'entry.2014918913',
-    anything_else:  'entry.1074101914'
+    name:           'entry.817472981',
+    business:       'entry.677719154',
+    email:          'entry.375207207',
+    phone:          'entry.1019220914',
+    role:           'entry.39670519',
+    role_other:     'entry.2055095051',
+    biz_type:       'entry.1095945269',
+    biz_desc:       'entry.1855974800',
+    location:       'entry.1103236903',
+    years:          'entry.511952254',
+    instagram:      'entry.1345673113',
+    website:        'entry.1864175805',
+    avg_spend:      'entry.569912370',
+    annual_rev:     'entry.92226438',
+    visit_freq:     'entry.1193549538',
+    top_services:   'entry.1616732960',
+    ideal_client:   'entry.175891064',
+    list_size:      'entry.1987941059',
+    quiet_size:     'entry.789636944',
+    list_type:      'entry.1325983986',
+    list_source:    'entry.278218377',
+    last_outreach:  'entry.880016950',
+    prev_campaigns: 'entry.1484252821',
+    esp:            'entry.554208269',
+    booking:        'entry.692998189',
+    esp_status:     'entry.1276065618',
+    platform_notes: 'entry.107342501',
+    voice_desc:     'entry.859001879',
+    voice_example:  'entry.1624085307',
+    voice_avoid:    'entry.1518393324',
+    top_contacts:   'entry.483490510',
+    disruptions:    'entry.765148138',
+    primary_focus:  'entry.1058139309',
+    goal:           'entry.412695756',
+    anything_else:  'entry.686190731'
   };
 
   // ── AUTOSAVE ──
@@ -551,9 +464,7 @@
     'f_voice_desc','f_voice_example','f_voice_avoid','f_top_contacts',
     'f_disruptions','f_primary_focus','f_goal','f_anything_else'
   ];
-
   let saveTimer = null;
-
   function saveProgress() {
     const data = {};
     TEXT_FIELDS.forEach(id => {
@@ -573,7 +484,6 @@
       showAutosave();
     } catch(e) {}
   }
-
   function showAutosave() {
     const bar = document.getElementById('autosaveBar');
     if (!bar) return;
@@ -581,7 +491,6 @@
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => bar.classList.remove('visible'), 2800);
   }
-
   function restoreProgress() {
     try {
       const raw = localStorage.getItem(SAVE_KEY);
@@ -611,11 +520,9 @@
       }
     } catch(e) {}
   }
-
   function clearSavedProgress() {
     try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
   }
-
   function attachAutosaveListeners() {
     TEXT_FIELDS.forEach(id => {
       const el = document.getElementById(id);
@@ -625,7 +532,6 @@
       el.addEventListener('change', saveProgress);
     });
   }
-
   document.addEventListener('DOMContentLoaded', function() {
     restoreProgress();
     attachAutosaveListeners();
@@ -636,7 +542,6 @@
     const el = document.querySelector(`input[name="${name}"]:checked`);
     return el ? el.value : '';
   }
-
   function getCheckboxValues(name) {
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value).join(', ');
   }
@@ -649,7 +554,6 @@
       alert('Please complete all required fields before submitting.');
       return;
     }
-
     const params = new URLSearchParams();
     params.append(ENTRY.name,           document.getElementById('f_name').value.trim());
     params.append(ENTRY.business,       document.getElementById('f_business').value.trim());
@@ -686,12 +590,10 @@
     params.append(ENTRY.primary_focus,  document.getElementById('f_primary_focus').value.trim());
     params.append(ENTRY.goal,           document.getElementById('f_goal').value.trim());
     params.append(ENTRY.anything_else,  document.getElementById('f_anything_else').value.trim());
-
     const iframe = document.createElement('iframe');
     iframe.name = 'hidden_iframe';
     iframe.style.display = 'none';
     document.body.appendChild(iframe);
-
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = FORM_ACTION;
@@ -704,7 +606,6 @@
     });
     document.body.appendChild(form);
     form.submit();
-
     setTimeout(() => {
       clearSavedProgress();
       document.getElementById('intakeForm').style.display = 'none';
