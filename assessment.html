@@ -609,22 +609,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       responses.push(el.textContent.trim());
     });
 
-    // Build form data for Google Form submission
-    var formData = new FormData();
-    formData.append('entry.name', document.getElementById('fullName').value);
-    formData.append('entry.email', document.getElementById('email').value);
-    formData.append('entry.businessType', document.getElementById('businessType').value);
-    formData.append('entry.instagram', document.getElementById('instagram').value);
-    formData.append('entry.context', document.getElementById('context').value);
-    formData.append('entry.responses', responses.join(' | '));
-
-    // Submit to Google Form endpoint
-    fetch('https://docs.google.com/forms/d/e/1FAIpQLSfgFA0NQ8X54XxBgm6T29A1H9ZyMa_JTEMiR-KCuLPEI0YWqw/formResponse', {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors'
-    }).catch(function() {});
-
     // Collect per-section results for Make webhook
     function buildSectionResult(sectionNum) {
       var section = document.querySelector('[data-section="' + sectionNum + '"]');
