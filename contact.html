@@ -583,6 +583,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       });
     } catch (err) {}
 
+    try {
+      await fetch('https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          '5': data.get('name')     || '',
+          '6': data.get('business') || '',
+          '7': data.get('email')    || '',
+          '8': data.get('phone')    || '',
+          q1_ready:    data.get('q1_ready')    || '',
+          q2_stopping: data.get('q2_stopping') || '',
+          q3_today:    data.get('q3_today')    || '',
+          q4_stakes:   data.get('q4_stakes')   || '',
+        }),
+      });
+    } catch (err) {}
+
     form.style.display = 'none';
     successState.classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'smooth' });
