@@ -473,20 +473,7 @@
     const instagram = document.getElementById('finstagram').value.trim();
     const why = document.getElementById('fwhy').value.trim();
     if (!name || !email || !industry || !instagram || !why) { alert('Please complete all fields before submitting.'); return; }
-    const params = new URLSearchParams();
-    params.append(ENTRY.name, name); params.append(ENTRY.email, email);
-    params.append(ENTRY.industry, industry); params.append(ENTRY.instagram, instagram);
-    params.append(ENTRY.why, why);
-    for (let i = 1; i <= 6; i++) { params.append(ENTRY['s' + i], getSectionResults('section' + i)); }
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe'; iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    const form = document.createElement('form');
-    form.method = 'POST'; form.action = FORM_ACTION; form.target = 'hidden_iframe'; form.style.display = 'none';
-    params.forEach((val, key) => { const input = document.createElement('input'); input.type = 'hidden'; input.name = key; input.value = val; form.appendChild(input); });
-    document.body.appendChild(form); form.submit();
-
-    // Send to Make webhook for cross-check against intake
+    // Send to Make webhook
     fetch('https://hook.us2.make.com/554jmrau8rg2dqoyehatqlp8bus6vv77', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -508,8 +495,6 @@
     setTimeout(() => {
       document.getElementById('submitForm').style.display = 'none';
       document.getElementById('submitSuccess').classList.add('visible');
-      try { document.body.removeChild(form); } catch(e) {}
-      try { document.body.removeChild(iframe); } catch(e) {}
     }, 800);
   }
 </script>
