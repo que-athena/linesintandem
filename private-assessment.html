@@ -485,6 +485,26 @@
     form.method = 'POST'; form.action = FORM_ACTION; form.target = 'hidden_iframe'; form.style.display = 'none';
     params.forEach((val, key) => { const input = document.createElement('input'); input.type = 'hidden'; input.name = key; input.value = val; form.appendChild(input); });
     document.body.appendChild(form); form.submit();
+
+    // Send to Make webhook for cross-check against intake
+    fetch('https://hook.us2.make.com/554jmrau8rg2dqoyehatqlp8bus6vv77', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'Full Name': name,
+        'Email Address': email,
+        'Business Type or Industry': industry,
+        'Socials URL': instagram,
+        'What made you complete this audit today?': why,
+        'Section 1 Results': getSectionResults('section1'),
+        'Section 2 Results': getSectionResults('section2'),
+        'Section 3 Results': getSectionResults('section3'),
+        'Section 4 Results': getSectionResults('section4'),
+        'Section 5 Results': getSectionResults('section5'),
+        'Section 6 Results': getSectionResults('section6')
+      })
+    }).catch(function() {});
+
     setTimeout(() => {
       document.getElementById('submitForm').style.display = 'none';
       document.getElementById('submitSuccess').classList.add('visible');
