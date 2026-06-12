@@ -590,28 +590,53 @@
     params.append(ENTRY.primary_focus,  document.getElementById('f_primary_focus').value.trim());
     params.append(ENTRY.goal,           document.getElementById('f_goal').value.trim());
     params.append(ENTRY.anything_else,  document.getElementById('f_anything_else').value.trim());
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = FORM_ACTION;
-    form.target = 'hidden_iframe';
-    form.style.display = 'none';
-    params.forEach((val, key) => {
-      const input = document.createElement('input');
-      input.type = 'hidden'; input.name = key; input.value = val;
-      form.appendChild(input);
-    });
-    document.body.appendChild(form);
-    form.submit();
+    // Send to Make webhook
+    fetch('https://hook.us2.make.com/fwp8973riudpfipv8c4tuu9gf89j16y2', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'Full Name':           document.getElementById('f_name').value.trim(),
+        'Business Name':       document.getElementById('f_business').value.trim(),
+        'Email Address':       document.getElementById('f_email').value.trim(),
+        'Phone Number':        document.getElementById('f_phone').value.trim(),
+        'Your Role':           getRadioValue('role'),
+        'If other, describe your role': document.getElementById('f_role_other').value.trim(),
+        'Business Type':       getRadioValue('biz_type'),
+        'Describe your business in two to three sentences': document.getElementById('f_biz_desc').value.trim(),
+        'City and State':      document.getElementById('f_location').value.trim(),
+        'Years in Operation':  document.getElementById('f_years').value.trim(),
+        'Primary Social Handle': document.getElementById('f_instagram').value.trim(),
+        'Website URL':         document.getElementById('f_website').value.trim(),
+        'Average Client Spend': document.getElementById('f_avg_spend').value.trim(),
+        'Approximate Annual Revenue': document.getElementById('f_annual_rev').value.trim(),
+        'Average client visit frequency': document.getElementById('f_visit_freq').value.trim(),
+        'Your highest-value services or offerings': document.getElementById('f_top_services').value.trim(),
+        'Describe your ideal returning client': document.getElementById('f_ideal_client').value.trim(),
+        'Total contact list size': document.getElementById('f_list_size').value.trim(),
+        'Estimated quiet contacts': document.getElementById('f_quiet_size').value.trim(),
+        'What does your contact list contain?': getCheckboxValues('list_type'),
+        'Where does your contact data live?': document.getElementById('f_list_source').value.trim(),
+        'When did you last reach out to your full list?': document.getElementById('f_last_outreach').value.trim(),
+        'Have you run any re-engagement campaigns before?': document.getElementById('f_prev_campaigns').value.trim(),
+        'Email service platform (ESP)': document.getElementById('f_esp').value.trim(),
+        'Booking or CRM platform': document.getElementById('f_booking').value.trim(),
+        'Current email setup status': getRadioValue('esp_status'),
+        'Anything else we should know about your platforms or data': document.getElementById('f_platform_notes').value.trim(),
+        'How would you describe the way your business communicates?': document.getElementById('f_voice_desc').value.trim(),
+        'Share an example of your client communication': document.getElementById('f_voice_example').value.trim(),
+        'What should we never say or do in your client communications?': document.getElementById('f_voice_avoid').value.trim(),
+        'Are there specific past clients you already know are high priority?': document.getElementById('f_top_contacts').value.trim(),
+        'Any sensitivities or disruptions in the next 90 days we should know about?': document.getElementById('f_disruptions').value.trim(),
+        'What is the primary thing you want the audit to address?': document.getElementById('f_primary_focus').value.trim(),
+        'What does success look like to you at the end of this audit?': document.getElementById('f_goal').value.trim(),
+        'Anything else we should know before we begin?': document.getElementById('f_anything_else').value.trim()
+      })
+    }).catch(function() {});
+
     setTimeout(() => {
       clearSavedProgress();
       document.getElementById('intakeForm').style.display = 'none';
       document.getElementById('intakeSuccess').classList.add('visible');
-      try { document.body.removeChild(form); } catch(e) {}
-      try { document.body.removeChild(iframe); } catch(e) {}
       window.scrollTo({ top: document.querySelector('.submit-section').offsetTop - 40, behavior: 'smooth' });
     }, 800);
   }
