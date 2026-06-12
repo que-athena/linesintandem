@@ -625,6 +625,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       mode: 'no-cors'
     }).catch(function() {});
 
+    // Collect per-section results for Make webhook
+    function buildSectionResult(sectionNum) {
+      var section = document.querySelector('[data-section="' + sectionNum + '"]');
+      if (!section) return '';
+      var items = section.querySelectorAll('.check-item');
+      var result = [];
+      items.forEach(function(item) {
+        var text = item.querySelector('.check-text');
+        if (!text) return;
+        var checked = item.classList.contains('checked') ? '[CHECKED]' : '[  ]';
+        result.push(checked + ' ' + text.textContent.trim());
+      });
+      return result.join('\n');
+    }
+
+    // Send to Make webhook
+    fetch('https://hook.us2.make.com/bpooctjj4apxhaf4fybskf4y42byhpah', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        '1': document.getElementById('fullName').value,
+        '2': document.getElementById('email').value,
+        '3': document.getElementById('businessType').value,
+        '4': document.getElementById('instagram').value,
+        '5': document.getElementById('context').value,
+        '6': buildSectionResult(1),
+        '7': buildSectionResult(2),
+        '8': buildSectionResult(3),
+        '9': buildSectionResult(4),
+        '10': buildSectionResult(5),
+        '11': buildSectionResult(6)
+      })
+    }).catch(function() {});
+
     form.style.display = 'none';
     confirmation.classList.add('visible');
     window.scrollTo({ top: document.getElementById('confirmation').offsetTop - 100, behavior: 'smooth' });
