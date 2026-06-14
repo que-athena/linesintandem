@@ -360,6 +360,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </select>
       </div>
 
+      <div class="field-block">
+        <label class="field-label" for="annualRevenue">Approximate annual revenue</label>
+        <select id="annualRevenue" name="annualRevenue" class="unselected" onchange="this.classList.remove('unselected')">
+          <option value="" disabled selected>Select your revenue range</option>
+          <option value="Below $600K">Below $600K</option>
+          <option value="$600K — $1M">$600K — $1M</option>
+          <option value="$1M — $2M">$1M — $2M</option>
+          <option value="$2M+">$2M+</option>
+        </select>
+      </div>
+
       <div class="field-block field-full">
         <label class="field-label" for="question">Your question</label>
         <textarea id="question" name="question" rows="5" placeholder="What do you need to understand before you begin?" required></textarea>
@@ -406,11 +417,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const MAKE_WEBHOOK    = 'https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0';
 
   const FIELD_MAP = {
-    firstName:    'entry.REPLACE_FIRSTNAME',
-    businessName: 'entry.REPLACE_BUSINESSNAME',
-    email:        'entry.819601042',
-    businessType: 'entry.REPLACE_BUSINESSTYPE',
-    question:     'entry.REPLACE_QUESTION',
+    firstName:     'entry.REPLACE_FIRSTNAME',
+    businessName:  'entry.REPLACE_BUSINESSNAME',
+    email:         'entry.819601042',
+    businessType:  'entry.REPLACE_BUSINESSTYPE',
+    annualRevenue: 'entry.REPLACE_REVENUE',
+    question:      'entry.REPLACE_QUESTION',
   };
 
   const form         = document.getElementById('contactForm');
@@ -452,12 +464,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          firstName:    data.get('firstName')    || '',
-          businessName: data.get('businessName') || '',
-          email:        data.get('email')        || '',
-          businessType: data.get('businessType') || '',
-          question:     data.get('question')     || '',
-          source:       'contact.html',
+          firstName:     data.get('firstName')     || '',
+          businessName:  data.get('businessName')  || '',
+          email:         data.get('email')          || '',
+          businessType:  data.get('businessType')   || '',
+          annualRevenue: data.get('annualRevenue')  || '',
+          question:      data.get('question')       || '',
+          source:        'contact.html',
           timestamp:    new Date().toISOString(),
         }),
       });
