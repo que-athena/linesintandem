@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start Here | LinesinTandem™</title>
+<title>Revenue in Tandem™ | LinesinTandem™</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -21,8 +21,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --charcoal: #2b2b2b;
     --charcoal-deep: #1a1917;
     --charcoal-mid: #222220;
-    --text-body: #4a4a47;
-    --text-secondary: #7a7870;
     --gold: #b89a6a;
     --gold-dark: #8a6a48;
     --gold-bright: #cca96e;
@@ -51,13 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* ══════════════════════════════════
-     LAYOUT — KEY FIX:
-     page-wrap sits below fixed nav via margin-top.
-     Left panel is sticky within the scrolling page.
-     Right panel is in normal flow and grows with content.
-     Footer spans full width below both panels.
-  ══════════════════════════════════ */
+  /* ── LAYOUT ── */
   .page-wrap {
     margin-top: 57px;
     display: grid;
@@ -81,8 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .left-panel::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background:
       radial-gradient(ellipse at 10% 90%, rgba(184,154,106,0.12) 0%, transparent 55%),
       radial-gradient(ellipse at 90% 10%, rgba(242,241,238,0.04) 0%, transparent 50%);
@@ -91,106 +82,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .left-panel::after {
     content: '';
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    right: 0; top: 0; bottom: 0;
     width: 1px;
     background: linear-gradient(180deg, transparent, var(--gold), transparent);
   }
   .left-content { position: relative; z-index: 1; }
   .left-eyebrow {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--eyebrow-on-taupe);
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.1s forwards;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--eyebrow-on-taupe); margin-bottom: 36px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
   }
   .left-headline {
     font-family: 'Noto Serif Display', serif;
-    font-size: clamp(2rem, 3.2vw, 3rem);
-    font-weight: 800;
-    color: var(--charcoal-deep);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
+    font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 800;
+    color: var(--charcoal-deep); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
   }
   .left-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
   .left-rule {
-    width: 40px;
-    height: 2px;
-    background: var(--gold-dark);
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.3s forwards;
+    width: 40px; height: 2px; background: var(--gold-dark); margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
   }
   .left-tagline {
-    font-family: 'Noto Serif Display', serif;
-    font-size: 11px;
-    font-style: italic;
-    font-weight: 300;
-    color: rgba(43,43,43,0.36);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.38s forwards;
+    font-family: 'Noto Serif Display', serif; font-size: 11px; font-style: italic;
+    font-weight: 300; color: rgba(43,43,43,0.36); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 24px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.38s forwards;
   }
   .left-body {
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(43,43,43,0.65);
-    line-height: 1.88;
-    max-width: 400px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
+    font-size: 15px; font-weight: 300; color: rgba(43,43,43,0.65);
+    line-height: 1.88; max-width: 400px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
   }
   .left-body strong { color: rgba(43,43,43,0.82); font-weight: 500; }
 
   .expect-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 48px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.5s forwards;
+    display: flex; flex-direction: column; gap: 0; margin-top: 48px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
   }
-  .expect-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 16px 0;
-    border-top: 1px solid rgba(43,43,43,0.1);
-  }
+  .expect-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(43,43,43,0.1); }
   .expect-item:last-child { border-bottom: 1px solid rgba(43,43,43,0.1); }
-  .expect-num {
-    font-family: 'Noto Serif Display', serif;
-    font-size: 0.75rem;
-    font-weight: 800;
-    font-style: italic;
-    color: rgba(184,154,106,0.5);
-    line-height: 1.6;
-    flex-shrink: 0;
-    min-width: 20px;
-  }
-  .expect-text {
-    font-size: 13px;
-    font-weight: 300;
-    color: rgba(43,43,43,0.58);
-    line-height: 1.72;
-  }
+  .expect-num { font-family: 'Noto Serif Display', serif; font-size: 0.75rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.5); line-height: 1.6; flex-shrink: 0; min-width: 20px; }
+  .expect-text { font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.58); line-height: 1.72; }
   .expect-text strong { color: rgba(43,43,43,0.78); font-weight: 500; }
 
   .left-bottom {
-    position: relative;
-    z-index: 1;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.6s forwards;
+    position: relative; z-index: 1; margin-top: 48px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
   }
+  .audit-cta-block { border-top: 1px solid rgba(43,43,43,0.12); padding-top: 32px; }
+  .audit-cta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 12px; }
+  .audit-cta-text { font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.58); line-height: 1.7; margin-bottom: 20px; }
+  .audit-cta-link {
+    display: inline-block; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal-deep);
+    background: var(--gold); padding: 12px 28px; text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .audit-cta-link:hover { background: var(--gold-dark); color: var(--warm-white); }
+  .reveal-link {
+    display: block; margin-top: 14px; font-size: 11px; font-weight: 300;
+    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(43,43,43,0.45);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .reveal-link:hover { color: rgba(43,43,43,0.7); }
 
   /* ── RIGHT PANEL ── */
   .right-panel {
@@ -200,152 +155,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .right-panel::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: radial-gradient(ellipse at 80% 20%, rgba(184,154,106,0.05) 0%, transparent 55%);
     pointer-events: none;
   }
 
-  .form-intro {
-    margin-bottom: 52px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.25s forwards;
-  }
-  .form-eyebrow {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--eyebrow-on-dark);
-    margin-bottom: 14px;
-  }
-  .form-headline {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
-    font-weight: 800;
-    color: var(--warm-white);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin-bottom: 16px;
-  }
+  .form-intro { margin-bottom: 52px; opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards; }
+  .form-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--eyebrow-on-dark); margin-bottom: 14px; }
+  .form-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px; }
   .form-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
-  .form-subtext {
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(242,241,238,0.45);
-    line-height: 1.75;
-  }
+  .form-subtext { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.45); line-height: 1.75; }
 
-  /* ── FORM ELEMENTS ── */
+  /* ── FORM ── */
   .contact-form { position: relative; z-index: 1; }
-
-  .field-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.35s forwards;
-  }
-
+  .field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
   .field-block {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease var(--delay, 0.4s) forwards;
+    display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.8s ease var(--delay, 0.4s) forwards;
   }
   .field-block.paired { margin-bottom: 0; }
-
-  .field-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--eyebrow-on-dark);
-  }
-  .field-question {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    font-weight: 600;
-    color: var(--warm-white);
-    line-height: 1.38;
-    margin-bottom: 4px;
-  }
-  .field-hint {
-    font-size: 12px;
-    font-weight: 300;
-    color: rgba(242,241,238,0.22);
-    line-height: 1.6;
-    font-style: italic;
-    margin-bottom: 2px;
-  }
+  .field-group-wrap { opacity: 0; animation: fadeUp 0.8s ease var(--delay, 0.4s) forwards; margin-bottom: 28px; }
+  .field-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-dark); }
+  .field-note { font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.28); font-style: italic; margin-top: 6px; line-height: 1.6; }
 
   input[type="text"],
   input[type="email"],
-  input[type="tel"],
+  select,
   textarea {
     width: 100%;
     background: rgba(242,241,238,0.05);
     border: 1px solid rgba(242,241,238,0.1);
     border-bottom: 1px solid rgba(184,154,106,0.3);
     color: var(--warm-white);
-    font-family: 'Jost', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    padding: 14px 16px;
-    outline: none;
+    font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300;
+    padding: 14px 16px; outline: none;
     transition: border-color 0.25s, background 0.25s;
-    resize: none;
-    -webkit-appearance: none;
-    appearance: none;
+    resize: none; -webkit-appearance: none; appearance: none; border-radius: 0;
   }
   input[type="text"]::placeholder,
   input[type="email"]::placeholder,
-  input[type="tel"]::placeholder,
   textarea::placeholder { color: rgba(242,241,238,0.2); font-style: italic; }
   input[type="text"]:focus,
   input[type="email"]:focus,
-  input[type="tel"]:focus,
+  select:focus,
   textarea:focus { border-color: rgba(184,154,106,0.65); background: rgba(242,241,238,0.07); }
 
-  .form-divider { width: 100%; height: 1px; background: rgba(184,154,106,0.15); margin: 36px 0; }
-
-  .contact-fields { opacity: 0; animation: fadeUp 0.8s ease 0.75s forwards; }
-  .contact-fields .field-group { opacity: 1; animation: none; margin-bottom: 0; }
-
-  .phone-note {
-    font-size: 11px;
-    font-weight: 300;
-    color: rgba(242,241,238,0.28);
-    font-style: italic;
-    margin-top: 6px;
-    line-height: 1.6;
+  select {
+    cursor: pointer; color: var(--warm-white);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b89a6a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center;
+    background-color: rgba(242,241,238,0.05); padding-right: 40px;
   }
+  select option { background: var(--charcoal-deep); color: var(--warm-white); }
+  select.unselected { color: rgba(242,241,238,0.2); font-style: italic; }
 
-  .submit-area { margin-top: 44px; opacity: 0; animation: fadeUp 0.8s ease 0.85s forwards; }
+  .submit-area { margin-top: 44px; opacity: 0; animation: fadeUp 0.8s ease 0.72s forwards; }
   .submit-btn {
-    display: inline-block;
-    background: var(--gold-bright);
-    color: var(--charcoal-deep);
-    font-family: 'Jost', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 20px 52px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-    width: 100%;
+    display: inline-block; background: var(--gold-bright); color: var(--charcoal-deep);
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 20px 52px; border: none; cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s; width: 100%;
   }
   .submit-btn:hover { background: var(--gold-dark); color: var(--warm-white); transform: translateY(-2px); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
   .submit-note { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.28); font-style: italic; margin-top: 14px; line-height: 1.72; text-align: center; }
 
-  /* ── SUCCESS STATE ── */
-  .success-state { display: none; text-align: center; padding: 80px 0; opacity: 0; animation: fadeIn 0.6s ease forwards; }
-  .success-state.visible { display: block; }
+  /* ── SUCCESS ── */
+  .success-state { display: none; text-align: center; padding: 80px 0; }
+  .success-state.visible { display: block; animation: fadeIn 0.6s ease forwards; }
   .success-icon { width: 52px; height: 52px; border: 1px solid rgba(184,154,106,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; }
   .success-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
   .success-headline em { font-style: italic; color: var(--gold-bright); }
@@ -355,14 +233,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   /* ── FOOTER ── */
   .footer {
-    background: var(--charcoal-deep);
-    padding: 40px 52px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    border-top: 1px solid rgba(184,154,106,0.1);
+    background: var(--charcoal-deep); padding: 40px 52px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(184,154,106,0.1);
     grid-column: 1 / -1;
   }
   .footer-logo { font-family: 'Noto Serif Display', serif; font-size: 15px; font-weight: 600; color: rgba(242,241,238,0.28); letter-spacing: 0.02em; }
@@ -391,9 +264,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://que-athena.github.io/linesintandem/" class="nav-logo" target="_blank">LinesinTandem<sup>™</sup></a>
+  <a href="https://linesintandem.com/" class="nav-logo">LinesinTandem<sup>™</sup></a>
   <div class="nav-right">
-    <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="nav-cta" target="_blank">Begin the Audit →</a>
+    <a href="https://linesintandem.com/assessment.html" class="nav-link">Reveal</a>
+    <a href="https://linesintandem.com/audit.html" class="nav-link">Audit</a>
+    <a href="https://linesintandem.com/sprint-interest.html" class="nav-link">Sprint</a>
+    <a href="https://linesintandem.com/contact.html" class="nav-link">Contact</a>
+    <a href="https://linesintandem.com/audit.html" class="nav-cta">Begin the Audit →</a>
   </div>
 </nav>
 
@@ -402,24 +279,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ══ LEFT PANEL ══ -->
   <aside class="left-panel">
     <div class="left-content">
-      <div class="left-eyebrow">LinesinTandem™ — New Inquiries</div>
+      <div class="left-eyebrow">Revenue in Tandem™ — Sprint Interest</div>
       <h1 class="left-headline">
-        This is where<br>the right fit<br><em>becomes clear.</em>
+        Four clients.<br>Ninety days.<br><em>Twenty relationships back.</em>
       </h1>
       <div class="left-rule"></div>
       <p class="left-tagline">Bring them back. Keep them close.</p>
       <p class="left-body">
-        These questions are not a formality. They are how we understand what is actually happening in your business before we recommend anything. <strong>Answer honestly — the specificity is what makes the response useful.</strong>
+        LinesinTandem™ runs four sprint engagements at a time. Every engagement is scoped individually — list size, revenue profile, location count, and complexity — and begins with a complete diagnostic of your quiet client relationships before a single campaign deploys. <strong>Access begins with The Quiet Relationship Audit™.</strong>
       </p>
 
       <div class="expect-list">
         <div class="expect-item">
           <span class="expect-num">01</span>
-          <p class="expect-text"><strong>You will hear back within one business day</strong> — by email, with one follow-up question.</p>
+          <p class="expect-text"><strong>Every submission is reviewed personally.</strong> If there is a fit, you will hear from us.</p>
         </div>
         <div class="expect-item">
           <span class="expect-num">02</span>
-          <p class="expect-text"><strong>If there is a fit,</strong> you will receive the complimentary Quiet Relationship Reveal™ and a link to book a conversation.</p>
+          <p class="expect-text"><strong>If there is a fit,</strong> you will receive a personal recommendation on the right next step for your business.</p>
         </div>
         <div class="expect-item">
           <span class="expect-num">03</span>
@@ -429,6 +306,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="left-bottom">
+      <div class="audit-cta-block">
+        <div class="audit-cta-label">Ready to begin now</div>
+        <p class="audit-cta-text">The Quiet Relationship Audit™ is where access to Revenue in Tandem™ starts. $1,500 — credited in full toward your sprint. No sprint commitment until you receive and accept your proposal.</p>
+        <a href="https://buy.stripe.com/14A28sgr6cHz9TS6gueME0b" class="audit-cta-link">Begin the Audit — $1,500 →</a>
+        <a href="https://linesintandem.com/assessment.html" class="reveal-link">Not ready yet — Start with The Quiet Relationship Reveal™ →</a>
+      </div>
     </div>
   </aside>
 
@@ -436,71 +319,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <main class="right-panel">
 
     <div class="form-intro">
-      <div class="form-eyebrow">Four questions</div>
-      <h2 class="form-headline">Tell us what is<br><em>actually going on.</em></h2>
-      <p class="form-subtext">No preamble needed. No polished pitch. Just answer as directly as you can — we read every submission personally.</p>
+      <div class="form-eyebrow">Register your interest</div>
+      <h2 class="form-headline">Not ready for the audit<br><em>quite yet.</em></h2>
+      <p class="form-subtext">If you are not ready to begin but want to be considered for a future sprint window, complete the form below. Every submission is reviewed personally.</p>
     </div>
 
-    <form class="contact-form" id="contactForm" novalidate>
+    <form class="contact-form" id="sprintForm" novalidate>
 
-      <div class="field-block" style="--delay: 0.4s">
-        <span class="field-label">Question 01</span>
-        <p class="field-question">Are you ready for the problem your business is facing to be totally resolved?</p>
-        <p class="field-hint">Not "are you open to it" — are you actually ready. What that means for you specifically.</p>
-        <textarea name="q1_ready" rows="4" placeholder="Be direct with yourself here…" required></textarea>
+      <div class="field-group-wrap" style="--delay: 0.35s">
+        <div class="field-group">
+          <div class="field-block paired">
+            <span class="field-label">First name</span>
+            <input type="text" name="firstName" placeholder="Your first name" required>
+          </div>
+          <div class="field-block paired">
+            <span class="field-label">Business name</span>
+            <input type="text" name="businessName" placeholder="As it appears publicly" required>
+          </div>
+        </div>
       </div>
 
-      <div class="field-block" style="--delay: 0.48s">
-        <span class="field-label">Question 02</span>
-        <p class="field-question">What has been stopping you from fixing this yourself so far?</p>
-        <p class="field-hint">Time, capacity, not knowing where to start — whatever is true.</p>
-        <textarea name="q2_stopping" rows="4" placeholder="The real answer, not the polished one…" required></textarea>
+      <div class="field-block" style="--delay: 0.42s">
+        <span class="field-label">Email address</span>
+        <input type="email" name="email" placeholder="Where we will reach you" required>
+      </div>
+
+      <div class="field-group-wrap" style="--delay: 0.48s">
+        <div class="field-group">
+          <div class="field-block paired">
+            <span class="field-label">Business type</span>
+            <select name="businessType" class="unselected" onchange="this.classList.remove('unselected')" required>
+              <option value="" disabled selected>Select your business type</option>
+              <option value="MedSpa">MedSpa</option>
+              <option value="Cosmetic Dermatology Practice">Cosmetic Dermatology Practice</option>
+              <option value="Luxury Hair or Beauty Studio">Luxury Hair or Beauty Studio</option>
+              <option value="Private Wellness Studio">Private Wellness Studio</option>
+              <option value="Cosmetic Dental Practice">Cosmetic Dental Practice</option>
+              <option value="Private Membership Club">Private Membership Club</option>
+              <option value="Other">Other — tell us more below</option>
+            </select>
+          </div>
+          <div class="field-block paired">
+            <span class="field-label">Approximate annual revenue</span>
+            <select name="annualRevenue" class="unselected" onchange="this.classList.remove('unselected')" required>
+              <option value="" disabled selected>Select your revenue range</option>
+              <option value="Below $600K">Below $600K</option>
+              <option value="$600K — $1M">$600K — $1M</option>
+              <option value="$1M — $2M">$1M — $2M</option>
+              <option value="$2M+">$2M+</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div class="field-block" style="--delay: 0.56s">
-        <span class="field-label">Question 03</span>
-        <p class="field-question">What made you reach out today instead of last month?</p>
-        <p class="field-hint">Something shifted. What was it?</p>
-        <textarea name="q3_today" rows="4" placeholder="What changed…" required></textarea>
-      </div>
-
-      <div class="field-block" style="--delay: 0.64s">
-        <span class="field-label">Question 04</span>
-        <p class="field-question">What happens if you do not solve this in the next 90 days?</p>
-        <p class="field-hint">Say what is actually at stake — not what sounds serious.</p>
-        <textarea name="q4_stakes" rows="4" placeholder="What does that actually cost you…" required></textarea>
-      </div>
-
-      <div class="form-divider"></div>
-
-      <div class="contact-fields">
-        <div class="field-group">
-          <div class="field-block paired" style="--delay: 0.72s">
-            <span class="field-label">Your name</span>
-            <input type="text" name="name" placeholder="First and last" required>
-          </div>
-          <div class="field-block paired" style="--delay: 0.72s">
-            <span class="field-label">Business name</span>
-            <input type="text" name="business" placeholder="As it appears publicly" required>
-          </div>
-        </div>
-
-        <div class="field-group" style="margin-top: 16px;">
-          <div class="field-block paired" style="--delay: 0.78s">
-            <span class="field-label">Email address</span>
-            <input type="email" name="email" placeholder="Where we will reach you" required>
-          </div>
-          <div class="field-block paired" style="--delay: 0.78s">
-            <span class="field-label">Mobile number <span style="color:rgba(242,241,238,0.28); font-style:italic; font-size:9px; letter-spacing:0.08em; text-transform:none;">— optional</span></span>
-            <input type="tel" name="phone" placeholder="+1 (000) 000-0000">
-            <p class="phone-note">For a brief follow-up message. We do not share or add to lists.</p>
-          </div>
-        </div>
+        <span class="field-label">
+          What is sitting in your contact list right now?
+          <span style="color:rgba(242,241,238,0.28); font-style:italic; font-size:9px; letter-spacing:0.08em; text-transform:none; margin-left:6px;">— optional</span>
+        </span>
+        <textarea name="contactListNote" rows="4" placeholder="Quiet clients, lapsed relationships, names you have not reached out to…"></textarea>
       </div>
 
       <div class="submit-area">
-        <button type="submit" class="submit-btn">Submit — LinesinTandem™ Will Be In Touch →</button>
-        <p class="submit-note">You will receive a confirmation immediately. A personal response follows within one business day.</p>
+        <button type="submit" class="submit-btn">Submit for consideration →</button>
+        <p class="submit-note">Every submission is reviewed personally. If there is a fit, you will hear from us.</p>
       </div>
 
     </form>
@@ -512,10 +394,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </svg>
       </div>
       <h2 class="success-headline">Received.<br><em>We will be in touch.</em></h2>
-      <p class="success-body">Your submission has been sent. A confirmation is on its way to your inbox, followed by a personal response within one business day.</p>
+      <p class="success-body">Your submission has been sent. Every inquiry is reviewed personally — if there is a fit, you will hear from us.</p>
       <div class="success-rule"></div>
-      <p class="success-next">If you have not yet completed the Quiet Relationship Reveal™, it is the right place to start — and it is complimentary.</p>
-      <a href="https://que-athena.github.io/linesintandem/assessment.html" target="_blank" style="display:inline-block; margin-top: 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal-deep); background: var(--gold-bright); padding: 16px 40px; text-decoration: none; transition: background 0.3s, color 0.3s;">Start The Quiet Relationship Reveal™ — Complimentary →</a>
+      <p class="success-next">If you have not yet completed The Quiet Relationship Reveal™, it is the right place to start while you wait — and it is complimentary.</p>
+      <a href="https://linesintandem.com/assessment.html" style="display:inline-block; margin-top: 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal-deep); background: var(--gold-bright); padding: 16px 40px; text-decoration: none; transition: background 0.3s, color 0.3s;">Start The Quiet Relationship Reveal™ — Complimentary →</a>
     </div>
 
   </main>
@@ -524,9 +406,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <footer class="footer">
     <div class="footer-logo">LinesinTandem<sup>™</sup></div>
     <div class="footer-links">
-      <a href="assessment.html" class="footer-link" target="_blank">Quiet Relationship Reveal</a>
-      <a href="audit.html" class="footer-link" target="_blank">Quiet Relationship Audit</a>
-      <a href="rit.html" class="footer-link" target="_blank">Revenue in Tandem</a>
+      <a href="https://linesintandem.com/assessment.html" class="footer-link">Reveal</a>
+      <a href="https://linesintandem.com/audit.html" class="footer-link">Audit</a>
+      <a href="https://linesintandem.com/sprint-interest.html" class="footer-link">Sprint</a>
+      <a href="https://linesintandem.com/contact.html" class="footer-link">Contact</a>
     </div>
     <div class="footer-copyright">© 2023–2026 LinesinTandem™. All rights reserved.</div>
   </footer>
@@ -535,20 +418,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCWkMIgakzpXOaYVgJSfYK6nHpzHxsy0vqjEDgfJo2wh-tXw/formResponse';
+  const MAKE_WEBHOOK    = 'https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0';
 
+  // Demeter: add new columns to the Google Sheet for these fields,
+  // then replace REPLACE_ placeholders with the correct entry IDs.
+  // Email entry.819601042 is confirmed from the original contact page.
   const FIELD_MAP = {
-    q1_ready:    'entry.2143846273',
-    q2_stopping: 'entry.209816635',
-    q3_today:    'entry.1891689375',
-    q4_stakes:   'entry.1344357368',
-    name:        'entry.1659871565',
-    business:    'entry.1151747022',
-    email:       'entry.819601042',
-    phone:       'entry.43384397',
+    firstName:       'entry.REPLACE_FIRSTNAME',
+    businessName:    'entry.REPLACE_BUSINESSNAME',
+    email:           'entry.819601042',
+    businessType:    'entry.REPLACE_BUSINESSTYPE',
+    annualRevenue:   'entry.REPLACE_REVENUE',
+    contactListNote: 'entry.REPLACE_NOTE',
   };
 
-  const form = document.getElementById('contactForm');
+  const form         = document.getElementById('sprintForm');
   const successState = document.getElementById('successState');
+
+  // Initialise select placeholder styling
+  document.querySelectorAll('select').forEach(sel => {
+    sel.classList.add('unselected');
+    sel.addEventListener('change', () => sel.classList.remove('unselected'));
+  });
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -570,32 +461,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true;
 
     const data = new FormData(form);
+
+    // Google Sheet via Form — only send fields with confirmed entry IDs
     const googleData = new FormData();
     for (const [key, entryId] of Object.entries(FIELD_MAP)) {
-      googleData.append(entryId, data.get(key) || '');
+      if (!entryId.includes('REPLACE')) {
+        googleData.append(entryId, data.get(key) || '');
+      }
     }
-
     try {
-      await fetch(GOOGLE_FORM_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: googleData,
-      });
+      await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: googleData });
     } catch (err) {}
 
+    // Make webhook
     try {
-      await fetch('https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0', {
+      await fetch(MAKE_WEBHOOK, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          '5': data.get('name')     || '',
-          '6': data.get('business') || '',
-          '7': data.get('email')    || '',
-          '8': data.get('phone')    || '',
-          q1_ready:    data.get('q1_ready')    || '',
-          q2_stopping: data.get('q2_stopping') || '',
-          q3_today:    data.get('q3_today')    || '',
-          q4_stakes:   data.get('q4_stakes')   || '',
+          firstName:       data.get('firstName')       || '',
+          businessName:    data.get('businessName')    || '',
+          email:           data.get('email')           || '',
+          businessType:    data.get('businessType')    || '',
+          annualRevenue:   data.get('annualRevenue')   || '',
+          contactListNote: data.get('contactListNote') || '',
+          source:          'sprint-interest.html',
+          timestamp:       new Date().toISOString(),
         }),
       });
     } catch (err) {}
@@ -605,10 +496,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  form.querySelectorAll('input, textarea').forEach(field => {
-    field.addEventListener('input', () => {
-      field.style.borderBottomColor = '';
-    });
+  form.querySelectorAll('input, textarea, select').forEach(field => {
+    field.addEventListener('input', () => { field.style.borderBottomColor = ''; });
   });
 </script>
 
