@@ -1,1 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MTVL2BCR');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | LinesinTandem™</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --taupe: #a7a694;
+    --linen: #e4e2dd;
+    --warm-white: #f2f1ee;
+    --charcoal: #2b2b2b;
+    --charcoal-deep: #1a1917;
+    --charcoal-mid: #222220;
+    --gold: #b89a6a;
+    --gold-dark: #8a6a48;
+    --gold-bright: #cca96e;
+    --gold-rule: rgba(184,154,106,0.28);
+    --eyebrow-on-dark: rgba(212,188,144,0.72);
+  }
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; font-weight: 300; background: var(--charcoal-deep); color: var(--linen); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 52px; display: flex; justify-content: space-between; align-items: center; background: rgba(167,166,148,0.98); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(43,43,43,0.1); }
+  .nav-logo { font-family: 'Noto Serif Display', serif; font-size: 18px; font-weight: 600; color: var(--warm-white); letter-spacing: 0.02em; text-decoration: none; }
+  .nav-logo sup { font-size: 9px; vertical-align: super; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
+  .nav-link { font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.62); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-link:hover { color: var(--warm-white); }
+  .nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); background: var(--gold); padding: 10px 24px; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .nav-cta:hover { background: var(--gold-dark); color: var(--warm-white); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── PAGE ── */
+  .page-wrap {
+    margin-top: 57px;
+    min-height: calc(100vh - 57px);
+    position: relative;
+  }
+  .page-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 10%, rgba(184,154,106,0.05) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 96px 64px 72px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  .hero-eyebrow {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--eyebrow-on-dark); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::after { content: ''; width: 40px; height: 1px; background: rgba(184,154,106,0.3); }
+  .hero-headline {
+    font-family: 'Noto Serif Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    font-weight: 800; color: var(--warm-white);
+    line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px;
+  }
+  .hero-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .hero-rule { width: 48px; height: 2px; background: var(--gold); margin-bottom: 28px; }
+  .hero-desc {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic; font-weight: 300;
+    font-size: 18px; line-height: 1.7;
+    color: var(--taupe); max-width: 520px;
+  }
+
+  /* ── TWO CTAs ── */
+  .cta-strip {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 64px 72px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(184,154,106,0.15);
+    border: 1px solid rgba(184,154,106,0.15);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+  .cta-card {
+    background: var(--charcoal-deep);
+    padding: 36px 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .cta-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--eyebrow-on-dark); margin-bottom: 16px;
+  }
+  .cta-title {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--warm-white); line-height: 1.2; margin-bottom: 12px;
+  }
+  .cta-title em { font-style: italic; color: var(--gold-bright); }
+  .cta-desc {
+    font-size: 13px; font-weight: 300;
+    color: rgba(242,241,238,0.5); line-height: 1.75;
+    margin-bottom: 28px; flex: 1;
+  }
+  .cta-link {
+    display: inline-block;
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--charcoal-deep); background: var(--gold);
+    padding: 12px 24px; text-decoration: none;
+    transition: background 0.3s, color 0.3s; align-self: flex-start;
+  }
+  .cta-link:hover { background: var(--gold-dark); color: var(--warm-white); }
+  .cta-link-secondary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(184,154,106,0.6); text-decoration: none;
+    border: 1px solid rgba(184,154,106,0.25); padding: 12px 24px;
+    transition: all 0.3s; align-self: flex-start;
+  }
+  .cta-link-secondary:hover { color: var(--gold); border-color: rgba(184,154,106,0.6); }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    max-width: 900px; margin: 0 auto; padding: 0 64px;
+  }
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(to right, rgba(184,154,106,0.25), transparent);
+    margin-bottom: 72px;
+  }
+
+  /* ── FORM SECTION ── */
+  .form-section {
+    max-width: 900px; margin: 0 auto; padding: 0 64px 96px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+  .form-header { margin-bottom: 48px; }
+  .form-eyebrow {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--eyebrow-on-dark); margin-bottom: 14px;
+  }
+  .form-headline {
+    font-family: 'Noto Serif Display', serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 800;
+    color: var(--warm-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 14px;
+  }
+  .form-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
+  .form-subtext {
+    font-size: 14px; font-weight: 300;
+    color: rgba(242,241,238,0.45); line-height: 1.75; max-width: 520px;
+  }
+
+  /* ── FORM ── */
+  .inquiry-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .field-full { grid-column: 1 / -1; }
+  .field-block { display: flex; flex-direction: column; gap: 8px; }
+  .field-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--eyebrow-on-dark);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    background: rgba(242,241,238,0.05);
+    border: 1px solid rgba(242,241,238,0.1);
+    border-bottom: 1px solid rgba(184,154,106,0.3);
+    color: var(--warm-white);
+    font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300;
+    padding: 14px 16px; outline: none;
+    transition: border-color 0.25s, background 0.25s;
+    resize: none; -webkit-appearance: none; appearance: none; border-radius: 0;
+  }
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  textarea::placeholder { color: rgba(242,241,238,0.2); font-style: italic; }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  select:focus,
+  textarea:focus { border-color: rgba(184,154,106,0.65); background: rgba(242,241,238,0.07); }
+
+  select {
+    cursor: pointer; color: var(--warm-white);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b89a6a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center;
+    background-color: rgba(242,241,238,0.05); padding-right: 40px;
+  }
+  select option { background: var(--charcoal-deep); color: var(--warm-white); }
+  select.unselected { color: rgba(242,241,238,0.2); font-style: italic; }
+
+  .submit-wrapper {
+    grid-column: 1 / -1;
+    display: flex; flex-direction: column; gap: 14px; margin-top: 8px;
+  }
+  .submit-btn {
+    display: inline-block; background: var(--gold-bright); color: var(--charcoal-deep);
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 20px 52px; border: none; cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s; width: 100%;
+  }
+  .submit-btn:hover { background: var(--gold-dark); color: var(--warm-white); transform: translateY(-2px); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .submit-note {
+    font-size: 12px; font-weight: 300; font-style: italic;
+    color: rgba(242,241,238,0.28); line-height: 1.7; text-align: center;
+  }
+
+  /* ── SUCCESS ── */
+  .success-state { display: none; padding: 72px 0; text-align: center; }
+  .success-state.visible { display: block; animation: fadeIn 0.6s ease forwards; }
+  .success-icon { width: 52px; height: 52px; border: 1px solid rgba(184,154,106,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 32px; }
+  .success-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; margin-bottom: 20px; }
+  .success-headline em { font-style: italic; color: var(--gold-bright); }
+  .success-body { font-size: 15px; font-weight: 300; color: rgba(242,241,238,0.52); line-height: 1.88; max-width: 420px; margin: 0 auto 32px; }
+  .success-reveal {
+    display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--charcoal-deep); background: var(--gold-bright);
+    padding: 16px 40px; text-decoration: none; transition: background 0.3s, color 0.3s;
+  }
+  .success-reveal:hover { background: var(--gold-dark); color: var(--warm-white); }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal-deep); padding: 40px 52px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(184,154,106,0.1);
+  }
+  .footer-logo { font-family: 'Noto Serif Display', serif; font-size: 15px; font-weight: 600; color: rgba(242,241,238,0.28); letter-spacing: 0.02em; }
+  .footer-logo sup { font-size: 8px; vertical-align: super; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-link { font-size: 10px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,241,238,0.32); text-decoration: none; transition: color 0.2s; }
+  .footer-link:hover { color: var(--gold); }
+  .footer-copyright { font-size: 10px; font-weight: 300; color: rgba(242,241,238,0.22); letter-spacing: 0.06em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 72px 24px 48px; }
+    .cta-strip { padding: 0 24px 48px; grid-template-columns: 1fr; }
+    .section-divider { padding: 0 24px; }
+    .form-section { padding: 0 24px 72px; }
+    .inquiry-form { grid-template-columns: 1fr; }
+    .field-full { grid-column: 1; }
+    .submit-wrapper { grid-column: 1; }
+    .nav { padding: 14px 24px; }
+    .footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTVL2BCR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://linesintandem.com/" class="nav-logo">LinesinTandem<sup>™</sup></a>
+  <div class="nav-right">
+    <a href="https://linesintandem.com/assessment.html" class="nav-link">Reveal</a>
+    <a href="https://linesintandem.com/audit.html" class="nav-link">Audit</a>
+    <a href="https://linesintandem.com/sprint-interest.html" class="nav-link">Sprint</a>
+    <a href="https://linesintandem.com/contact.html" class="nav-link">Contact</a>
+    <a href="https://linesintandem.com/audit.html" class="nav-cta">Begin the Audit →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">LinesinTandem™ — Contact</div>
+    <h1 class="hero-headline">Not sure where<br>to <em>begin.</em></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-desc">If you have a question before taking a next step, this is the right place. If you already know what you need — the doors below are already open.</p>
+  </div>
+
+  <!-- TWO CTAs -->
+  <div class="cta-strip">
+    <div class="cta-card">
+      <div class="cta-label">Complimentary — No commitment</div>
+      <div class="cta-title">The Quiet Relationship <em>Reveal™</em></div>
+      <p class="cta-desc">A ten-minute assessment that shows you where client revenue is sitting quiet in your business. Reviewed personally. The right place to start if you are not yet ready to commit to the audit.</p>
+      <a href="https://linesintandem.com/assessment.html" class="cta-link-secondary">Start The Reveal — Complimentary →</a>
+    </div>
+    <div class="cta-card">
+      <div class="cta-label">$1,500 — Credited toward sprint</div>
+      <div class="cta-title">The Quiet Relationship <em>Audit™</em></div>
+      <p class="cta-desc">A complete diagnostic of your quiet client relationships and what recovering them is worth. In The Quiet Map™ delivered within five business days. No sprint commitment required.</p>
+      <a href="https://linesintandem.com/audit.html" class="cta-link">Begin The Audit — $1,500 →</a>
+    </div>
+  </div>
+
+  <!-- DIVIDER -->
+  <div class="section-divider">
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-section">
+    <div class="form-header">
+      <div class="form-eyebrow">Send a question</div>
+      <h2 class="form-headline">A question before<br>you <em>commit.</em></h2>
+      <p class="form-subtext">If there is something specific you need to understand before taking a next step, send it here. Every submission is reviewed personally.</p>
+    </div>
+
+    <form class="inquiry-form" id="contactForm" novalidate>
+
+      <div class="field-block">
+        <label class="field-label" for="firstName">First name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+      </div>
+
+      <div class="field-block">
+        <label class="field-label" for="businessName">Business name</label>
+        <input type="text" id="businessName" name="businessName" placeholder="As it appears publicly" required>
+      </div>
+
+      <div class="field-block">
+        <label class="field-label" for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="Where we will reach you" required>
+      </div>
+
+      <div class="field-block">
+        <label class="field-label" for="businessType">Business type</label>
+        <select id="businessType" name="businessType" class="unselected" onchange="this.classList.remove('unselected')">
+          <option value="" disabled selected>Select your type</option>
+          <option value="MedSpa">MedSpa</option>
+          <option value="Cosmetic Dermatology Practice">Cosmetic Dermatology Practice</option>
+          <option value="Luxury Hair or Beauty Studio">Luxury Hair or Beauty Studio</option>
+          <option value="Private Wellness Studio">Private Wellness Studio</option>
+          <option value="Cosmetic Dental Practice">Cosmetic Dental Practice</option>
+          <option value="Private Membership Club">Private Membership Club</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field-block field-full">
+        <label class="field-label" for="question">Your question</label>
+        <textarea id="question" name="question" rows="5" placeholder="What do you need to understand before you begin?" required></textarea>
+      </div>
+
+      <div class="submit-wrapper">
+        <button type="submit" class="submit-btn">Send your question →</button>
+        <p class="submit-note">Every submission is reviewed personally. If there is a fit, you will hear from us.</p>
+      </div>
+
+    </form>
+
+    <div class="success-state" id="successState">
+      <div class="success-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10L8.5 14.5L16 6" stroke="#cca96e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="success-headline">Received.<br><em>We will be in touch.</em></h2>
+      <p class="success-body">Your submission has been sent. Every inquiry is reviewed personally — if there is a fit, you will hear from us.</p>
+      <a href="https://linesintandem.com/assessment.html" class="success-reveal">Start The Quiet Relationship Reveal™ — Complimentary →</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">LinesinTandem<sup>™</sup></div>
+  <div class="footer-links">
+    <a href="https://linesintandem.com/assessment.html" class="footer-link">Reveal</a>
+    <a href="https://linesintandem.com/audit.html" class="footer-link">Audit</a>
+    <a href="https://linesintandem.com/sprint-interest.html" class="footer-link">Sprint</a>
+    <a href="https://linesintandem.com/contact.html" class="footer-link">Contact</a>
+  </div>
+  <div class="footer-copyright">© 2023–2026 LinesinTandem™. All rights reserved.</div>
+</footer>
+
+<script>
+  // Demeter: replace REPLACE_ placeholders with correct Google Form entry IDs
+  // and confirm Make webhook field names match what the scenario expects.
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCWkMIgakzpXOaYVgJSfYK6nHpzHxsy0vqjEDgfJo2wh-tXw/formResponse';
+  const MAKE_WEBHOOK    = 'https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0';
+
+  const FIELD_MAP = {
+    firstName:    'entry.REPLACE_FIRSTNAME',
+    businessName: 'entry.REPLACE_BUSINESSNAME',
+    email:        'entry.819601042',
+    businessType: 'entry.REPLACE_BUSINESSTYPE',
+    question:     'entry.REPLACE_QUESTION',
+  };
+
+  const form         = document.getElementById('contactForm');
+  const successState = document.getElementById('successState');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const required = form.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      if (!field.value.trim()) {
+        field.style.borderBottomColor = 'rgba(220,80,80,0.6)';
+        valid = false;
+      } else {
+        field.style.borderBottomColor = '';
+      }
+    });
+    if (!valid) return;
+
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const data = new FormData(form);
+
+    const googleData = new FormData();
+    for (const [key, entryId] of Object.entries(FIELD_MAP)) {
+      if (!entryId.includes('REPLACE')) {
+        googleData.append(entryId, data.get(key) || '');
+      }
+    }
+    try {
+      await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: googleData });
+    } catch (err) {}
+
+    try {
+      await fetch(MAKE_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName:    data.get('firstName')    || '',
+          businessName: data.get('businessName') || '',
+          email:        data.get('email')        || '',
+          businessType: data.get('businessType') || '',
+          question:     data.get('question')     || '',
+          source:       'contact.html',
+          timestamp:    new Date().toISOString(),
+        }),
+      });
+    } catch (err) {}
+
+    form.style.display = 'none';
+    successState.classList.add('visible');
+    window.scrollTo({ top: successState.offsetTop - 80, behavior: 'smooth' });
+  });
+
+  form.querySelectorAll('input, textarea, select').forEach(field => {
+    field.addEventListener('input', () => { field.style.borderBottomColor = ''; });
+  });
+</script>
+
+</body>
+</html>
