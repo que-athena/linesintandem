@@ -21,11 +21,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     --charcoal: #2b2b2b;
     --charcoal-deep: #1a1917;
     --charcoal-mid: #222220;
+    --text-body: #4a4a47;
     --gold: #b89a6a;
     --gold-dark: #8a6a48;
     --gold-bright: #cca96e;
     --gold-light: #d4bc90;
-    --gold-lighter: #e2cfa4;
     --gold-rule: rgba(184,154,106,0.28);
     --eyebrow-on-taupe: rgba(43,43,43,0.52);
     --eyebrow-on-dark: rgba(212,188,144,0.72);
@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     grid-template-rows: auto auto;
   }
 
-  /* ── LEFT PANEL ── */
+  /* ── LEFT PANEL — TAUPE ── */
   .left-panel {
     background: var(--taupe);
     padding: 96px 72px 80px;
@@ -81,69 +81,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .left-panel::after {
     content: '';
-    position: absolute;
-    right: 0; top: 0; bottom: 0;
-    width: 1px;
+    position: absolute; right: 0; top: 0; bottom: 0; width: 1px;
     background: linear-gradient(180deg, transparent, var(--gold), transparent);
   }
+
   .left-content { position: relative; z-index: 1; }
+
   .left-eyebrow {
     font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase;
-    color: var(--eyebrow-on-taupe); margin-bottom: 36px;
+    color: var(--eyebrow-on-taupe); margin-bottom: 20px;
     opacity: 0; animation: fadeUp 0.8s ease 0.1s forwards;
   }
   .left-headline {
     font-family: 'Noto Serif Display', serif;
-    font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 800;
-    color: var(--charcoal-deep); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 28px;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem); font-weight: 800;
+    color: var(--charcoal-deep); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 20px;
     opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
   }
   .left-headline em { font-style: italic; font-weight: 600; color: var(--warm-white); }
   .left-rule {
-    width: 40px; height: 2px; background: var(--gold-dark); margin-bottom: 20px;
+    width: 40px; height: 2px; background: var(--gold-dark); margin-bottom: 18px;
     opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
   }
   .left-tagline {
-    font-family: 'Noto Serif Display', serif; font-size: 11px; font-style: italic;
-    font-weight: 300; color: rgba(43,43,43,0.36); letter-spacing: 0.06em;
-    text-transform: uppercase; margin-bottom: 24px;
-    opacity: 0; animation: fadeUp 0.8s ease 0.38s forwards;
+    font-family: 'Noto Serif Display', serif; font-size: 10px; font-style: italic;
+    font-weight: 300; color: rgba(43,43,43,0.36); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 20px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.35s forwards;
   }
   .left-body {
-    font-size: 15px; font-weight: 300; color: rgba(43,43,43,0.65);
-    line-height: 1.88; max-width: 400px;
+    font-size: 14px; font-weight: 300; color: rgba(43,43,43,0.65);
+    line-height: 1.82; max-width: 400px;
     opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
   }
   .left-body strong { color: rgba(43,43,43,0.82); font-weight: 500; }
 
   .expect-list {
-    display: flex; flex-direction: column; gap: 0; margin-top: 48px;
+    display: flex; flex-direction: column; gap: 0; margin-top: 40px;
     opacity: 0; animation: fadeUp 0.8s ease 0.5s forwards;
   }
-  .expect-item { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-top: 1px solid rgba(43,43,43,0.1); }
+  .expect-item { display: flex; align-items: flex-start; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(43,43,43,0.1); }
   .expect-item:last-child { border-bottom: 1px solid rgba(43,43,43,0.1); }
   .expect-num { font-family: 'Noto Serif Display', serif; font-size: 0.75rem; font-weight: 800; font-style: italic; color: rgba(184,154,106,0.5); line-height: 1.6; flex-shrink: 0; min-width: 20px; }
   .expect-text { font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.58); line-height: 1.72; }
   .expect-text strong { color: rgba(43,43,43,0.78); font-weight: 500; }
 
   .left-bottom {
-    position: relative; z-index: 1; margin-top: 48px;
+    position: relative; z-index: 1; margin-top: 40px;
     opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
   }
-  .audit-cta-block { border-top: 1px solid rgba(43,43,43,0.12); padding-top: 32px; }
-  .audit-cta-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 12px; }
-  .audit-cta-text { font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.58); line-height: 1.7; margin-bottom: 20px; }
+  .audit-cta-block { border-top: 1px solid rgba(43,43,43,0.12); padding-top: 28px; }
+  .audit-cta-label {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--eyebrow-on-taupe); margin-bottom: 10px;
+  }
+  .audit-cta-text {
+    font-size: 13px; font-weight: 300; color: rgba(43,43,43,0.58);
+    line-height: 1.7; margin-bottom: 18px;
+  }
   .audit-cta-link {
-    display: inline-block; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    display: block; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
     letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal-deep);
-    background: var(--gold); padding: 12px 28px; text-decoration: none;
-    transition: background 0.3s, color 0.3s;
+    background: var(--gold); padding: 12px 24px; text-decoration: none;
+    transition: background 0.3s, color 0.3s; text-align: center;
+    margin-bottom: 10px;
   }
   .audit-cta-link:hover { background: var(--gold-dark); color: var(--warm-white); }
   .reveal-link {
-    display: block; margin-top: 14px; font-size: 11px; font-weight: 300;
-    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(43,43,43,0.45);
-    text-decoration: none; transition: color 0.2s;
+    display: block; font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase; color: rgba(43,43,43,0.45);
+    text-decoration: none; transition: color 0.2s; text-align: center; line-height: 1.6;
   }
   .reveal-link:hover { color: rgba(43,43,43,0.7); }
 
@@ -160,27 +167,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     pointer-events: none;
   }
 
-  .form-intro { margin-bottom: 52px; opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards; }
-  .form-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--eyebrow-on-dark); margin-bottom: 14px; }
-  .form-headline { font-family: 'Noto Serif Display', serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; color: var(--warm-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px; }
+  /* ── FORM HEADER ── */
+  .form-intro {
+    margin-bottom: 52px;
+    opacity: 0; animation: fadeUp 0.8s ease 0.25s forwards;
+  }
+  .form-eyebrow {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--eyebrow-on-dark); margin-bottom: 14px;
+  }
+  .form-headline {
+    font-family: 'Noto Serif Display', serif;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800;
+    color: var(--warm-white); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px;
+  }
   .form-headline em { font-style: italic; font-weight: 600; color: var(--gold-bright); }
-  .form-subtext { font-size: 14px; font-weight: 300; color: rgba(242,241,238,0.45); line-height: 1.75; }
+  .form-subtext {
+    font-size: 14px; font-weight: 300;
+    color: rgba(242,241,238,0.45); line-height: 1.75;
+  }
 
   /* ── FORM ── */
   .contact-form { position: relative; z-index: 1; }
-  .field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
+
+  .field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
   .field-block {
     display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px;
     opacity: 0; animation: fadeUp 0.8s ease var(--delay, 0.4s) forwards;
   }
   .field-block.paired { margin-bottom: 0; }
-  .field-group-wrap { opacity: 0; animation: fadeUp 0.8s ease var(--delay, 0.4s) forwards; margin-bottom: 28px; }
+
   .field-label { font-size: 10px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--eyebrow-on-dark); }
-  .field-note { font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.28); font-style: italic; margin-top: 6px; line-height: 1.6; }
+  .field-question { font-family: 'Noto Serif Display', serif; font-size: clamp(0.95rem, 1.5vw, 1.1rem); font-weight: 600; color: var(--warm-white); line-height: 1.38; margin-bottom: 4px; }
+  .field-hint { font-size: 12px; font-weight: 300; color: rgba(242,241,238,0.22); line-height: 1.6; font-style: italic; margin-bottom: 2px; }
 
   input[type="text"],
   input[type="email"],
-  select,
+  input[type="tel"],
   textarea {
     width: 100%;
     background: rgba(242,241,238,0.05);
@@ -190,26 +214,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300;
     padding: 14px 16px; outline: none;
     transition: border-color 0.25s, background 0.25s;
-    resize: none; -webkit-appearance: none; appearance: none; border-radius: 0;
+    resize: none; -webkit-appearance: none; appearance: none;
   }
   input[type="text"]::placeholder,
   input[type="email"]::placeholder,
+  input[type="tel"]::placeholder,
   textarea::placeholder { color: rgba(242,241,238,0.2); font-style: italic; }
   input[type="text"]:focus,
   input[type="email"]:focus,
-  select:focus,
+  input[type="tel"]:focus,
   textarea:focus { border-color: rgba(184,154,106,0.65); background: rgba(242,241,238,0.07); }
 
-  select {
-    cursor: pointer; color: var(--warm-white);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b89a6a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 16px center;
-    background-color: rgba(242,241,238,0.05); padding-right: 40px;
-  }
-  select option { background: var(--charcoal-deep); color: var(--warm-white); }
-  select.unselected { color: rgba(242,241,238,0.2); font-style: italic; }
+  .form-divider { width: 100%; height: 1px; background: rgba(184,154,106,0.15); margin: 36px 0; }
 
-  .submit-area { margin-top: 44px; opacity: 0; animation: fadeUp 0.8s ease 0.72s forwards; }
+  .contact-fields { opacity: 0; animation: fadeUp 0.8s ease 0.75s forwards; }
+  .contact-fields .field-group { opacity: 1; animation: none; margin-bottom: 0; }
+
+  .phone-note { font-size: 11px; font-weight: 300; color: rgba(242,241,238,0.28); font-style: italic; margin-top: 6px; line-height: 1.6; }
+
+  .submit-area { margin-top: 44px; opacity: 0; animation: fadeUp 0.8s ease 0.85s forwards; }
   .submit-btn {
     display: inline-block; background: var(--gold-bright); color: var(--charcoal-deep);
     font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
@@ -279,12 +302,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ══ LEFT PANEL ══ -->
   <aside class="left-panel">
     <div class="left-content">
+
       <div class="left-eyebrow">Revenue in Tandem™ — Sprint Interest</div>
+
       <h1 class="left-headline">
-        Four clients.<br>Ninety days.<br><em>Twenty relationships back.</em>
+        Four clients. Ninety days.<br><em>Twenty relationships back.</em>
       </h1>
+
       <div class="left-rule"></div>
+
       <p class="left-tagline">Bring them back. Keep them close.</p>
+
       <p class="left-body">
         LinesinTandem™ runs four sprint engagements at a time. Every engagement is scoped individually — list size, revenue profile, location count, and complexity — and begins with a complete diagnostic of your quiet client relationships before a single campaign deploys. <strong>Access begins with The Quiet Relationship Audit™.</strong>
       </p>
@@ -292,17 +320,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="expect-list">
         <div class="expect-item">
           <span class="expect-num">01</span>
-          <p class="expect-text"><strong>Every submission is reviewed personally.</strong> If there is a fit, you will hear from us.</p>
+          <p class="expect-text">Every submission is reviewed personally. If there is a fit, you will hear from us.</p>
         </div>
         <div class="expect-item">
           <span class="expect-num">02</span>
-          <p class="expect-text"><strong>If there is a fit,</strong> you will receive a personal recommendation on the right next step for your business.</p>
+          <p class="expect-text">If there is a fit, you will receive a personal recommendation on the right next step for your business.</p>
         </div>
         <div class="expect-item">
           <span class="expect-num">03</span>
-          <p class="expect-text"><strong>If there is not a fit,</strong> we will say so directly — and tell you what would need to be true before it is.</p>
+          <p class="expect-text">If there is not a fit, we will say so directly — and tell you what would need to be true before it is.</p>
         </div>
       </div>
+
     </div>
 
     <div class="left-bottom">
@@ -326,62 +355,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <form class="contact-form" id="sprintForm" novalidate>
 
-      <div class="field-group-wrap" style="--delay: 0.35s">
-        <div class="field-group">
-          <div class="field-block paired">
-            <span class="field-label">First name</span>
-            <input type="text" name="firstName" placeholder="Your first name" required>
-          </div>
-          <div class="field-block paired">
-            <span class="field-label">Business name</span>
-            <input type="text" name="businessName" placeholder="As it appears publicly" required>
-          </div>
-        </div>
+      <div class="field-block" style="--delay: 0.4s">
+        <span class="field-label">Question 01</span>
+        <p class="field-question">Are you ready for the problem your business is facing to be totally resolved?</p>
+        <p class="field-hint">Not "are you open to it" — are you actually ready. What that means for you specifically.</p>
+        <textarea name="q1_ready" rows="4" placeholder="Be direct with yourself here…" required></textarea>
       </div>
 
-      <div class="field-block" style="--delay: 0.42s">
-        <span class="field-label">Email address</span>
-        <input type="email" name="email" placeholder="Where we will reach you" required>
-      </div>
-
-      <div class="field-group-wrap" style="--delay: 0.48s">
-        <div class="field-group">
-          <div class="field-block paired">
-            <span class="field-label">Business type</span>
-            <select name="businessType" class="unselected" onchange="this.classList.remove('unselected')" required>
-              <option value="" disabled selected>Select your business type</option>
-              <option value="MedSpa">MedSpa</option>
-              <option value="Cosmetic Dermatology Practice">Cosmetic Dermatology Practice</option>
-              <option value="Luxury Hair or Beauty Studio">Luxury Hair or Beauty Studio</option>
-              <option value="Private Wellness Studio">Private Wellness Studio</option>
-              <option value="Cosmetic Dental Practice">Cosmetic Dental Practice</option>
-              <option value="Private Membership Club">Private Membership Club</option>
-              <option value="Other">Other — tell us more below</option>
-            </select>
-          </div>
-          <div class="field-block paired">
-            <span class="field-label">Approximate annual revenue</span>
-            <select name="annualRevenue" class="unselected" onchange="this.classList.remove('unselected')" required>
-              <option value="" disabled selected>Select your revenue range</option>
-              <option value="Below $600K">Below $600K</option>
-              <option value="$600K — $1M">$600K — $1M</option>
-              <option value="$1M — $2M">$1M — $2M</option>
-              <option value="$2M+">$2M+</option>
-            </select>
-          </div>
-        </div>
+      <div class="field-block" style="--delay: 0.48s">
+        <span class="field-label">Question 02</span>
+        <p class="field-question">What has been stopping you from fixing this yourself so far?</p>
+        <p class="field-hint">Time, capacity, not knowing where to start — whatever is true.</p>
+        <textarea name="q2_stopping" rows="4" placeholder="The real answer, not the polished one…" required></textarea>
       </div>
 
       <div class="field-block" style="--delay: 0.56s">
-        <span class="field-label">
-          What is sitting in your contact list right now?
-          <span style="color:rgba(242,241,238,0.28); font-style:italic; font-size:9px; letter-spacing:0.08em; text-transform:none; margin-left:6px;">— optional</span>
-        </span>
-        <textarea name="contactListNote" rows="4" placeholder="Quiet clients, lapsed relationships, names you have not reached out to…"></textarea>
+        <span class="field-label">Question 03</span>
+        <p class="field-question">What made you reach out today instead of last month?</p>
+        <p class="field-hint">Something shifted. What was it?</p>
+        <textarea name="q3_today" rows="4" placeholder="What changed…" required></textarea>
+      </div>
+
+      <div class="field-block" style="--delay: 0.64s">
+        <span class="field-label">Question 04</span>
+        <p class="field-question">What happens if you do not solve this in the next 90 days?</p>
+        <p class="field-hint">Say what is actually at stake — not what sounds serious.</p>
+        <textarea name="q4_stakes" rows="4" placeholder="What does that actually cost you…" required></textarea>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="contact-fields">
+        <div class="field-group">
+          <div class="field-block paired" style="--delay: 0.72s">
+            <span class="field-label">Your name</span>
+            <input type="text" name="name" placeholder="First and last" required>
+          </div>
+          <div class="field-block paired" style="--delay: 0.72s">
+            <span class="field-label">Business name</span>
+            <input type="text" name="business" placeholder="As it appears publicly" required>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin-top: 16px;">
+          <div class="field-block paired" style="--delay: 0.78s">
+            <span class="field-label">Email address</span>
+            <input type="email" name="email" placeholder="Where we will reach you" required>
+          </div>
+          <div class="field-block paired" style="--delay: 0.78s">
+            <span class="field-label">Mobile number <span style="color:rgba(242,241,238,0.28); font-style:italic; font-size:9px; letter-spacing:0.08em; text-transform:none;">— optional</span></span>
+            <input type="tel" name="phone" placeholder="+1 (000) 000-0000">
+            <p class="phone-note">For a brief follow-up message. We do not share or add to lists.</p>
+          </div>
+        </div>
       </div>
 
       <div class="submit-area">
-        <button type="submit" class="submit-btn">Submit for consideration →</button>
+        <button type="submit" class="submit-btn">Submit — LinesinTandem™ Will Be In Touch →</button>
         <p class="submit-note">Every submission is reviewed personally. If there is a fit, you will hear from us.</p>
       </div>
 
@@ -396,7 +426,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="success-headline">Received.<br><em>We will be in touch.</em></h2>
       <p class="success-body">Your submission has been sent. Every inquiry is reviewed personally — if there is a fit, you will hear from us.</p>
       <div class="success-rule"></div>
-      <p class="success-next">If you have not yet completed The Quiet Relationship Reveal™, it is the right place to start while you wait — and it is complimentary.</p>
+      <p class="success-next">If you have not yet completed the Quiet Relationship Reveal™, it is the right place to start — and it is complimentary.</p>
       <a href="https://linesintandem.com/assessment.html" style="display:inline-block; margin-top: 24px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--charcoal-deep); background: var(--gold-bright); padding: 16px 40px; text-decoration: none; transition: background 0.3s, color 0.3s;">Start The Quiet Relationship Reveal™ — Complimentary →</a>
     </div>
 
@@ -418,28 +448,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeCWkMIgakzpXOaYVgJSfYK6nHpzHxsy0vqjEDgfJo2wh-tXw/formResponse';
-  const MAKE_WEBHOOK    = 'https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0';
 
-  // Demeter: add new columns to the Google Sheet for these fields,
-  // then replace REPLACE_ placeholders with the correct entry IDs.
-  // Email entry.819601042 is confirmed from the original contact page.
   const FIELD_MAP = {
-    firstName:       'entry.REPLACE_FIRSTNAME',
-    businessName:    'entry.REPLACE_BUSINESSNAME',
-    email:           'entry.819601042',
-    businessType:    'entry.REPLACE_BUSINESSTYPE',
-    annualRevenue:   'entry.REPLACE_REVENUE',
-    contactListNote: 'entry.REPLACE_NOTE',
+    q1_ready:    'entry.2143846273',
+    q2_stopping: 'entry.209816635',
+    q3_today:    'entry.1891689375',
+    q4_stakes:   'entry.1344357368',
+    name:        'entry.1659871565',
+    business:    'entry.1151747022',
+    email:       'entry.819601042',
+    phone:       'entry.43384397',
   };
 
   const form         = document.getElementById('sprintForm');
   const successState = document.getElementById('successState');
-
-  // Initialise select placeholder styling
-  document.querySelectorAll('select').forEach(sel => {
-    sel.classList.add('unselected');
-    sel.addEventListener('change', () => sel.classList.remove('unselected'));
-  });
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -461,32 +483,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true;
 
     const data = new FormData(form);
-
-    // Google Sheet via Form — only send fields with confirmed entry IDs
     const googleData = new FormData();
     for (const [key, entryId] of Object.entries(FIELD_MAP)) {
-      if (!entryId.includes('REPLACE')) {
-        googleData.append(entryId, data.get(key) || '');
-      }
+      googleData.append(entryId, data.get(key) || '');
     }
+
     try {
       await fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: googleData });
     } catch (err) {}
 
-    // Make webhook
     try {
-      await fetch(MAKE_WEBHOOK, {
+      await fetch('https://hook.us2.make.com/vo4ogg4vy74r4da7c6pii3qi4k24xbp0', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          firstName:       data.get('firstName')       || '',
-          businessName:    data.get('businessName')    || '',
-          email:           data.get('email')           || '',
-          businessType:    data.get('businessType')    || '',
-          annualRevenue:   data.get('annualRevenue')   || '',
-          contactListNote: data.get('contactListNote') || '',
-          source:          'sprint-interest.html',
-          timestamp:       new Date().toISOString(),
+          '5': data.get('name')        || '',
+          '6': data.get('business')    || '',
+          '7': data.get('email')       || '',
+          '8': data.get('phone')       || '',
+          q1_ready:    data.get('q1_ready')    || '',
+          q2_stopping: data.get('q2_stopping') || '',
+          q3_today:    data.get('q3_today')    || '',
+          q4_stakes:   data.get('q4_stakes')   || '',
+          source:      'sprint-interest.html',
+          timestamp:   new Date().toISOString(),
         }),
       });
     } catch (err) {}
@@ -496,7 +516,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  form.querySelectorAll('input, textarea, select').forEach(field => {
+  form.querySelectorAll('input, textarea').forEach(field => {
     field.addEventListener('input', () => { field.style.borderBottomColor = ''; });
   });
 </script>
