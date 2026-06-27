@@ -51,16 +51,14 @@
   </url>
 
   <!-- ============================================================= -->
-  <!-- BLOG POSTS — Demeter: add one <url> per post as it publishes,  -->
+  <!-- BLOG POSTS — add one <url> per post as it publishes,           -->
   <!-- update <lastmod> to publish date, resubmit sitemap to GSC.     -->
   <!-- ============================================================= -->
-  <!--
   <url>
-    <loc>https://linesintandem.com/blog/[SLUG].html</loc>
-    <lastmod>[YYYY-MM-DD]</lastmod>
+    <loc>https://linesintandem.com/blog/clients-you-stopped-seeing-are-in-your-data</loc>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  -->
 
 </urlset>
