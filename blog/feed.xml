@@ -9,24 +9,22 @@
     <copyright>© 2023–2026 LinesinTandem™. All rights reserved.</copyright>
     <managingEditor>hello@linesintandem.com (Que Blankenship)</managingEditor>
     <webMaster>hello@linesintandem.com (Que Blankenship)</webMaster>
-    <lastBuildDate>Sun, 29 Jun 2026 09:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 09:00:00 +0000</lastBuildDate>
 
     <!-- ============================================================= -->
-    <!-- ITEMS — newest first. Demeter: add one <item> per published    -->
-    <!-- post and update <lastBuildDate> above on each regeneration.    -->
+    <!-- ITEMS — newest first. Add one <item> per published post and    -->
+    <!-- update <lastBuildDate> above on each regeneration.             -->
     <!-- pubDate format: Day, DD Mon YYYY HH:MM:SS +0000 (RFC-822).     -->
     <!-- ============================================================= -->
 
-    <!--
     <item>
-      <title>[POST TITLE]</title>
-      <link>https://linesintandem.com/blog/[SLUG].html</link>
-      <guid isPermaLink="true">https://linesintandem.com/blog/[SLUG].html</guid>
-      <pubDate>[Mon, DD Mon YYYY 09:00:00 +0000]</pubDate>
+      <title>The Clients You Stopped Seeing Are Still in Your Data</title>
+      <link>https://linesintandem.com/blog/clients-you-stopped-seeing-are-in-your-data</link>
+      <guid isPermaLink="true">https://linesintandem.com/blog/clients-you-stopped-seeing-are-in-your-data</guid>
+      <pubDate>Mon, 29 Jun 2026 09:00:00 +0000</pubDate>
       <author>hello@linesintandem.com (Que Blankenship)</author>
-      <description>[FULL META DESCRIPTION from the post]</description>
+      <description>A Quiet Relationship Audit surfaces what your practice management dashboard cannot — the names of clients who went quiet, the recoverable revenue each one represents, and the structural pattern behind why they stopped coming.</description>
     </item>
-    -->
 
   </channel>
 </rss>
